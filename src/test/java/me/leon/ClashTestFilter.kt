@@ -60,19 +60,19 @@ class ClashTestFilter {
     private fun writeData(clazz: Class<Sub>, data: String, subList: List<Sub?>) {
         when (clazz) {
             SS::class.java ->
-                NODE_SS.writeLine(data).also {
+                NODE_SS2.writeLine(data,false).also {
                     println("ss节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
                 }
             SSR::class.java ->
-                NODE_SSR.writeLine(data).also {
+                NODE_SSR2.writeLine(data,false).also {
                     println("ssr节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
                 }
             V2ray::class.java ->
-                NODE_V2.writeLine(data).also {
+                NODE_V22.writeLine(data,false).also {
                     println("v2ray节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
                 }
             Trojan::class.java ->
-                NODE_TR.writeLine(data).also {
+                NODE_TR2.writeLine(data,false).also {
                     println("trojan节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
                 }
         }
