@@ -4,6 +4,9 @@
  <img width=0 height=0 src="https://profile-counter.glitch.me/Leon406/count.svg" alt="Leon406:: Visitor's Count" />
 </p>
 
+
+#### 原仓库Sub猜测因github action滥用,被disable,新项目停用自动github action,改为手动随缘更新
+
 ## <span id="top">订阅链接</span>
 
 - https://github.com/JACKUSR2089/v2ray-subscribed
