@@ -13,10 +13,10 @@ class ClashTestFilter {
         //        ss https://sub.cm/FLJ17fi
         //        4 in one https://sub.cm/7lWFj2u
         //        4 in one https://sub.cm/9vJONwY
-        const val URL = "https://sub.cm/7lWFj2u"
+        const val URL = "https://suo.yt/LATLo63"
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:/Users/Leon/Desktop/f_001a5e"
+        const val clashLogPath = "C:/Users/Leon/Desktop/f_0039d7 - 副本"
     }
 
     @Test
@@ -46,6 +46,7 @@ class ClashTestFilter {
             .map { nodeMap[it.key] }
             .also {
                 println("_______ ${it.size}")
+                NODE_ALL.writeLine(it.joinToString("\n") { it!!.toUri() }, false)
                 NodeCrawler.nodeInfoLocal.writeLine("**有效节点数: ${it.size}**\n")
                 println(it.joinToString("\n") { it!!.toUri() })
             }
