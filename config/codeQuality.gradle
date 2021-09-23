@@ -1,0 +1,24 @@
+apply plugin: 'com.diffplug.spotless'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+detekt {
+    allRules = false // activate all available (even unstable) rules.
+    config = files("$rootProject.projectDir/config/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+    parallel = true
+    reports {
+        html.enabled = true // observe findings in your browser with structure and code snippets
+        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+        txt.enabled = true // similar to the console output, contains issue signature to manually edit baseline files
+        sarif.enabled = true // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with Github Code Scanning
+    }
+}
+
+spotless {
+    java {
+        target "src/**/*.java"
+        googleJavaFormat('1.8').aosp()
+    }
+    kotlin {
+        target "src/**/*.kt"
+        ktfmt('0.27').kotlinlangStyle()
+    }
+}

@@ -1,0 +1,1 @@
+./gradlew  :test --tests "me.leon.NodeCrawler.localUse"
