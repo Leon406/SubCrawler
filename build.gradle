@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
     id "com.diffplug.spotless" version "5.15.0"
     id "io.gitlab.arturbosch.detekt" version "1.18.1"
 }
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.30'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.31'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'com.google.code.gson:gson:2.8.8'
     //for yaml 1.1
@@ -25,8 +25,8 @@ dependencies {
 //    implementation 'com.maxmind.db:maxmind-db:1.2.0'
     //for yaml 1.2
 //    implementation "org.snakeyaml:snakeyaml-engine:2.3"
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
 }
 
 test {

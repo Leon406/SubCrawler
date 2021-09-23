@@ -12,7 +12,7 @@ class NodeCrawler {
         val nodeInfoLocal = "$ROOT/info2.md"
         private val adConfig = "$ROOT/ad.txt"
         private val adReplaceConfig = "$ROOT/adreplace.txt"
-        const val customInfo = "防失效github.com/Leon406/Sub "
+        const val customInfo = "防失效github.com/Leon406 "
         private var subCount = 0
         private var nodeCount = 0
         val REG_AD by lazy { adConfig.toFile().readLines().joinToString("|").toRegex() }
@@ -61,15 +61,15 @@ class NodeCrawler {
                 .also { println("共有订阅源：${it.size.also { subCount = it }}") }
                 .map { sub ->
                     sub to
-                        async(DISPATCHER) {
-                            runCatching {
-                                Parser.parseFromSub(sub).also { println("$sub ${it.size} ") }
-                            }
-                                .getOrElse {
-                                    println("___parse failed $sub  ${it.message}")
-                                    linkedSetOf()
+                            async(DISPATCHER) {
+                                runCatching {
+                                    Parser.parseFromSub(sub).also { println("$sub ${it.size} ") }
                                 }
-                        }
+                                    .getOrElse {
+                                        println("___parse failed $sub  ${it.message}")
+                                        linkedSetOf()
+                                    }
+                            }
                 }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
@@ -166,7 +166,9 @@ class NodeCrawler {
             NODE_OK.writeLine()
             nodeInfoLocal.writeLine()
             nodeInfoLocal.writeLine("更新时间${timeStamp()}\r\n")
-            Parser.parseFromSub(POOL)
+            listOf(NODE_SS, NODE_SSR, NODE_TR, NODE_V2).fold(linkedSetOf<Sub>()) { acc, s ->
+                acc.apply { acc.addAll(Parser.parseFromSub(s)) }
+            }
                 .also { nodeInfoLocal.writeLine("**节点总数: ${it.size}**\n") }
                 .filter { if (it is SSR) it.method != "rc4" else true }
                 .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 1000) } }
@@ -180,11 +182,13 @@ class NodeCrawler {
             NODE_V22.writeLine()
             NODE_TR2.writeLine()
 
-            Parser.parseFromSub(NODE_OK).groupBy { it.javaClass }.forEach { (clazz, subList) ->
-                subList.firstOrNull()?.run { name = customInfo + name }
-                val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
-                writePrivateData(clazz, data, subList)
-            }
+            Parser.parseFromSub(NODE_OK)
+                .also { NODE_ALL.writeLine(it.joinToString("\n") { it.toUri() }.b64Encode(), false) }
+                .groupBy { it.javaClass }.forEach { (clazz, subList) ->
+                    subList.firstOrNull()?.run { name = customInfo + name }
+                    val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
+                    writePrivateData(clazz, data, subList)
+                }
         }
     }
 
@@ -259,8 +263,8 @@ class NodeCrawler {
     fun speedTestResultParse() {
         val map =
             Parser.parseFromSub(NODE_OK).also { println(it.size) }.fold(
-                    mutableMapOf<String, Sub>()
-                ) { acc, sub -> acc.apply { acc[sub.name] = sub } }
+                mutableMapOf<String, Sub>()
+            ) { acc, sub -> acc.apply { acc[sub.name] = sub } }
         NODE_SS2.writeLine()
         NODE_SSR2.writeLine()
         NODE_V22.writeLine()
