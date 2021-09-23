@@ -5,7 +5,7 @@
 </p>
 
 
-#### 原仓库Sub猜测因github action滥用,被disable,新项目停用自动github action,改为手动随缘更新
+#### 原仓库Sub 已确认是github action滥用,被封了,新项目停用自动github action,改为手动随缘更新
 
 ## <span id="top">订阅链接</span>
 
