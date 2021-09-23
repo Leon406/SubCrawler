@@ -5,3 +5,4 @@
 .*小机场.net.*
 节点更新 *https://bit.ly/\w+
 请订阅-Kin.*
+防失效github.com/Leon406/Sub
