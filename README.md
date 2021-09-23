@@ -66,7 +66,7 @@
     - [a.cloudtest.icu](http://a.cloudtest.icu/)
     - [阿里云VPS在线测速](http://us-or-cera-2.natfrp.cloud:10543/)
 
-## 本项目生成base64订阅 [节点详情](./sub/info.md)  ![ci](https://github.com/Leon406/SubCrawler/actions/workflows/ci.yml/badge.svg)
+## 本项目生成base64订阅
 
 本地服务器筛选(不定时更新)  [节点详情](./sub/info2.md),可自行clone项目,执行localFilter.bat生成
 
