@@ -10,7 +10,7 @@ class ClashTestFilter {
         const val URL = "https://suo.yt/LATLo63"
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:/Users/Leon/Desktop/f_00451a - 副本"
+        const val clashLogPath = "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_005408 - 副本"
     }
 
     @Test
