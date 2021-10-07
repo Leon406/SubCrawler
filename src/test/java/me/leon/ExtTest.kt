@@ -5,6 +5,7 @@ import java.util.*
 import me.leon.domain.Lanzou
 import me.leon.support.*
 import org.junit.jupiter.api.Test
+import java.text.NumberFormat
 
 class ExtTest {
 
@@ -136,5 +137,17 @@ class ExtTest {
         println(timeStamp("GMT-3"))
         println(timeStamp("UTC"))
         println(timeStamp("America/New_York"))
+    }
+
+    @Test
+    fun dd() {
+        val d1  = 2.147483647E9
+        val d = 2147483647.toDouble()
+        println(d.toString())
+        var instance = NumberFormat.getInstance()
+        instance.isGroupingUsed = false //设置不使用科学计数器
+        instance.maximumFractionDigits= 2 //小数点最大位数
+        var result = instance.format(d1)
+
     }
 }

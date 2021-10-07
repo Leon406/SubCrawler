@@ -10,7 +10,8 @@ class ClashTestFilter {
         const val URL = "https://suo.yt/LATLo63"
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_005408 - 副本"
+        const val clashLogPath =
+            "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_005408 - 副本"
     }
 
     @Test
@@ -60,20 +61,36 @@ class ClashTestFilter {
     private fun writeData(clazz: Class<Sub>, data: String, subList: List<Sub?>) {
         when (clazz) {
             SS::class.java ->
-                NODE_SS2.writeLine(data,false).also {
-                    println("ss节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
+                NODE_SS2.writeLine(data, false).also {
+                    println(
+                        "ss节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
                 }
             SSR::class.java ->
-                NODE_SSR2.writeLine(data,false).also {
-                    println("ssr节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
+                NODE_SSR2.writeLine(data, false).also {
+                    println(
+                        "ssr节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
                 }
             V2ray::class.java ->
-                NODE_V22.writeLine(data,false).also {
-                    println("v2ray节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
+                NODE_V22.writeLine(data, false).also {
+                    println(
+                        "v2ray节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
                 }
             Trojan::class.java ->
-                NODE_TR2.writeLine(data,false).also {
-                    println("trojan节点: ${subList.size}".also { NodeCrawler.nodeInfoLocal.writeLine("- $it") })
+                NODE_TR2.writeLine(data, false).also {
+                    println(
+                        "trojan节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
                 }
         }
     }

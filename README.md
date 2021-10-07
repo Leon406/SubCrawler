@@ -88,8 +88,7 @@
 | Windows                 | [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases) | SS                                                           |
 | Windows                 | [ShadowsocksR-Windows](https://github.com/HMBSbige/ShadowsocksR-Windows/releases) | SSR                                                          |
 | Windows                 | [V2rayN](https://github.com/2dust/v2rayN/releases)           | SS、Trojan、Vmess、VLESS                                     |
-| Linux / Windows / macOS                 | [Clash CFW  **(
-推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
+| Linux / Windows / macOS                 | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Windows                 | [Clash.Net](https://github.com/ClashDotNetFramework/ClashDotNetFramework/releases/) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Windows                 | [WinXray](https://github.com/TheMRLL/winxray/releases)       | SS、SSR、Trojan、V2ray（Vmess、VLESS）Xray                   |
 | Linux / Windows / macOS | [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases)          | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy /HTTP(S) / SOCKS5 |
@@ -98,8 +97,7 @@
 | Android                 | [shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android/releases) | SS                                                           |
 | Android                 | [ShadowsocksR-Android](https://github.com/HMBSbige/ShadowsocksR-Android/releases) | SSR                                                          |
 | Android                 | [V2rayNG](https://github.com/2dust/v2rayNG/releases)         | SS、Trojan、V2ray（Vmess、VLESS）、Xray                      |
-| Android                 | [ClashForAndroid  **(
-推荐)**](https://github.com/Kr328/ClashForAndroid/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
+| Android                 | [ClashForAndroid  **(推荐)**](https://github.com/Kr328/ClashForAndroid/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Android                 | [SSRAY](https://github.com/xxf098/shadowsocksr-v2ray-trojan-android/releases) | SSR、V2ray、Trojan                                           |
 | Android                 | [SagerNet](https://github.com/SagerNet/SagerNet/releases)    | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5 |
 | IOS                     | Shadowrocket 小火箭 IOS非国区购买                           | SS、SSR、Trojan、V2ray、VLESS                                |
@@ -108,7 +106,7 @@
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/Leon406/Sub.svg)](https://starchart.cc/Leon406/Sub)
+[![Stargazers over time](https://starchart.cc/Leon406/SubCrawler.svg)](https://starchart.cc/Leon406/SubCrawler)
 
 ## 声明
 
