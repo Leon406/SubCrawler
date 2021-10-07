@@ -56,7 +56,7 @@
 
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
-    - [LiteSpeedTest]([github acl4ssr-sub](https://acl4ssr-sub.github.io/))
+    - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch](https://bit.ly/nodescatch101)
 - 在线测速
     - [品云](http://gz.cloudtest.cc/)
