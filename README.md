@@ -19,25 +19,21 @@
 
 ## 节点池
 
-- https://233660.xyz/
-- [bihai](https://proxies.bihai.cf)
-- http://emby.luoml.eu.org
-- :star: 推荐​ https://etproxypool.ga/
-- https://fq.lonxin.net/
-- https://free.dswang.ga/
-- https://free.kingfu.cf/
-- https://free886.herokuapp.com/
-- https://fu.stgod.com/
-- https://hello.stgod.com/
+- https://sspool.nl/
 - https://hm2019721.ml/
-- https://outseen.tk/
+- [https://proxies.bihai.cf](https://proxies.bihai.cf)
+- https://etproxypool.ga/
+- https://free.kingfu.cf/
+- https://hello.stgod.com/
 - https://proxy.51798.xyz/
 - https://proxypool.fly.dev/
+- http://emby.luoml.eu.org
+- https://outseen.tk/
+- https://fq.lonxin.net/
+- https://free.dswang.ga/
 - https://ss.dswang.ga:8443/
-- https://sspool.herokuapp.com/
-- https://sspool.nl/
+- https://fu.stgod.com/
 - https://www.linbaoz.com/
-- https://zz.guicloud.xyz/
 
 ## 节点池配置
 
@@ -47,26 +43,25 @@
 
 ## <span id="subCon">订阅转换</span>
 
+- [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
 - [つつの]( https://sub.tsutsu.cc/)
 - [con8](https://www.con8.tk/)
 - [品云](https://id9.cc/)
-- [碧海](https://sub.bihai.ml/)
 - [肥羊转换](https://sub.mcwy.cloud/)
 - [边缘]( https://bianyuan.xyz/)
-- [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
 - [subcon.dlj.tf](https://subcon.dlj.tf/)
-- [subconv](https://subconv.ml/)
 - [sub v1](https://sub.v1.mk/)
 
 ## 节点测速
 
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
+    - [LiteSpeedTest]([github acl4ssr-sub](https://acl4ssr-sub.github.io/))
     - [nodescatch](https://bit.ly/nodescatch101)
 - 在线测速
     - [品云](http://gz.cloudtest.cc/)
-    - [a.cloudtest.icu](http://a.cloudtest.icu/)
-    - [阿里云VPS在线测速](http://us-or-cera-2.natfrp.cloud:10543/)
+    - [a.cloudtest.icu 已挂](http://a.cloudtest.icu/)
+    - [阿里云VPS在线测速 已挂](http://us-or-cera-2.natfrp.cloud:10543/)
 
 ## 本项目生成base64订阅
 
@@ -88,7 +83,7 @@
 | Windows                 | [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases) | SS                                                           |
 | Windows                 | [ShadowsocksR-Windows](https://github.com/HMBSbige/ShadowsocksR-Windows/releases) | SSR                                                          |
 | Windows                 | [V2rayN](https://github.com/2dust/v2rayN/releases)           | SS、Trojan、Vmess、VLESS                                     |
-| Linux / Windows / macOS                 | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
+| Linux / Windows / macOS | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Windows                 | [Clash.Net](https://github.com/ClashDotNetFramework/ClashDotNetFramework/releases/) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Windows                 | [WinXray](https://github.com/TheMRLL/winxray/releases)       | SS、SSR、Trojan、V2ray（Vmess、VLESS）Xray                   |
 | Linux / Windows / macOS | [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases)          | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy /HTTP(S) / SOCKS5 |
@@ -99,8 +94,9 @@
 | Android                 | [V2rayNG](https://github.com/2dust/v2rayNG/releases)         | SS、Trojan、V2ray（Vmess、VLESS）、Xray                      |
 | Android                 | [ClashForAndroid  **(推荐)**](https://github.com/Kr328/ClashForAndroid/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Android                 | [SSRAY](https://github.com/xxf098/shadowsocksr-v2ray-trojan-android/releases) | SSR、V2ray、Trojan                                           |
-| Android                 | [SagerNet](https://github.com/SagerNet/SagerNet/releases)    | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5 |
-| IOS                     | Shadowrocket 小火箭 IOS非国区购买                           | SS、SSR、Trojan、V2ray、VLESS                                |
+| Android                 | [SagerNet](https://github.com/SagerNet/SagerNet/releases)    | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
+| Android                 | [AnXray](https://github.com/XTLS/AnXray)                     | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
+| IOS                     | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
 | IOS                     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
 | IOS                     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
 
