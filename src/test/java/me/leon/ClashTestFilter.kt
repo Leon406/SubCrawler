@@ -7,26 +7,19 @@ import org.junit.jupiter.api.Test
 class ClashTestFilter {
 
     companion object {
-        //        tr  https://sub.cm/LtHIdxd
-        //        ssr https://sub.cm/TTgunAH
-        //        v2 https://sub.cm/w8HCJno
-        //        ss https://sub.cm/FLJ17fi
-        //        4 in one https://sub.cm/7lWFj2u
-        //        4 in one https://sub.cm/9vJONwY
-        const val URL = "https://sub.cm/7lWFj2u"
+        const val URL = "https://suo.yt/LATLo63"
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:/Users/Leon/Desktop/f_001a5e"
+        const val clashLogPath =
+            "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_001f07 - 副本"
     }
 
     @Test
     fun parseClashLog() {
-
         val nodeMap =
             Parser.parseFromSub(URL).fold(mutableMapOf<String, Sub>()) { acc, sub ->
                 acc.apply { acc[sub.name] = sub }
             }
-
         println("_______ 订阅节点数量 ${nodeMap.size}")
         NodeCrawler.nodeInfoLocal.writeLine(
             "更新时间${timeStamp()}${System.lineSeparator().repeat(2)}",
@@ -37,15 +30,19 @@ class ClashTestFilter {
             .readText()
             .fromJson<ClashConnectLog>()
             .proxies
-            .filter { it.value.hasSpeedTestHistory }
-            //            .also {
-            //                it.forEach { (t, u) -> println("$t  ${u.history.last().delay}") }
-            //                println()
-            //            }
-            .filter { nodeMap[it.key] != null }
-            .map { nodeMap[it.key] }
+            .filter { it.value.hasSpeedTestHistory && nodeMap[it.key] != null }
+            .map {
+                nodeMap[it.key].apply {
+                    this!!.name =
+                        this.name
+                            .removeFlags()
+                            .replace(NodeCrawler.REG_AD, "")
+                            .replace(NodeCrawler.REG_AD_REPLACE, NodeCrawler.customInfo)
+                }
+            }
             .also {
                 println("_______ ${it.size}")
+                NODE_ALL.writeLine(it.joinToString("\n") { it!!.toUri() }.b64Encode(), false)
                 NodeCrawler.nodeInfoLocal.writeLine("**有效节点数: ${it.size}**\n")
                 println(it.joinToString("\n") { it!!.toUri() })
             }
@@ -57,26 +54,45 @@ class ClashTestFilter {
                             ?: (NodeCrawler.customInfo + name)
                 }
                 val data = u.joinToString("\n") { it!!.toUri() }.b64Encode()
-                //                println(u.joinToString("\n") { it!!.name })
-                when (t) {
-                    SS::class.java ->
-                        NODE_SS2.writeLine(data, false).also {
-                            NodeCrawler.nodeInfoLocal.writeLine("- ss节点: ${u.size}")
-                        }
-                    SSR::class.java ->
-                        NODE_SSR2.writeLine(data, false).also {
-                            NodeCrawler.nodeInfoLocal.writeLine("- ssr节点: ${u.size}")
-                        }
-                    V2ray::class.java ->
-                        NODE_V22.writeLine(data, false).also {
-                            NodeCrawler.nodeInfoLocal.writeLine("- v2ray节点: ${u.size}")
-                        }
-                    Trojan::class.java ->
-                        NODE_TR2.writeLine(data, false).also {
-                            NodeCrawler.nodeInfoLocal.writeLine("- trojan节点: ${u.size}")
-                        }
-                }
+                writeData(t!!, data, u)
             }
+    }
+
+    private fun writeData(clazz: Class<Sub>, data: String, subList: List<Sub?>) {
+        when (clazz) {
+            SS::class.java ->
+                NODE_SS2.writeLine(data, false).also {
+                    println(
+                        "ss节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
+                }
+            SSR::class.java ->
+                NODE_SSR2.writeLine(data, false).also {
+                    println(
+                        "ssr节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
+                }
+            V2ray::class.java ->
+                NODE_V22.writeLine(data, false).also {
+                    println(
+                        "v2ray节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
+                }
+            Trojan::class.java ->
+                NODE_TR2.writeLine(data, false).also {
+                    println(
+                        "trojan节点: ${subList.size}".also {
+                            NodeCrawler.nodeInfoLocal.writeLine("- $it")
+                        }
+                    )
+                }
+        }
     }
 
     @Test
