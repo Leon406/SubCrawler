@@ -60,8 +60,10 @@
     - [nodescatch](https://bit.ly/nodescatch101)
 - 在线测速
     - [品云](http://gz.cloudtest.cc/)
-    - [a.cloudtest.icu 已挂](http://a.cloudtest.icu/)
-    - [阿里云VPS在线测速 已挂](http://us-or-cera-2.natfrp.cloud:10543/)
+    - [品云2](http://gz2.cloudtest.cc/)
+    - [品云3](http://gy.cloudtest.cc/)
+    - [霸气](http://fjcu.june628.ml/)
+    - [霸气2](http://fjct.june628.ml/)
 
 ## 本项目生成base64订阅
 
