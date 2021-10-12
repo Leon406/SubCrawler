@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Test
 class ClashTestFilter {
 
     companion object {
-        const val URL = "https://suo.yt/LATLo63"
+        // private url
+        //        const val URL = "https://suo.yt/LATLo63"
+        //        share url
+        const val URL = "https://suo.yt/bGtfh7m"
 
         // clash_win/Cache 目录下日志文件
         const val clashLogPath =
-            "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_001f07 - 副本"
+            "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_0030b7 - 副本"
     }
 
     @Test
