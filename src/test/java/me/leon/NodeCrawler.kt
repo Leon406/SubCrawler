@@ -125,7 +125,7 @@ class NodeCrawler {
         maps.forEach { (t, u) -> (ok - (ok - u)).also { println("$t ${it.size}/${u.size}") } }
     }
 
-    fun nodeGroup() {
+    private fun nodeGroup() {
         NODE_SS.writeLine()
         NODE_SSR.writeLine()
         NODE_V2.writeLine()

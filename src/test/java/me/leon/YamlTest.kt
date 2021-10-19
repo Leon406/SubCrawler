@@ -22,7 +22,7 @@ class YamlTest {
     @Test
     fun yaml() {
 
-        var url = "https://raw.fastgit.org/AzadNetCH/Clash/main/AzadNet.yml".readFromNet()
+        val url = "https://raw.fastgit.org/AzadNetCH/Clash/main/AzadNet.yml".readFromNet()
         if (url.isNotEmpty()) {
             with(Yaml(Constructor(Clash::class.java)).load(url) as Clash) {
                 println(

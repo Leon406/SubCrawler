@@ -46,7 +46,7 @@ class ThirdVpnCrack {
         }
     }
 
-    val quarkVpnDir = "$ROOT/vpn/quark"
+    private val quarkVpnDir = "$ROOT/vpn/quark"
 
     @Test
     fun parseQuarkVpn() {
