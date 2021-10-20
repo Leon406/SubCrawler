@@ -14,7 +14,7 @@ class ClashTestFilter {
 
         // clash_win/Cache 目录下日志文件
         const val clashLogPath =
-            "C:\\Users\\Leon\\AppData\\Roaming\\clash_win\\Cache\\f_003192 - 副本"
+            "C:/Users/Leon/AppData/Roaming/clash_win/Cache/f_0079a3 - 副本"
     }
 
     @Test
