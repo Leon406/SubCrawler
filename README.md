@@ -2,7 +2,6 @@
 
 <p align="center">
 <img  src="https://profile-counter.glitch.me/Leon406_SubCrawler/count.svg" alt="Sub :: Visitor's Count" />
-<img width=0 height=0 src="https://profile-counter.glitch.me/Leon406_Sub/count.svg" alt="Sub :: Visitor's Count" />
  <img width=0 height=0 src="https://profile-counter.glitch.me/Leon406/count.svg" alt="Leon406:: Visitor's Count" />
 </p>
 
@@ -78,6 +77,32 @@
 
 ## [公益机场](公益机场.md)
 
+## 走代理后ip匿名检测
+
+- https://bgp.he.net/
+- https://browserleaks.com/
+- https://ip.voidsec.com/
+- https://ipinfo.io/
+- https://ipleak.com/
+- https://ipleak.net/
+- https://ipleak.org/
+- https://ipx.ac/run
+- https://nstool.netease.com/
+- https://test-ipv6.com/
+- https://whatismyipaddress.com/blacklist-check
+- https://whoer.net/
+- https://www.astrill.com/dns-leak-test
+- https://www.astrill.com/ipv6-leak-test
+- https://www.astrill.com/port-scan
+- https://www.astrill.com/vpn-leak-test
+- https://www.astrill.com/what-is-my-ip
+- https://www.deviceinfo.me/
+- https://www.dnsleaktest.com/
+- https://www.doileak.com/
+- https://www.expressvpn.com/webrtc-leak-test
+
+
+
 ## 使用软件
 
 | 平台                    | 软件                                                         | 支持协议                                                     |
@@ -101,6 +126,16 @@
 | IOS                     | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
 | IOS                     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
 | IOS                     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
+
+
+
+## VPN/代理 (免软件或者使用浏览器插件)
+
+- https://www.vpngate.net/cn/
+- https://primevpn.pro/servers/
+- http://webfreevpn.com/servers/
+
+
 
 ## Stargazers over time
 
