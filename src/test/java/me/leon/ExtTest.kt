@@ -148,5 +148,11 @@ class ExtTest {
         instance.isGroupingUsed = false // 设置不使用科学计数器
         instance.maximumFractionDigits = 2 // 小数点最大位数
         println(instance.format(d1))
+        "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%".replace("[【（\\(].+[\\)）%】]?".toRegex(), "")
+            .also { println(it) }
+
+   "（欢迎订阅youtube：8度科技".replace("[【（\\(].+[\\)）%】]?".toRegex(), "")
+            .also { println(it) }
+
     }
 }
