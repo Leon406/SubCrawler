@@ -38,7 +38,6 @@ class NodeCrawler {
     fun crawlNodes() {
         val subs1 = "$ROOT/pool/subpool".readLines()
         val subs2 = "$ROOT/pool/subs".readLines()
-        val unavailable = "$ROOT/pool/unavailable".readLines()
         //        val subs3 = "$SHARE2/tmp".readLines()
         val sublist = "$ROOT/pool/sublists".readLines()
         val subs3 =
@@ -47,12 +46,13 @@ class NodeCrawler {
                 .flatMap { it.split("\r\n|\n".toRegex()) }
                 .distinct()
                 .also { println("before ${it.size}") }
-                .filterNot { unavailable.contains(it) || it.startsWith("#") || it.trim().isEmpty() }
+                .filterNot {  it.startsWith("#") || it.trim().isEmpty() }
                 .also {
                     println(it)
                     println("after ${it.size}")
                 }
-        val subs = (subs1 + subs2 + subs3).filterNot { unavailable.contains(it) }.toHashSet()
+        val subs = (subs1 + subs2 + subs3).toHashSet()
+        println(subs.size)
 
         POOL.writeLine()
         runBlocking {

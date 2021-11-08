@@ -12,12 +12,14 @@ class IpFilterTest {
     @Test
     fun reTestFailIps() {
         failIp()
-        deleteOkIps()
+        removeOkPorts()
     }
 
-    private fun failIp() {
+    @Test
+    fun failIp() {
         val okIps = mutableListOf<String>()
         val failIps = mutableListOf<String>()
+        val failPorts = mutableListOf<String>()
         val total = mutableListOf<String>()
 
         measureTimeMillis {
@@ -40,14 +42,30 @@ class IpFilterTest {
                         ?.forEach { p ->
                             if (okIps.contains(p.first) || failIps.contains(p.first)) {
                                 //                                    println("已存在")
+                                failPorts.add(p.second)
                                 return@forEach
                             }
                             if (p.first.ping(1000) > -1) okIps.add(p.first)
-                            else println(p.second.also { failIps.add(p.first) })
+                            else println(p.second.also {
+                                failIps.add(p.first)
+                                failPorts.add(p.second)
+                            })
+                        }
+
+                    map[false]
+                        .also { println("不带端口数量 ${it?.size}") }
+                        ?.forEach { p ->
+                            if (okIps.contains(p) || failIps.contains(p)) {
+                                //                                    println("已存在")
+                                return@forEach
+                            }
+                            if (p.ping(1000) > -1) okIps.add(p).also { println("reAlive ip $p") }
+                            else println(p.also { failIps.add(p) })
                         }
                 }
 
             println(failIps)
+            println(failPorts)
             println("_______")
             println(okIps)
             total
@@ -55,6 +73,7 @@ class IpFilterTest {
                 .also {
                     println("before ${it.size}")
                     it.removeAll(okIps)
+                    it.removeAll(failPorts)
                     it.addAll(failIps)
                 }
                 .filterNot { it.contains(":") && failIps.contains(it.substringBeforeLast(":")) }
@@ -68,7 +87,8 @@ class IpFilterTest {
             .also { println("time $it ms") }
     }
 
-    private fun deleteOkIps() {
+    @Test
+     fun removeOkPorts() {
         val total = mutableListOf<String>()
         runBlocking {
             FAIL_IPS
@@ -77,8 +97,12 @@ class IpFilterTest {
                     total.addAll(it)
                     println("before ${it.size}")
                 }
-                .filterNot { it.contains(":") }
-                .map { it to async(DISPATCHER) { it.connect() } }
+                .filter { it.contains(":") }
+                .map {
+                    it to async(DISPATCHER) {
+                        it.substringBeforeLast(":").connect(it.substringAfterLast(":").toInt())
+                    }
+                }
                 .filter { it.second.await() > -1 }
                 .forEach {
                     println(it.first)
