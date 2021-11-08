@@ -17,91 +17,74 @@ class IpFilterTest {
 
     @Test
     fun failIp() {
-        val okIps = mutableListOf<String>()
-        val failIps = mutableListOf<String>()
-        val failPorts = mutableListOf<String>()
-        val total = mutableListOf<String>()
+        val okIps = mutableSetOf<String>()
+        val failIps = mutableSetOf<String>()
+        val failPorts = mutableSetOf<String>()
+        val total = mutableSetOf<String>()
 
-        measureTimeMillis {
-            FAIL_IPS
-                .readLines()
-                .also { println("before ${it.size}") }
-                .toHashSet()
-                .sorted()
-                .also {
-                    total.addAll(it)
-                    println("after ${it.size}")
-                    FAIL_IPS.writeLine()
-                    FAIL_IPS.writeLine(it.joinToString("\n"))
-                }
-                .groupBy { it.contains(':') }
-                .also { map ->
-                    map[true]
-                        .also { println("带端口节点数量 ${it?.size}") }
-                        ?.map { it.substringBeforeLast(':') to it }
-                        ?.forEach { p ->
-                            if (okIps.contains(p.first) || failIps.contains(p.first)) {
-                                //                                    println("已存在")
-                                failPorts.add(p.second)
-                                return@forEach
-                            }
-                            if (p.first.ping(1000) > -1) okIps.add(p.first)
-                            else println(p.second.also {
-                                failIps.add(p.first)
-                                failPorts.add(p.second)
-                            })
+        runBlocking {
+            measureTimeMillis {
+                FAIL_IPS
+                    .readLines()
+                    .also { println("before ${it.size}") }
+                    .sorted()
+                    .also {
+                        total.addAll(it)
+                        println("after duplicate and sort ${total.size}")
+                        FAIL_IPS.writeLine()
+                        FAIL_IPS.writeLine(total.joinToString("\n"))
+                    }
+                    .map { it to async(DISPATCHER) { it.substringBeforeLast(':').ping(1000) } }
+                    .map { it.second.await() to it.first }
+                    .forEach {
+                        if (it.first > -1) {
+                            okIps.add(it.second.substringBeforeLast(":"))
+                            println("reAlive ip ${it.second}")
+                        } else {
+                            failIps.add(it.second.substringBeforeLast(":"))
+                            if (it.second.contains(":")) failPorts.add(it.second)
                         }
+                    }
 
-                    map[false]
-                        .also { println("不带端口数量 ${it?.size}") }
-                        ?.forEach { p ->
-                            if (okIps.contains(p) || failIps.contains(p)) {
-                                //                                    println("已存在")
-                                return@forEach
-                            }
-                            if (p.ping(1000) > -1) okIps.add(p).also { println("reAlive ip $p") }
-                            else println(p.also { failIps.add(p) })
-                        }
-                }
-
-            println(failIps)
-            println(failPorts)
-            println("_______")
-            println(okIps)
-            total
-                .toHashSet()
-                .also {
-                    println("before ${it.size}")
-                    it.removeAll(okIps)
-                    it.removeAll(failPorts)
-                    it.addAll(failIps)
-                }
-                .filterNot { it.contains(":") && failIps.contains(it.substringBeforeLast(":")) }
-                .sorted()
-                .also {
-                    FAIL_IPS.writeLine()
-                    FAIL_IPS.writeLine(it.joinToString("\n"))
-                    println("after ${it.size}")
-                }
+                println(failIps)
+                println(failPorts)
+                println("_______")
+                println(okIps)
+                total
+                    .also {
+                        println("before ${it.size}")
+                        it.removeAll(okIps)
+                        it.removeAll(failPorts)
+                        it.addAll(failIps)
+                    }
+                    .filterNot { it.contains(":") && failIps.contains(it.substringBeforeLast(":")) }
+                    .sorted()
+                    .also {
+                        FAIL_IPS.writeLine()
+                        FAIL_IPS.writeLine(it.joinToString("\n"))
+                        println("after ${it.size}")
+                    }
+            }
+                .also { println("time $it ms") }
         }
-            .also { println("time $it ms") }
     }
 
     @Test
-     fun removeOkPorts() {
-        val total = mutableListOf<String>()
+    fun removeOkPorts() {
+        val total = mutableSetOf<String>()
         runBlocking {
             FAIL_IPS
                 .readLines()
                 .also {
                     total.addAll(it)
-                    println("before ${it.size}")
+                    println("before ${total.size}")
                 }
                 .filter { it.contains(":") }
                 .map {
-                    it to async(DISPATCHER) {
-                        it.substringBeforeLast(":").connect(it.substringAfterLast(":").toInt())
-                    }
+                    it to
+                        async(DISPATCHER) {
+                            it.substringBeforeLast(":").connect(it.substringAfterLast(":").toInt())
+                        }
                 }
                 .filter { it.second.await() > -1 }
                 .forEach {

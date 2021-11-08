@@ -26,10 +26,8 @@ class HostsTest {
                 it
                     .readFromNet()
                     .split("\n|\r\n".toRegex())
-                    .map m1@ {
-                        it.trim()
-                    }
-                    .filterNot fn@ { it.isEmpty() || it.startsWith("#") }
+                    .map m1@{ it.trim() }
+                    .filterNot fn@{ it.isEmpty() || it.startsWith("#") }
                     .map {
                         it.split("\\s+".toRegex()).run {
                             Host(this[1]).apply {

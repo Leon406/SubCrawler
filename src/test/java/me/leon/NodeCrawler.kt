@@ -46,7 +46,7 @@ class NodeCrawler {
                 .flatMap { it.split("\r\n|\n".toRegex()) }
                 .distinct()
                 .also { println("before ${it.size}") }
-                .filterNot {  it.startsWith("#") || it.trim().isEmpty() }
+                .filterNot { it.startsWith("#") || it.trim().isEmpty() }
                 .also {
                     println(it)
                     println("after ${it.size}")

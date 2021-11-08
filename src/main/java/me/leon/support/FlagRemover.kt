@@ -34,7 +34,7 @@ object FlagRemover {
                 }
             }
             .lastOrNull()
-        return tmp.replace("美国离岛美国|美国离岛".toRegex(),"美国")
+        return tmp.replace("美国离岛美国|美国离岛".toRegex(), "美国")
     }
 }
 
