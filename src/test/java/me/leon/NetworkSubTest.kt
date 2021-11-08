@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test
 class NetworkSubTest {
     @Test
     fun subParse() {
-        //        val e = "https://raw.fastgit.org/Leon406/Sub/master/sub/share/tr"
-        //        val e = "https://api.flgwls.com/link/UUDvI5RqtU5ZC098?clash=1r"
-        val e = "https://raw.fastgit.org/JACKUSR2089/v2ray-subscribed/master/subscribed/2021-6-13"
+        val e = "https://update.glados-config.org/clash/82245/e52c7e5/53325/glados_new.yaml"
         runBlocking {
             Parser.parseFromSub(e)
                 .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 1000) } }

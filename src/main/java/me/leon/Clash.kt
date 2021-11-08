@@ -10,8 +10,8 @@ data class Clash(
     var secret: String = "",
     var `external-controller`: String = "info",
     var mode: String = "Rule",
-    var `proxy-groups`: List<Group> = mutableListOf(),
-    var dns: DNS = DNS(),
+    var `proxy-groups`: List<LinkedHashMap<String, Any>> = mutableListOf(),
+    var dns: LinkedHashMap<String, Any> = linkedMapOf(),
     var proxies: List<Node> = mutableListOf(),
     var rules: List<String> = mutableListOf(),
 ) {
@@ -21,8 +21,12 @@ data class Clash(
     var `interface-name`: String = ""
     var `external-ui`: String = ""
     var authentication: List<String> = mutableListOf()
+    var `rule-providers`: LinkedHashMap<String, Any> = linkedMapOf()
+    var tun: LinkedHashMap<String, Any> = linkedMapOf()
     var hosts: List<LinkedHashMap<String, String>> = mutableListOf()
     var ipv6: Boolean = false
+    var `cfw-bypass`: List<String> = mutableListOf()
+    var rule: List<String> = mutableListOf()
 }
 
 data class DNS(

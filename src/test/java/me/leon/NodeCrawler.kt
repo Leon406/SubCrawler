@@ -63,7 +63,9 @@ class NodeCrawler {
                     sub to
                         async(DISPATCHER) {
                             runCatching {
-                                Parser.parseFromSub(sub).also { println("$sub ${it.size} ") }
+                                val uri = sub.takeUnless { it.startsWith("https://raw.githubusercontent.com/") }
+                                    ?: "https://ghproxy.com/$sub"
+                                Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
                             }
                                 .getOrElse {
                                     println("___parse failed $sub  ${it.message}")
