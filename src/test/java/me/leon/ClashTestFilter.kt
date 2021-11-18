@@ -8,12 +8,12 @@ class ClashTestFilter {
 
     companion object {
         // private url
-        const val URL = "http://localhost:25500/sub?target=clash&url=https://raw.fastgit.org/Leon406/SubCrawler/main/sub/share/v2|https://raw.fastgit.org/Leon406/SubCrawler/main/sub/share/ss|https://raw.fastgit.org/Leon406/SubCrawler/main/sub/share/ssr|https://raw.fastgit.org/Leon406/SubCrawler/main/sub/share/tr&insert=false&config=config/ACL4SSR_Mini.ini"
+//        const val URL = "https://sub.cm/9vJONwY"
         //        share url
-        //        const val URL = "https://suo.yt/bGtfh7m"
+                const val URL = "https://v1.mk/gvHEd88"
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:/Users/Leon/AppData/Roaming/clash_win/Cache/f_0001bd - 副本"
+        const val clashLogPath = "C:/Users/Leon/AppData/Roaming/clash_win/Cache/f_0018ec - 副本"
     }
 
     @Test
