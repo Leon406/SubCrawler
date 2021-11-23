@@ -148,3 +148,5 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
         get() = server
     override var nation: String = ""
 }
+
+val unSupportCipher = arrayOf("none", "rc4", "rc4-md5")

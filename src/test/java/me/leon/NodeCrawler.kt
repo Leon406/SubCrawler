@@ -90,7 +90,7 @@ class NodeCrawler {
                 }
                 .also {
                     POOL.writeLine(
-                        it.also { nodeCount = it.size }.filterNot { it is SSR && it.method == "rc4-md5" }
+                        it.also { nodeCount = it.size }.filterNot { it is SSR && it.method in unSupportCipher }
                             .joinToString("\n") { it.toUri() }
                     )
                 }

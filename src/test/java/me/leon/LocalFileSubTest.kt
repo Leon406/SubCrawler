@@ -34,8 +34,9 @@ class LocalFileSubTest {
     fun readLocalSSR() {
         Parser.parseFromSub(NODE_SSR)
             .also { println(it.size) }
-            .filterNot { it is SSR && it.method == "rc4-md5" }
+            .filterNot { it is SSR && it.method in unSupportCipher }
+            .filterIsInstance<SSR>()
 //            .joinToString("\n") { it.name }
-            .also { println(it) }
+            .also { println(it.map { it.method }.groupBy { it }) }
     }
 }
