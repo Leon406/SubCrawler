@@ -77,7 +77,7 @@
 - [本地ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ssr)
 - [本地v2ray](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/v2)
 - [本地trojan](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/tr)
-
+- [四合一转换,右键复制链接](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/ss|https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/ssr|https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/tr|https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/v2)
 > 如需多个订阅,不同格式,请自行使用[订阅转换](#subCon)进行转换
 
 ## [公益机场](公益机场.md)
