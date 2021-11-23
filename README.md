@@ -16,22 +16,16 @@
 - [pojiezhiyuanjun/freev2](https://github.com/pojiezhiyuanjun/freev2)
 - https://github.com/adiwzx/freenode
 
-## 节点池
+## 优质节点池
 
-- https://sspool.nl/
+- :star:https://sspool.nl
 - https://hm2019721.ml/
 - [https://proxies.bihai.cf](https://proxies.bihai.cf)
 - https://etproxypool.ga/
-- https://free.kingfu.cf/
-- https://hello.stgod.com/
+- :star: https://free.kingfu.cf/
 - https://proxy.51798.xyz/
 - https://proxypool.fly.dev/
-- http://emby.luoml.eu.org
-- https://outseen.tk/
 - https://fq.lonxin.net/
-- https://free.dswang.ga/
-- https://ss.dswang.ga:8443/
-- https://fu.stgod.com/
 - https://www.linbaoz.com/
 
 ## 节点池配置
@@ -43,13 +37,24 @@
 ## <span id="subCon">订阅转换</span>
 
 - [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
+
+- [:star:sub v1](https://sub.v1.mk/)
+
+- [本地搭建](https://github.com/tindy2013/subconverter/releases)
+
 - [つつの]( https://sub.tsutsu.cc/)
+
 - [con8](https://www.con8.tk/)
+
 - [品云](https://id9.cc/)
+
 - [肥羊转换](https://sub.mcwy.cloud/)
+
 - [边缘]( https://bianyuan.xyz/)
+
 - [subcon.dlj.tf](https://subcon.dlj.tf/)
-- [sub v1](https://sub.v1.mk/)
+
+  
 
 ## 节点测速
 

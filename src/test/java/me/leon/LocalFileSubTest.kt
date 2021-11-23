@@ -29,4 +29,13 @@ class LocalFileSubTest {
             .joinToString("\n") { it.name }
             .also { println(it) }
     }
+
+    @Test
+    fun readLocalSSR() {
+        Parser.parseFromSub(NODE_SSR)
+            .also { println(it.size) }
+            .filterNot { it is SSR && it.method == "rc4-md5" }
+//            .joinToString("\n") { it.name }
+            .also { println(it) }
+    }
 }
