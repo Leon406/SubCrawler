@@ -8,12 +8,14 @@ class ClashTestFilter {
 
     companion object {
         // private url
-//        const val URL = "https://sub.cm/9vJONwY"
+        //        const val URL = "https://sub.cm/9vJONwY"
         //        share url
-                const val URL = "https://v1.mk/gvHEd88"
+     // const val URL = "https://v1.mk/gvHEd88"
+        const val URL = "https://suo.yt/2mf9ihW"
+
 
         // clash_win/Cache 目录下日志文件
-        const val clashLogPath = "C:/Users/Leon/AppData/Roaming/clash_win/Cache/f_0018ec - 副本"
+        const val clashLogPath = "C:/Users/Leon/AppData/Roaming/clash_win/Cache/f_003753 - 副本"
     }
 
     @Test
