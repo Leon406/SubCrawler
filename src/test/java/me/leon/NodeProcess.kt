@@ -33,7 +33,7 @@ class NodeProcess {
 
             Parser.parseFromSub(NODE_OK)
                 .also {
-                    NODE_ALL.writeLine(it.joinToString("\n") { it.toUri() }.b64Encode(), false)
+                    NODE_ALL2.writeLine(it.joinToString("\n") { it.toUri() }.b64Encode(), false)
                 }
                 .groupBy { it.javaClass }
                 .forEach { (clazz, subList) ->

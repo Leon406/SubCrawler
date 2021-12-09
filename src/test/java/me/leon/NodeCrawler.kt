@@ -133,8 +133,10 @@ class NodeCrawler {
         NODE_SSR.writeLine()
         NODE_V2.writeLine()
         NODE_TR.writeLine()
+        val nodes = Parser.parseFromSub(NODE_OK)
+        NODE_ALL.writeLine(nodes.joinToString("\n") { it.toUri() }.b64Encode())
 
-        Parser.parseFromSub(NODE_OK).groupBy { it.javaClass }.forEach { (clazz, subList) ->
+        nodes.groupBy { it.javaClass }.forEach { (clazz, subList) ->
             subList.firstOrNull()?.run { name = customInfo + name }
             val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
             writeData(clazz, data, subList)

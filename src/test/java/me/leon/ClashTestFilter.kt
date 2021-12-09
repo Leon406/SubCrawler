@@ -46,7 +46,7 @@ class ClashTestFilter {
             }
             .also {
                 println("_______ ${it.size}")
-                NODE_ALL.writeLine(it.joinToString("\n") { it!!.toUri() }.b64Encode(), false)
+                NODE_ALL2.writeLine(it.joinToString("\n") { it!!.toUri() }.b64Encode(), false)
                 NodeCrawler.nodeInfoLocal.writeLine("**有效节点数: ${it.size}**\n")
                 println(it.joinToString("\n") { it!!.toUri() })
             }
