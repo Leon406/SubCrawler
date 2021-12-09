@@ -21,12 +21,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - run: sudo timedatectl set-timezone Asia/Shanghai
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a single command using the runners shell
       - run: chmod  777 ./gradlew
       - name: execute gradle test
         run: ./gradlew  :test --tests "me.leon.NodeCrawler.crawl"
-      - run: git config --global user.email "deadogone@gmail.com" &&git config --global user.name "github-ci"
+      - run: git config --global user.email "actions@github.com" &&git config --global user.name "GitHub Actions"
       - run: chmod  777 ./up.sh && ./up.sh
 
