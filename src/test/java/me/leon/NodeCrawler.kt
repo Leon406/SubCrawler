@@ -134,7 +134,7 @@ class NodeCrawler {
         NODE_V2.writeLine()
         NODE_TR.writeLine()
         val nodes = Parser.parseFromSub(NODE_OK)
-        NODE_ALL.writeLine(nodes.joinToString("\n") { it.toUri() }.b64Encode())
+        NODE_ALL.writeLine(nodes.joinToString("\n") { it.toUri() }.b64Encode(),false)
 
         nodes.groupBy { it.javaClass }.forEach { (clazz, subList) ->
             subList.firstOrNull()?.run { name = customInfo + name }
