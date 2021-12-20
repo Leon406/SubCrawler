@@ -8,10 +8,10 @@ class ClashTestFilter {
 
     companion object {
         // private url
-        //        const val URL = "https://sub.cm/9vJONwY"
+                const val URL = "https://v1.mk/3ZeDhzj"
         //        share url
      // const val URL = "https://v1.mk/gvHEd88"
-        const val URL = "https://suo.yt/2mf9ihW"
+//        const val URL = "https://suo.yt/2mf9ihW"
 
 
         // clash_win/Cache 目录下日志文件
