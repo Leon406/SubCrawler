@@ -104,16 +104,17 @@ class ExtTest {
 
     @Test
     fun lanzouDirectLink() {
-        val url = "https://www.lanzoux.com/iGqn3f7k4zg"
+        val url = "https://www.lanzouw.com/iGqn3f7k4zg"
 
         url
             .readFromNet()
             .run { "(/fn\\?\\w{6,})\" frameborder".toRegex().find(this)!!.groupValues[1] }
             .also {
-                "https://www.lanzoux.com/$it".readFromNet().also {
+                "https://www.lanzouw.com/$it".readFromNet().also {
+                    println(it)
                     val sign =
-                        "(?:pdownload|postdown) = '(\\w+)'".toRegex().find(it)!!.groupValues[1]
-                    "https://www.lanzoux.com/ajaxm.php"
+                        "(?:pdownload|postdown|ispostdowns) = '(\\w+)'".toRegex().find(it)!!.groupValues[1]
+                    "https://www.lanzouw.com/ajaxm.php"
                         .post(
                             mutableMapOf(
                                 "action" to "downprocess",
@@ -144,14 +145,14 @@ class ExtTest {
         val d1 = 2.147483647E9
         val d = 2147483647.toDouble()
         println(d.toString())
-        var instance = NumberFormat.getInstance()
+        val instance = NumberFormat.getInstance()
         instance.isGroupingUsed = false // 设置不使用科学计数器
         instance.maximumFractionDigits = 2 // 小数点最大位数
         println(instance.format(d1))
-        "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%".replace("[【（\\(].+[\\)）%】]?".toRegex(), "")
+        "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%".replace("[【（(].+[)）%】]?".toRegex(), "")
             .also { println(it) }
 
-   "（欢迎订阅youtube：8度科技".replace("[【（\\(].+[\\)）%】]?".toRegex(), "")
+   "（欢迎订阅youtube：8度科技".replace("[【（(].+[)）%】]?".toRegex(), "")
             .also { println(it) }
 
     }
