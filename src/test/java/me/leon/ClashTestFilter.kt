@@ -8,14 +8,14 @@ class ClashTestFilter {
 
     companion object {
         // private url
-//                const val URL = "https://v1.mk/3ZeDhzj"
+                const val URL = "https://v1.mk/3ZeDhzj"
         //        share url
      // const val URL = "https://v1.mk/gvHEd88"
 //        const val URL = "https://suo.yt/2mf9ihW"
-        const val URL = "https://sub.id9.cc/sub?target=clash&new_name=true" +
-                "&url=https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all" +
-                "&insert=false" +
-                "&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
+//        const val URL = "https://sub.id9.cc/sub?target=clash&new_name=true" +
+//                "&url=https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all" +
+//                "&insert=false" +
+//                "&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
 
 
         // clash_win/Cache 目录下日志文件
