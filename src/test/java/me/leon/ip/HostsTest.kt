@@ -13,6 +13,7 @@ class HostsTest {
     // https://raw.fastgit.org/Goooler/1024_hosts/master/hosts
     // https://winhelp2002.mvps.org/hosts.txt
     // https://raw.fastgit.org/StevenBlack/hosts/master/hosts
+    // https://github.com/E7KMbb/AD-hosts
     @Test
     fun blacklist() {
         listOf(
@@ -21,6 +22,9 @@ class HostsTest {
             "https://raw.fastgit.org/Goooler/1024_hosts/master/hosts",
             "https://winhelp2002.mvps.org/hosts.txt",
             "https://raw.fastgit.org/StevenBlack/hosts/master/hosts",
+            "https://raw.fastgit.org/E7KMbb/AD-hosts/master/system/etc/hosts",
+            "https://raw.fastgit.org/ilpl/ad-hosts/master/hosts",
+            "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts-full"
         )
             .flatMap {
                 it
@@ -45,8 +49,7 @@ class HostsTest {
             .sortedBy { it.domain }
             .also {
                 println(it.size)
-                "$SHARE/blackhosts".writeLine()
-                "$SHARE/blackhosts".writeLine(it.joinToString("\n"))
+                "$SHARE/blackhosts".writeLine(it.joinToString("\n"),false)
             }
     }
 
@@ -73,8 +76,7 @@ class HostsTest {
             .sortedBy { it.domain }
             .also {
                 println(it.size)
-                "$SHARE/whitehost".writeLine()
-                "$SHARE/whitehost".writeLine(it.joinToString("\n"))
+                "$SHARE/whitehost".writeLine(it.joinToString("\n"),false)
             }
     }
 }
