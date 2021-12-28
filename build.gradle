@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
-    id "com.diffplug.spotless" version "6.0.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id "com.diffplug.spotless" version "6.1.0"
     id "io.gitlab.arturbosch.detekt" version "1.19.0"
 }
 
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.31'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.10'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'com.google.code.gson:gson:2.8.9'
     //for yaml 1.1
