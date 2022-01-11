@@ -59,6 +59,8 @@ class HostsTest {
     fun whitelist() {
         listOf(
             "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
+            "https://raw.fastgit.org/Leon406/pyutil/master/github/hosts",
+            "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
         )
             .flatMap {
                 it

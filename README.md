@@ -52,7 +52,7 @@
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
-    - [nodescatch](https://bit.ly/nodescatch101)
+    - [nodescatch](https://github.com/bulianglin/demo)
 - 在线测速
     - [品云](http://gz.cloudtest.cc/)
     - [品云2](http://gz2.cloudtest.cc/)
