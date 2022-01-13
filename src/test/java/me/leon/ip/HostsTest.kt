@@ -1,9 +1,10 @@
 package me.leon.ip
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import me.leon.SHARE
 import me.leon.domain.Host
-import me.leon.support.readFromNet
-import me.leon.support.writeLine
+import me.leon.support.*
 import org.junit.jupiter.api.Test
 
 class HostsTest {
@@ -30,7 +31,7 @@ class HostsTest {
                 it
                     .readFromNet()
                     .split("\n|\r\n".toRegex())
-                    .map m1@{ it.trim() }
+                    .map(String::trim)
                     .filterNot fn@{ it.isEmpty() || it.startsWith("#") }
                     .map {
                         it.split("\\s+".toRegex()).run {
@@ -46,7 +47,7 @@ class HostsTest {
                     .also { println(it.size) }
             }
             .distinct()
-            .sortedBy { it.domain }
+            .sortedBy (Host::domain)
             .also {
                 println(it.size)
                 "$SHARE/blackhosts".writeLine(it.joinToString("\n"),false)
@@ -57,28 +58,39 @@ class HostsTest {
     // 需要单独走无污染 dns,获取最新的ip
     @Test
     fun whitelist() {
-        listOf(
-            "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
-            "https://raw.fastgit.org/Leon406/pyutil/master/github/hosts",
-            "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
-        )
-            .flatMap {
-                it
-                    .readFromNet()
-                    .split("\n|\r\n".toRegex())
-                    .map { it.trim() }
-                    .filterNot { it.isEmpty() || it.startsWith("#") }
-                    .map {
-                        it.split("\\s+".toRegex()).run { Host(this[1]).apply { ip = this@run[0] } }
+
+        runBlocking {
+            listOf(
+                "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
+                "https://raw.fastgit.org/Leon406/pyutil/master/github/hosts",
+                "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
+            )
+                .flatMap {
+                    it
+                        .readFromNet()
+                        .split("\n|\r\n".toRegex())
+                        .map(String::trim)
+                        .filterNot { it.isEmpty() || it.startsWith("#") }
+                        .map {
+                            it.split("\\s+".toRegex()).run { Host(this[1]).apply { ip = this@run[0] } }
+                        }
+                        .filterNot { it.domain.contains("#") }
+                        .also { println(it.size) }
+                }
+                .distinct()
+                .sortedBy (Host::domain)
+                .map { it to async(DISPATCHER) { it.ip.ping(1000) } }
+                .map { it.second.await() to it.first }
+                .forEach {
+                    if (it.first > -1) {
+                        println("ok ip ${it.second}")
+                        "$SHARE/whitehost".writeLine(it.second.toString(),true)
+                    } else {
+                        println("err ip ${it.second}")
                     }
-                    .filterNot { it.domain.contains("#") }
-                    .also { println(it.size) }
-            }
-            .distinct()
-            .sortedBy { it.domain }
-            .also {
-                println(it.size)
-                "$SHARE/whitehost".writeLine(it.joinToString("\n"),false)
-            }
+                }
+
+        }
+
     }
 }
