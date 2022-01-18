@@ -3,8 +3,10 @@
 海绵云机场 https://fzusrs.xyz
 \*唯一官网 biteb.me \*  \*telegram群组 https://t.me/biteb1\*
 .*小机场.net.*
-节点更新 *https://bit.ly/\w+
+(?i)(?:节点更新|Youtube:) *https://bit.ly/\w+
 请订阅-Kin.*
 防失效github.com/Leon406/Sub
 订阅地址:https://raw.githubusercontent.com/(\w+/)+[\w-\.]+
-\S+翻墙https?://\w+.\w+
+\S+.*?翻墙.*?https?://\w+.\w+
+\[[a-zA-Z_-]+.\w+\]\w+.\w+\.\w+
+节点更新/\w+/\w+

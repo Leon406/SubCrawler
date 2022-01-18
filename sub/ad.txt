@@ -8,6 +8,7 @@ github.com/freefq -
 @SSRSUB-
 (?i)\s*tg@\w+
 Youtube- MiDnight来了
-moon365.cc
+(?i)moon365.\w+
 8度科技
 \[expired\]
+绿头外网集团
