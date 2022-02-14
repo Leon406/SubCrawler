@@ -5,10 +5,12 @@ https://www.\w+.com
 [【（\(].+[\)）%】]?
 github.com/freefq -
 顺丰资源You[Tt]ube
-@SSRSUB-
+@(?:\w+)
 (?i)\s*tg@\w+
 Youtube- MiDnight来了
 (?i)moon365.\w+
 8度科技
 \[expired\]
 绿头外网集团
+(?i: *\| *\d+\.\d+Mb)
+adi\|
