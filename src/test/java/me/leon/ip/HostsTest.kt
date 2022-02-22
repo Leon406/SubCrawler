@@ -47,10 +47,10 @@ class HostsTest {
                     .also { println(it.size) }
             }
             .distinct()
-            .sortedBy (Host::domain)
+            .sortedBy(Host::domain)
             .also {
                 println(it.size)
-                "$SHARE/blackhosts".writeLine(it.joinToString("\n"),false)
+                "$SHARE/blackhosts".writeLine(it.joinToString("\n"), false)
             }
     }
 
@@ -72,25 +72,25 @@ class HostsTest {
                         .map(String::trim)
                         .filterNot { it.isEmpty() || it.startsWith("#") }
                         .map {
-                            it.split("\\s+".toRegex()).run { Host(this[1]).apply { ip = this@run[0] } }
+                            it.split("\\s+".toRegex()).run {
+                                Host(this[1]).apply { ip = this@run[0] }
+                            }
                         }
                         .filterNot { it.domain.contains("#") }
                         .also { println(it.size) }
                 }
                 .distinct()
-                .sortedBy (Host::domain)
-                .map { it to async(DISPATCHER) { it.ip.ping(1000) } }
+                //                .sortedBy (Host::domain)
+                .map { it to async(DISPATCHER) { it.ip.quickPing(1000) } }
                 .map { it.second.await() to it.first }
                 .forEach {
                     if (it.first > -1) {
                         println("ok ip ${it.second}")
-                        "$SHARE/whitehost".writeLine(it.second.toString(),true)
+                        "$SHARE/whitehost".writeLine(it.second.toString(), true)
                     } else {
                         println("err ip ${it.second}")
                     }
                 }
-
         }
-
     }
 }

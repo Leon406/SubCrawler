@@ -113,7 +113,10 @@ class ExtTest {
                 "https://www.lanzouw.com/$it".readFromNet().also {
                     println(it)
                     val sign =
-                        "(?:pdownload|postdown|ispostdowns) = '(\\w+)'".toRegex().find(it)!!.groupValues[1]
+                        "(?:'sign':|pdownload = |postdown = |ispostdowns = )'(\\w+)'"
+                                .toRegex()
+                                .find(it)!!
+                            .groupValues[1]
                     "https://www.lanzouw.com/ajaxm.php"
                         .post(
                             mutableMapOf(
@@ -152,8 +155,6 @@ class ExtTest {
         "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%".replace("[【（(].+[)）%】]?".toRegex(), "")
             .also { println(it) }
 
-   "（欢迎订阅youtube：8度科技".replace("[【（(].+[)）%】]?".toRegex(), "")
-            .also { println(it) }
-
+        "（欢迎订阅youtube：8度科技".replace("[【（(].+[)）%】]?".toRegex(), "").also { println(it) }
     }
 }

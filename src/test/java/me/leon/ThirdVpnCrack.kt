@@ -1,13 +1,13 @@
 package me.leon
 
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.domain.Quark
 import me.leon.support.*
 import org.junit.jupiter.api.Test
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
 
 class ThirdVpnCrack {
     @Test
@@ -24,7 +24,6 @@ class ThirdVpnCrack {
             .also { println(it.joinToString("|")) }
     }
 
-
     private val quarkVpnDir = "$ROOT/vpn/quark"
 
     @Test
@@ -34,12 +33,12 @@ class ThirdVpnCrack {
                 .listFiles()
                 .map {
                     String(
-                        it.readBytes()
-                            .mapIndexed { index, byte ->
-                                if (index % 2 == 0) (byte - 1).toByte() else (byte + 1).toByte()
-                            }
-                            .toByteArray()
-                    )
+                            it.readBytes()
+                                .mapIndexed { index, byte ->
+                                    if (index % 2 == 0) (byte - 1).toByte() else (byte + 1).toByte()
+                                }
+                                .toByteArray()
+                        )
                         .fromJson<Quark>()
                 }
                 .flatMap { it.data.map { it.host to it.name } }
