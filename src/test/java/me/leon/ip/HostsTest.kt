@@ -25,7 +25,7 @@ class HostsTest {
             "https://raw.fastgit.org/StevenBlack/hosts/master/hosts",
             "https://raw.fastgit.org/E7KMbb/AD-hosts/master/system/etc/hosts",
             "https://raw.fastgit.org/ilpl/ad-hosts/master/hosts",
-            "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts-full"
+            "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts"
         )
             .flatMap {
                 it
