@@ -72,7 +72,7 @@
 
 
 - 
-  本地构建 (  [节点详情](./sub/info2.md) )
+  本地构建 (  [节点详情](./sub/info2.md)  ,已不维护请自行测速后使用)
 
   - [本地ss](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ss)
   - [本地ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ssr)
@@ -133,12 +133,6 @@
 | IOS                     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
 | IOS                     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
 
-
-## VPN/代理 (免软件或者使用浏览器插件)
-
-- https://www.vpngate.net/cn/
-- https://primevpn.pro/servers/
-- http://webfreevpn.com/servers/
 
 
 ## Stargazers over time

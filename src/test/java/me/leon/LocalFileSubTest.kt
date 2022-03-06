@@ -1,5 +1,6 @@
 package me.leon
 
+import me.leon.support.removeFlags
 import org.junit.jupiter.api.Test
 
 class LocalFileSubTest {
@@ -26,7 +27,12 @@ class LocalFileSubTest {
     fun readLocal4() {
         Parser.parseFromSub(NODE_OK)
             .filterNot { it.methodUnSupported().apply { if (this) println("____$it") } }
-            .joinToString("\n") { it.name }
+            .joinToString("\n") {
+                it.name
+                    .removeFlags()
+                    .replace(NodeCrawler.REG_AD, "")
+                    .replace(NodeCrawler.REG_AD_REPLACE, NodeCrawler.customInfo)
+            }
             .also { println(it) }
     }
 
@@ -34,7 +40,7 @@ class LocalFileSubTest {
     fun readLocalSSR() {
         Parser.parseFromSub(NODE_SSR)
             .also { println(it.size) }
-            .filterNot { it is SSR && it.method in SSR_unSupportCipher }
+            .filterNot { it.methodUnSupported() }
             .filterIsInstance<SSR>()
             //            .joinToString("\n") { it.name }
             .also { println(it.map { it.method }.groupBy { it }) }

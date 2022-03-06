@@ -12,7 +12,7 @@ class NodeCrawler {
         val nodeInfoLocal = "$ROOT/info2.md"
         private val adConfig = "$ROOT/ad.txt"
         private val adReplaceConfig = "$ROOT/adreplace.txt"
-        const val customInfo = "防失效github.com/Leon406 "
+        const val customInfo = "防失效github SubCrawler"
         private var subCount = 0
         private var nodeCount = 0
         val REG_AD by lazy { adConfig.toFile().readLines().joinToString("|").toRegex() }

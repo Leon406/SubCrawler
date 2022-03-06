@@ -5,7 +5,7 @@
 .*小机场.net.*
 (?i)(?:节点更新|Youtube:) *https://bit.ly/\w+
 请订阅-Kin.*
-防失效github.com/Leon406/Sub
+防失效github.com/Leon406(/Sub)?
 订阅地址:https://raw.githubusercontent.com/(\w+/)+[\w-\.]+
 \S+.*?翻墙.*?https?://\w+.\w+
 \[[a-zA-Z_-]+.\w+\]\w+.\w+\.\w+
