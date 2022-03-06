@@ -61,20 +61,20 @@ class NodeCrawler {
                 .also { println("共有订阅源：${it.size.also { subCount = it }}") }
                 .map { sub ->
                     sub to
-                        async(DISPATCHER) {
-                            runCatching {
-                                val uri =
-                                    sub.takeUnless {
-                                        it.startsWith("https://raw.githubusercontent.com/")
-                                    }
-                                        ?: "https://ghproxy.com/$sub"
-                                Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
-                            }
-                                .getOrElse {
-                                    println("___parse failed $sub  ${it.message}")
-                                    linkedSetOf()
+                            async(DISPATCHER) {
+                                runCatching {
+                                    val uri =
+                                        sub.takeUnless {
+                                            it.startsWith("https://raw.githubusercontent.com/")
+                                        }
+                                            ?: "https://ghproxy.com/$sub"
+                                    Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
                                 }
-                        }
+                                    .getOrElse {
+                                        println("___parse failed $sub  ${it.message}")
+                                        linkedSetOf()
+                                    }
+                            }
                 }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
@@ -95,7 +95,7 @@ class NodeCrawler {
                     POOL.writeLine(
                         it
                             .also { nodeCount = it.size }
-                            .filterNot { it is SSR && it.method in unSupportCipher }
+                            .filterNot { it.methodUnSupported() }
                             .joinToString("\n") { it.toUri() }
                     )
                 }

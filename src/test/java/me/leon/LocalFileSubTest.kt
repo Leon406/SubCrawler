@@ -25,7 +25,7 @@ class LocalFileSubTest {
     @Test
     fun readLocal4() {
         Parser.parseFromSub(NODE_OK)
-            .filter { it.info().contains("http") }
+            .filterNot { it.methodUnSupported().apply { if (this) println("____$it") } }
             .joinToString("\n") { it.name }
             .also { println(it) }
     }
@@ -34,7 +34,7 @@ class LocalFileSubTest {
     fun readLocalSSR() {
         Parser.parseFromSub(NODE_SSR)
             .also { println(it.size) }
-            .filterNot { it is SSR && it.method in unSupportCipher }
+            .filterNot { it is SSR && it.method in SSR_unSupportCipher }
             .filterIsInstance<SSR>()
             //            .joinToString("\n") { it.name }
             .also { println(it.map { it.method }.groupBy { it }) }
