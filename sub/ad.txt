@@ -14,3 +14,4 @@ Youtube- MiDnight来了
 绿头外网集团
 (?i: *\| *\d+\.\d+Mb)
 adi\|
+(?i)Ytb:.*?_
