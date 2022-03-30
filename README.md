@@ -9,7 +9,6 @@
 
 - https://github.com/JACKUSR2089/v2ray-subscribed
 - https://github.com/clashconfig/online
-- [自由之梦](https://github.com/zyzmzyz/free-nodes)
 - https://github.com/colatiger/v2ray-nodes
 - :star:https://github.com/freefq/free
 - https://github.com/skywolf627/VmessActions
@@ -18,15 +17,8 @@
 
 ## 优质节点池
 
-- :star:https://sspool.nl
-- https://hm2019721.ml/
-- [https://proxies.bihai.cf](https://proxies.bihai.cf)
-- https://etproxypool.ga/
-- :star: https://free.kingfu.cf/
-- https://proxy.51798.xyz/
-- https://proxypool.fly.dev/
+- :star: [https://proxies.bihai.cf](https://proxies.bihai.cf)
 - https://fq.lonxin.net/
-- https://www.linbaoz.com/
 
 ## 节点池配置
 
@@ -43,7 +35,6 @@
 - [con8](https://www.con8.tk/)
 - [品云](https://id9.cc/)
 - [肥羊转换](https://sub.mcwy.cloud/)
-- [边缘]( https://bianyuan.xyz/)
 
 
 ## 节点测速
@@ -53,9 +44,9 @@
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch](https://github.com/bulianglin/demo)
 - 在线测速
-    - [品云](http://gz.cloudtest.cc/)
-    - [品云2](http://gz2.cloudtest.cc/)
-    - [品云3](http://gy.cloudtest.cc/)
+    - ~~[品云](http://gz.cloudtest.cc/)~~
+    - ~~[品云2](http://gz2.cloudtest.cc/)~~
+    - ~~[品云3](http://gy.cloudtest.cc/)~~
     - [霸气](http://fjcu.june628.ml/)
     - [霸气2](http://fjct.june628.ml/)
 
