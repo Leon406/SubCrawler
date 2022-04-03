@@ -49,6 +49,8 @@
     - ~~[品云3](http://gy.cloudtest.cc/)~~
     - [霸气](http://fjcu.june628.ml/)
     - [霸气2](http://fjct.june628.ml/)
+    - [666138](http://hkst.666138.xyz/)
+    - [zeroteam](https://speedtest.zeroteam.top/)
 
 ## 本项目生成base64订阅
 
