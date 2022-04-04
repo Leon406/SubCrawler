@@ -21,7 +21,7 @@ private const val UUID_LENGTH = 36
 
 object Parser {
     private val REG_SCHEMA_HASH = "(\\w+)://([^ #]+)(?:#([^#]+)?)?".toRegex()
-    private val REG_SS = "([^:]+):([^@]+)@([^:]+):(\\d{1,5})".toRegex()
+    private val REG_SS = "([^:]+):([^@]+)@([^:]+):(\\d{1,5})/?".toRegex()
     private val REG_SSR_PARAM = "([^/]+)/\\?(.+)".toRegex()
     private val REG_TROJAN = "([^@]+)@([^:]+):(\\d{1,5})(?:\\?(.+))?".toRegex()
 
@@ -97,6 +97,7 @@ object Parser {
         "parseSs ".debug(uri)
         REG_SCHEMA_HASH.matchEntire(uri)?.run {
             val remark = groupValues[3].urlDecode()
+            "parseSs match".debug(remark)
             "parseSs match".debug(groupValues[2])
             var decoded =
                 groupValues[2].takeUnless { it.contains("@") }?.b64Decode()
