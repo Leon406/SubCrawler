@@ -104,7 +104,7 @@ class ExtTest {
 
     @Test
     fun lanzouDirectLink() {
-        val url = "https://www.lanzouw.com/iGqn3f7k4zg"
+        val url = "https://leon.lanzoub.com/iNLbcf7jzhi"
 
         url
             .readFromNet()
