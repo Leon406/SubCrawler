@@ -1,6 +1,8 @@
 package me.leon
 
-import me.leon.support.removeFlags
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
+import me.leon.support.*
 import org.junit.jupiter.api.Test
 
 class LocalFileSubTest {
@@ -20,6 +22,23 @@ class LocalFileSubTest {
     fun readLocal3() {
         Parser.parseFromSub("$ROOT/bihai.yaml").joinToString("\n") { it.info() }.also {
             println(it)
+        }
+    }
+
+    @Test
+    fun readLocalDir() {
+        runBlocking {
+            "C:\\Users\\Leon\\Downloads\\Telegram Desktop".toFile().listFiles()
+                .map { Parser.parseFromSub(it.absolutePath) }
+                .flatten()
+                .distinct()
+                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 2000) } }
+                .filter { it.second.await() > -1 }
+                .map { it.first }
+                .also { println(it.size) }
+                .also {
+                    println(it.joinToString("\n") { it.toUri() })
+                }
         }
     }
 

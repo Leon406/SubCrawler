@@ -73,6 +73,7 @@ data class Node(
     var `protocol_param`: String = ""
     var protocolparam: String = ""
     var obfsparam: String = ""
+    var username: String = ""
 
     fun toNode(): Sub {
         // 兼容某些异常节点池
