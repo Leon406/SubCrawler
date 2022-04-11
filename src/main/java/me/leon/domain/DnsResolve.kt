@@ -11,14 +11,6 @@ data class DnsResolve(
     val Answer: List<Answer>?
 )
 
-data class Question(
-    val name: String?,
-    val type: Int?
-)
+data class Question(val name: String?, val type: Int?)
 
-data class Answer(
-    val name: String?,
-    val type: Int?,
-    val TTL: Int?,
-    val `data`: String?
-)
+data class Answer(val name: String?, val type: Int?, val TTL: Int?, val `data`: String?)

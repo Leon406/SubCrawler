@@ -44,13 +44,13 @@
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch](https://github.com/bulianglin/demo)
 - 在线测速
-    - ~~[品云](http://gz.cloudtest.cc/)~~
-    - ~~[品云2](http://gz2.cloudtest.cc/)~~
-    - ~~[品云3](http://gy.cloudtest.cc/)~~
     - [霸气](http://fjcu.june628.ml/)
     - [霸气2](http://fjct.june628.ml/)
     - [666138](http://hkst.666138.xyz/)
     - [zeroteam](https://speedtest.zeroteam.top/)
+    - ~~[品云](http://gz.cloudtest.cc/)~~
+    - ~~[品云2](http://gz2.cloudtest.cc/)~~
+    - ~~[品云3](http://gy.cloudtest.cc/)~~
 
 ## 项目生成内容
 
@@ -67,7 +67,7 @@
 
 
 - 
-  本地构建 (  [节点详情](./sub/info2.md)  ,已不维护请自行测速后使用)
+  本地构建 (  [节点详情](./sub/info2.md) )
 
   - [本地ss](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ss)
   - [本地ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ssr)
@@ -77,7 +77,7 @@
 
 > 默认生成的为base64编码(v2rayN/ss/ssr等客户端可直接使用),其他请自行使用[订阅转换](#subCon)进行转换
 
-### HOSTS
+### Hosts
 
 - [广告屏蔽hosts](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/blackhosts) 
 - [googlehosts重筛](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/whitehost)
@@ -117,10 +117,9 @@
 | Windows                 | [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases) | SS                                                           |
 | Windows                 | [ShadowsocksR-Windows](https://github.com/HMBSbige/ShadowsocksR-Windows/releases) | SSR                                                          |
 | Windows                 | [V2rayN](https://github.com/2dust/v2rayN/releases)           | SS、Trojan、Vmess、VLESS                                     |
-| Linux / Windows / macOS | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
-| Windows                 | [Clash.Net](https://github.com/ClashDotNetFramework/ClashDotNetFramework/releases/) | SS、SSR、Trojan、Vmess、VLESS                                |
+| Windows                 | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Windows                 | [WinXray](https://github.com/TheMRLL/winxray/releases)       | SS、SSR、Trojan、V2ray（Vmess、VLESS）Xray                   |
-| Linux / Windows / macOS | [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases)          | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy /HTTP(S) / SOCKS5 |
+| Linux / Windows / macOS | [Qv2ray](https://github.com/Shadowsocks-NET/Qv2ray)          | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy /HTTP(S) / SOCKS5 |
 | macOS                   | [ClashX](https://github.com/yichengchen/clashX/releases)     | SS、SSR、Trojan、V2ray                                       |
 | macOS                   | [V2rayU](https://github.com/yanue/V2rayU/releases)           | SS、SSR、Trojan、V2ray                                       |
 | Android                 | [shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android/releases) | SS                                                           |
@@ -129,7 +128,7 @@
 | Android                 | [ClashForAndroid  **(推荐)**](https://github.com/Kr328/ClashForAndroid/releases) | SS、SSR、Trojan、Vmess、VLESS                                |
 | Android                 | [SSRAY](https://github.com/xxf098/shadowsocksr-v2ray-trojan-android/releases) | SSR、V2ray、Trojan                                           |
 | Android                 | [SagerNet](https://github.com/SagerNet/SagerNet/releases)    | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
-| Android                 | [AnXray](https://github.com/XTLS/AnXray)                     | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
+| Android                 | [Matsuri (茉莉)](https://github.com/MatsuriDayo/Matsuri) sager分支 | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
 | IOS                     | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
 | IOS                     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
 | IOS                     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |

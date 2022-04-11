@@ -28,7 +28,9 @@ class LocalFileSubTest {
     @Test
     fun readLocalDir() {
         runBlocking {
-            "C:\\Users\\Leon\\Downloads\\Telegram Desktop".toFile().listFiles()
+            "C:\\Users\\Leon\\Downloads\\Telegram Desktop"
+                .toFile()
+                .listFiles()
                 .map { Parser.parseFromSub(it.absolutePath) }
                 .flatten()
                 .distinct()
@@ -36,9 +38,7 @@ class LocalFileSubTest {
                 .filter { it.second.await() > -1 }
                 .map { it.first }
                 .also { println(it.size) }
-                .also {
-                    println(it.joinToString("\n") { it.toUri() })
-                }
+                .also { println(it.joinToString("\n") { it.toUri() }) }
         }
     }
 

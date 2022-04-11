@@ -1,5 +1,6 @@
 package me.leon.ip
 
+import kotlin.streams.toList
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.HOST
@@ -8,7 +9,6 @@ import me.leon.domain.DnsResolve
 import me.leon.domain.Host
 import me.leon.support.*
 import org.junit.jupiter.api.Test
-import kotlin.streams.toList
 
 class HostsTest {
 
@@ -100,9 +100,9 @@ class HostsTest {
     fun dns() {
 
         val unReachableDomains = mutableListOf<String>()
-        HostsTest::class.java.getResourceAsStream("/domains")!!.bufferedReader().use {
-            it.lines().toList()
-        }
+        HostsTest::class.java.getResourceAsStream("/domains")!!
+            .bufferedReader()
+            .use { it.lines().toList() }
             .filterNot { it.isEmpty() || it.startsWith("#") }
             .map { dnsResolve(it) + "\t" + it }
             .filter {
@@ -111,14 +111,12 @@ class HostsTest {
                 !isEmp
             }
             .also {
-                HOST.toFile().writeText("##### 更新时间${timeStamp()} #####\n" +it.joinToString("\n"))
+                HOST.toFile().writeText("##### 更新时间${timeStamp()} #####\n" + it.joinToString("\n"))
             }
         println(unReachableDomains)
-        unReachableDomains
-            .map { ipApiResolve(it) + "\t" + it }
-            .also {
-                HOST.toFile().appendText("\n" + it.joinToString("\n"))
-            }
+        unReachableDomains.map { ipApiResolve(it) + "\t" + it }.also {
+            HOST.toFile().appendText("\n" + it.joinToString("\n"))
+        }
     }
 
     @Test
@@ -128,20 +126,23 @@ class HostsTest {
 
     private fun dnsResolve(url: String): String =
         runCatching {
-            "https://1.1.1.1/dns-query?name=$url&type=1".readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
-                .decodeToString()
-                .fromJson<DnsResolve>().Answer?.find { it.type == 1 && it.data!!.quickPing() > 0 }?.data ?: ""
-        }.getOrDefault("")
+                "https://1.1.1.1/dns-query?name=$url&type=1"
+                    .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
+                    .decodeToString()
+                    .fromJson<DnsResolve>()
+                    .Answer
+                    ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
+                    ?.data
+                    ?: ""
+            }
+            .getOrDefault("")
 
     private val reg = "<strong>(\\d+.\\d+.\\d+.\\d+)</strong>".toRegex()
     private fun ipApiResolve(url: String): String =
         runCatching {
-            "https://ipaddress.com/website/$url".readBytesFromNet()
-                .decodeToString()
-                .let {
+                "https://ipaddress.com/website/$url".readBytesFromNet().decodeToString().let {
                     reg.find(it)?.groupValues?.get(1) ?: ""
                 }
-
-        }.getOrDefault("")
-
+            }
+            .getOrDefault("")
 }

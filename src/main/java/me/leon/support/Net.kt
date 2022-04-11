@@ -1,12 +1,12 @@
 package me.leon.support
 
-import kotlinx.coroutines.asCoroutineDispatcher
-import me.leon.FAIL_IPS
 import java.io.DataOutputStream
 import java.io.File
 import java.net.*
 import java.util.concurrent.Executors
 import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.asCoroutineDispatcher
+import me.leon.FAIL_IPS
 
 val failIpPorts by lazy { FAIL_IPS.readLines().toHashSet() }
 val fails = mutableSetOf<String>()
@@ -30,7 +30,7 @@ fun String.connect(
         runCatching {
             measureTimeMillis {
                 Socket().connect(InetSocketAddress(this, port), timeout)
-               passes.add("$this:$port")
+                passes.add("$this:$port")
             }
         }
             .getOrElse {
@@ -55,7 +55,7 @@ fun String.ping(
         runCatching {
             val start = System.currentTimeMillis()
             val reachable = InetAddress.getByName(this).isReachable(timeout)
-            if (reachable) (System.currentTimeMillis() - start).also {  passes.add(this) }
+            if (reachable) (System.currentTimeMillis() - start).also { passes.add(this) }
             else {
                 println("$this unreachable")
                 exceptionHandler.invoke(this)
@@ -94,7 +94,7 @@ fun String.post(params: MutableMap<String, String>) =
                     setRequestProperty(
                         "user-agent",
                         "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                                "Chrome/86.0.4240.198 Safari/537.36"
+                            "Chrome/86.0.4240.198 Safari/537.36"
                     )
                     useCaches = false
                     doInput = true
@@ -123,9 +123,7 @@ fun String.readBytesFromNet(
     headers: MutableMap<String, Any> = mutableMapOf()
 ) =
     runCatching {
-        (URL(this)
-            .openConnection()
-                as HttpURLConnection)
+        (URL(this).openConnection() as HttpURLConnection)
             .apply {
                 connectTimeout = timeout
                 readTimeout = timeout
@@ -134,7 +132,7 @@ fun String.readBytesFromNet(
                 setRequestProperty(
                     "user-agent",
                     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                            "Chrome/86.0.4240.198 Safari/537.36"
+                        "Chrome/86.0.4240.198 Safari/537.36"
                 )
                 for ((k, v) in headers) setRequestProperty(k, v.toString())
 
