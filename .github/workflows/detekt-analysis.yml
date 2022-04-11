@@ -8,18 +8,16 @@
 # 4. Manually, on demand, via the "workflow_dispatch" event
 #
 # The workflow should work with no modifications, but you might like to use a
-# later version of the Detekt CLI by modifing the $DETEKT_RELEASE_TAG
+# later version of the Detekt CLI by modifying the $DETEKT_RELEASE_TAG
 # environment variable.
 name: Scan with Detekt
 
 on:
   # Triggers the workflow on push or pull request events but only for default and protected branches
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
-  schedule:
-     - cron: '27 6 * * 2'
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
