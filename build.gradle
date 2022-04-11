@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.10'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.20'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
     implementation 'com.google.code.gson:gson:2.9.0'
     //for yaml 1.1
     implementation 'org.yaml:snakeyaml:1.30'

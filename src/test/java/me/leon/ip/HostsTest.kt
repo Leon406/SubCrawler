@@ -2,10 +2,13 @@ package me.leon.ip
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import me.leon.HOST
 import me.leon.SHARE
+import me.leon.domain.DnsResolve
 import me.leon.domain.Host
 import me.leon.support.*
 import org.junit.jupiter.api.Test
+import kotlin.streams.toList
 
 class HostsTest {
 
@@ -58,7 +61,6 @@ class HostsTest {
     // 需要单独走无污染 dns,获取最新的ip
     @Test
     fun whitelist() {
-
         runBlocking {
             listOf(
                 "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
@@ -93,4 +95,53 @@ class HostsTest {
                 }
         }
     }
+
+    @Test
+    fun dns() {
+
+        val unReachableDomains = mutableListOf<String>()
+        HostsTest::class.java.getResourceAsStream("/domains")!!.bufferedReader().use {
+            it.lines().toList()
+        }
+            .filterNot { it.isEmpty() || it.startsWith("#") }
+            .map { dnsResolve(it) + "\t" + it }
+            .filter {
+                val isEmp = it.startsWith("\t")
+                if (isEmp) unReachableDomains.add(it.substring(1))
+                !isEmp
+            }
+            .also {
+                HOST.toFile().writeText("##### 更新时间${timeStamp()} #####\n" +it.joinToString("\n"))
+            }
+        println(unReachableDomains)
+        unReachableDomains
+            .map { ipApiResolve(it) + "\t" + it }
+            .also {
+                HOST.toFile().appendText("\n" + it.joinToString("\n"))
+            }
+    }
+
+    @Test
+    fun ipAddress() {
+        ipApiResolve("live.github.com").also { println(it) }
+    }
+
+    private fun dnsResolve(url: String): String =
+        runCatching {
+            "https://1.1.1.1/dns-query?name=$url&type=1".readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
+                .decodeToString()
+                .fromJson<DnsResolve>().Answer?.find { it.type == 1 && it.data!!.quickPing() > 0 }?.data ?: ""
+        }.getOrDefault("")
+
+    private val reg = "<strong>(\\d+.\\d+.\\d+.\\d+)</strong>".toRegex()
+    private fun ipApiResolve(url: String): String =
+        runCatching {
+            "https://ipaddress.com/website/$url".readBytesFromNet()
+                .decodeToString()
+                .let {
+                    reg.find(it)?.groupValues?.get(1) ?: ""
+                }
+
+        }.getOrDefault("")
+
 }

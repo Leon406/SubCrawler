@@ -4,6 +4,7 @@ import java.io.File
 
 val ROOT = File("sub").absolutePath
 val SHARE = "$ROOT/share"
+val HOST = "$SHARE/host"
 val SHARE2 = "$ROOT/share/private"
 
 //        本地节点池
