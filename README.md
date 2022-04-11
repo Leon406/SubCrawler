@@ -52,7 +52,9 @@
     - [666138](http://hkst.666138.xyz/)
     - [zeroteam](https://speedtest.zeroteam.top/)
 
-## 本项目生成base64订阅
+## 项目生成内容
+
+### 节点
 
 本地服务器筛选(不定时更新),可自行clone项目,执行localFilter.bat生成
 
@@ -74,6 +76,12 @@
   - [四合一转换](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/private/all)
 
 > 默认生成的为base64编码(v2rayN/ss/ssr等客户端可直接使用),其他请自行使用[订阅转换](#subCon)进行转换
+
+### HOSTS
+
+- [广告屏蔽hosts](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/blackhosts) 
+- [googlehosts重筛](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/whitehost)
+- [github及常用域名](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/host)
 
 ## [公益机场](公益机场.md)
 
