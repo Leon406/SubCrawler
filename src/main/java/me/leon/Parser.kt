@@ -1,5 +1,6 @@
 package me.leon
 
+import me.leon.support.*
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -7,13 +8,6 @@ import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
-import me.leon.support.b64Decode
-import me.leon.support.b64SafeDecode
-import me.leon.support.fromJson
-import me.leon.support.queryParamMapB64
-import me.leon.support.readFromNet
-import me.leon.support.readText
-import me.leon.support.urlDecode
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
 
@@ -23,7 +17,7 @@ object Parser {
     private val REG_SCHEMA_HASH = "(\\w+)://([^ #]+)(?:#([^#]+)?)?".toRegex()
     private val REG_SS = "([^:]+):([^@]+)@([^:]+):(\\d{1,5})/?".toRegex()
     private val REG_SSR_PARAM = "([^/]+)/\\?(.+)".toRegex()
-    private val REG_TROJAN = "([^@]+)@([^:]+):(\\d{1,5})(?:\\?(.+))?".toRegex()
+    private val REG_TROJAN = "([^@]+)@([^:]+):(\\d{1,5})/?(?:\\?(.+))?".toRegex()
 
     init {
         // 信任过期证书
@@ -61,7 +55,7 @@ object Parser {
             HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
         }
             .getOrElse {
-                // if neede
+                // if needed
             }
     }
 
@@ -81,6 +75,7 @@ object Parser {
             "parseV2ray ".debug(uri)
             REG_SCHEMA_HASH.matchEntire(uri)?.run {
                 groupValues[2]
+                    .also { println(it) }
                     .b64SafeDecode()
                     .also { "parseV2ray base64 decode: ".debug(it) }
                     .fromJson<V2ray>()
@@ -88,7 +83,6 @@ object Parser {
             }
         }
             .getOrElse {
-                println(uri)
                 "parseV2ray err".debug(uri)
                 null
             }

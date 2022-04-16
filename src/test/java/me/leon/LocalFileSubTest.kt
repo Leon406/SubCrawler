@@ -64,4 +64,12 @@ class LocalFileSubTest {
             //            .joinToString("\n") { it.name }
             .also { println(it.map { it.method }.groupBy { it }) }
     }
+
+    @Test
+    fun parseUri() {
+        val uri = "trojan://413f2e36-0038-48e4-963a-a38c0007ef24@us-sp.okzdns.com:50001/#S2%E7%BE%8E%E5%9B%BD%7CNetFlix%7C04"
+        Parser.parse(uri).also {
+            println(it)
+        }
+    }
 }
