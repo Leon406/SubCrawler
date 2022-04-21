@@ -114,35 +114,41 @@ class HostsTest {
                 HOST.toFile().writeText("##### 更新时间${timeStamp()} #####\n" + it.joinToString("\n"))
             }
         println(unReachableDomains)
-        unReachableDomains.map { ipApiResolve(it) + "\t" + it }.also {
-            HOST.toFile().appendText("\n" + it.joinToString("\n"))
-        }
+        unReachableDomains.map { ipApiResolve(it) + "\t" + it }
+            .filter {
+                val isEmp = it.startsWith("\t") || it.contains(",")
+                if (isEmp) println(it.substring(1))
+                !isEmp
+            }
+            .also {
+                HOST.toFile().appendText("\n" + it.joinToString("\n"))
+            }
     }
 
     @Test
     fun ipAddress() {
-        ipApiResolve("live.github.com").also { println(it) }
+        ipApiResolve("githubapp.com").also { println(it) }
     }
 
     private fun dnsResolve(url: String): String =
         runCatching {
-                "https://1.1.1.1/dns-query?name=$url&type=1"
-                    .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
-                    .decodeToString()
-                    .fromJson<DnsResolve>()
-                    .Answer
-                    ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
-                    ?.data
-                    ?: ""
-            }
+            "https://1.1.1.1/dns-query?name=$url&type=1"
+                .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
+                .decodeToString()
+                .fromJson<DnsResolve>()
+                .Answer
+                ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
+                ?.data
+                ?: ""
+        }
             .getOrDefault("")
 
     private val reg = "<strong>(\\d+.\\d+.\\d+.\\d+)</strong>".toRegex()
     private fun ipApiResolve(url: String): String =
         runCatching {
-                "https://ipaddress.com/website/$url".readBytesFromNet().decodeToString().let {
-                    reg.find(it)?.groupValues?.get(1) ?: ""
-                }
+            "https://ipaddress.com/website/$url".readBytesFromNet().decodeToString().let {
+                reg.find(it)?.groupValues?.get(1) ?: ""
             }
+        }
             .getOrDefault("")
 }
