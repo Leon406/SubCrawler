@@ -1,9 +1,9 @@
 -?付费推荐:.+/ssrsub
 虎窝
 -by BuLink.xyz
-https://www.\w+.com
+(https?)?//\w+(\.\w+)+(/\w+)?
 [【（\(].+[\)）%】]?
-github.com/freefq -
+github.com/freefq ?-
 顺丰资源You[Tt]ube
 @(?:\w+)
 (?i)\s*tg@\w+
@@ -16,3 +16,6 @@ Youtube- MiDnight来了
 (?i: *\| *\d+\.\d+Mb)
 adi\|
 (?i)Ytb:.*?_
+♥️.*♥️
+(?i)(?:YouTube|tg频道)[:@]?[^_| ]+
+-Openit.ml
