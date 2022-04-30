@@ -102,8 +102,8 @@ class NodeProcess {
                 it
             }
             .chunked(200)
-            .mapIndexed { index, list ->
-                list.map(Sub::toUri).subList(0.takeIf { index == 0 } ?: 0, list.size).also {
+            .map { list ->
+                list.map(Sub::toUri).subList(0, list.size).also {
                     println(it.joinToString("|"))
                 }
             }
