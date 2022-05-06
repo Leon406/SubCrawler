@@ -2,10 +2,6 @@
 stackoverflow.com
 stackexchange.com
 cdn.sstatic.net
-#jetbrains
-download.jetbrains.com
-plugins.jetbrains.com
-dl.google.com
 #js cdn
 cdn.jsdelivr.net
 unpkg.com
@@ -32,19 +28,6 @@ media.discordapp.net
 images-ext-2.discordapp.net
 images-ext-1.discordapp.net
 discordcdn.com
-#nvidia
-international-gfe.download.nvidia.com
-cn.download.nvidia.com
-international-gfe.download.nvidia.cn
-cn.download.nvidia.cn
-us.download.nvidia.com
-developer.download.nvidia.com
-ota-downloads.nvidia.com
-ota-downloads.nvidia.cn
-developer.nvidia.com
-accounts.nvgs.nvidia.cn
-accounts.nvgs.nvidia.com
-login.nvgs.nvidia.com
 #lastpass
 lastpass.com
 #microsoft
@@ -59,8 +42,6 @@ store-images.s-microsoft.com
 client-api.arkoselabs.com
 cdn.arkoselabs.com
 prod-ireland.arkoselabs.com
-#potplayer
-potplayer.daum.net
 #github
 github-cloud.s3.amazonaws.com
 gist.github.com
