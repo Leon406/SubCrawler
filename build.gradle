@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.20'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
     implementation 'com.google.code.gson:gson:2.9.0'
     //for yaml 1.1
@@ -36,7 +36,7 @@ apply from: "$rootProject.projectDir/config/codeQuality.gradle"
 def hook = new File("$rootProject.projectDir/.git/hooks/pre-commit")
 hook.text = """#!/bin/bash
 echo "run code format"
-./gradlew spotlessJCh spotlessKCh
+./gradlew spotlessCheck
 echo "run code smell check"
 ./gradlew detekt
 """
