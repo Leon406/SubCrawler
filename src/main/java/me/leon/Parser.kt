@@ -47,7 +47,7 @@ object Parser {
             )
         // Install the all-trusting trust manager
         runCatching {
-            val sc: SSLContext = SSLContext.getInstance("SSL")
+            val sc = SSLContext.getInstance("SSL")
             sc.init(null, trustAllCerts, SecureRandom())
             val sslsc = sc.serverSessionContext
             sslsc.sessionTimeout = 0
@@ -75,7 +75,6 @@ object Parser {
             "parseV2ray ".debug(uri)
             REG_SCHEMA_HASH.matchEntire(uri)?.run {
                 groupValues[2]
-                    .also { println(it) }
                     .b64SafeDecode()
                     .also { "parseV2ray base64 decode: ".debug(it) }
                     .fromJson<V2ray>()
@@ -93,7 +92,7 @@ object Parser {
             val remark = groupValues[3].urlDecode()
             "parseSs match".debug(remark)
             "parseSs match".debug(groupValues[2])
-            var decoded =
+            val decoded =
                 groupValues[2].takeUnless { it.contains("@") }?.b64Decode()
                 // 兼容异常
                 ?: with(groupValues[2]) {
@@ -171,7 +170,7 @@ object Parser {
                     Clash)
                 .proxies
                 .asSequence()
-                .mapNotNull(Node::toNode)
+                .map(Node::toNode)
                 .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
         else
             data
@@ -179,7 +178,7 @@ object Parser {
                 .split("\r\n|\n".toRegex())
                 .asSequence()
                 .filter { it.isNotEmpty() }
-                .mapNotNull { Pair(it, parse(it)) }
+                .map { Pair(it, parse(it)) }
                 .filterNot { it.second is NoSub }
                 .fold(linkedSetOf()) { acc, sub ->
                     sub.second?.let { acc.add(it) }
@@ -200,7 +199,7 @@ object Parser {
                         Clash)
                     .proxies
                     .asSequence()
-                    .mapNotNull(Node::toNode)
+                    .map(Node::toNode)
                     .filterNot { it is NoSub }
                     .fold(linkedSetOf<Sub>()) { acc, sub -> acc.also { acc.add(sub) } }
             else
