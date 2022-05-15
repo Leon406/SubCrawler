@@ -182,7 +182,7 @@ object Parser {
                 .filterNot { it.second is NoSub }
                 .fold(linkedSetOf()) { acc, sub ->
                     sub.second?.let { acc.add(it) }
-                        ?: kotlin.run { println("parseFromFileSub failed: $sub") }
+                        ?: kotlin.run { println("parseFromFileSub $path failed: $sub") }
                     acc
                 }
     }
