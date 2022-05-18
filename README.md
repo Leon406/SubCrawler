@@ -56,6 +56,22 @@
 
 ### 节点
 
+ 删除不安全加密的节点
+
+- SSR
+  - none
+  - rc4
+  - rc4-md5
+
+- SS
+  - aes-128-cfb
+  - rc4-md5
+
+- VMESS
+  -  none
+
+
+
 本地服务器筛选(不定时更新),可自行clone项目,执行localFilter.bat生成
 
 - github action (  [节点详情](./sub/info.md) )

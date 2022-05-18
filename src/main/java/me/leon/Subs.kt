@@ -155,5 +155,5 @@ fun Sub.methodUnSupported() =
         this is V2ray && net in VMESS_unSupportProtocol
 
 val SSR_unSupportCipher = arrayOf("none", "rc4", "rc4-md5")
-val SS_unSupportCipher = arrayOf("rc4-md5")
+val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb")
 val VMESS_unSupportProtocol = arrayOf("none")
