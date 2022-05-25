@@ -1,5 +1,6 @@
 package me.leon
 
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -28,9 +29,8 @@ class NodeCrawler {
     fun crawl() {
         // 1.爬取配置文件的订阅
         crawlNodes()
-        checkNodes()
+        //        checkNodes()
         nodeGroup()
-        //        IpFilterTest().reTestFailIps()
     }
 
     /** 爬取配置文件数据，并去重写入文件 */
@@ -53,7 +53,8 @@ class NodeCrawler {
                 }
         val subs = (subs1 + subs2 + subs3).toHashSet()
         println(subs.size)
-
+        val prefix = SimpleDateFormat("MMdd").format(Date())
+        val countryMap = mutableMapOf<String, Int>()
         POOL.writeLine()
         runBlocking {
             subs
@@ -81,23 +82,31 @@ class NodeCrawler {
                     maps[linkedHashSet.first] = linkedHashSet.second
                     acc.apply { acc.addAll(linkedHashSet.second) }
                 }
-                .sortedBy {
-                    it
-                        .apply {
-                            name =
-                                name.removeFlags()
-                                    .replace(REG_AD, "")
-                                    .replace(REG_AD_REPLACE, customInfo)
+                .filterNot { it.methodUnSupported() }
+                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 2000) } }
+                .filter { it.second.await() > -1 }
+                .map {
+                    it.first.apply {
+                        with(this.ipCountryZh()) {
+                            countryMap[this] = countryMap.getOrDefault(this, 0) + 1
+                            name = "${this}_$prefix${"%03d".format(countryMap[this])}"
                         }
-                        .toUri()
+                    }
                 }
+                .sortedByDescending { it.name }
                 .also {
-                    POOL.writeLine(
-                        it
-                            .also { nodeCount = it.size }
-                            .filterNot { it.methodUnSupported() }
-                            .joinToString("\n") { it.toUri() }
+                    nodeInfo.writeLine()
+                    // 2.筛选可用节点
+                    NODE_OK.writeLine()
+                    println(
+                        "有效节点: ${it.size}".also {
+                            nodeInfo.writeLine("更新时间${timeStamp()}\r\n")
+                            nodeInfo.writeLine("**总订阅: $subCount**")
+                            nodeInfo.writeLine("**总节点: $nodeCount**")
+                            nodeInfo.writeLine("**$it**")
+                        }
                     )
+                    NODE_OK.writeLine(it.joinToString("\n") { it.toUri() })
                 }
         }
     }

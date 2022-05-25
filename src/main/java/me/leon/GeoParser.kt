@@ -14,7 +14,7 @@ object GeoParser {
     // todo change it to your own file
     private const val geoDir = "C:/Users/Leon/Desktop/geo"
     private val dbFile = "$geoDir/GeoLite2-City.mmdb".toFile()
-    private val dbCountryFile = "$geoDir/GeoLite2-Country.mmdb".toFile()
+    private val dbCountryFile = javaClass.getResource("/GeoLite2-Country.mmdb").file.toFile()
 
     val cityReader: DatabaseReader by lazy {
         DatabaseReader.Builder(dbFile).withCache(CHMCache()).build()
@@ -27,43 +27,36 @@ object GeoParser {
 fun String.ipCountryZh() =
     runCatching { countryReader.country(this.toInetAddress()).country.names["zh-CN"] }.getOrElse {
         println("ipCountryZh error ${it.message}")
-        "UNKNOWN"
+        "未知"
     }
 
 fun InetAddress.ipCountryZh() =
-    kotlin
-        .runCatching { countryReader.country(this).country.names["zh-CN"] }
-        .onFailure { "UNKNOWN" }
-        .getOrNull()
+    runCatching { countryReader.country(this).country.names["zh-CN"] }.getOrDefault("未知")
+
+fun Sub.ipCountryZh(): String =
+    runCatching { countryReader.country(SERVER.toInetAddress()).country.names["zh-CN"] }
+        .getOrDefault("未知")
+        ?: "未知"
 
 fun String.ipCountryEn() =
-    kotlin
-        .runCatching { countryReader.country(this.toInetAddress()).country.isoCode }
-        .onFailure { "UNKNOWN" }
-        .getOrNull()
+    runCatching { countryReader.country(this.toInetAddress()).country.isoCode }
+        .getOrDefault("UNKNOWN")
 
 fun InetAddress.ipCountryEn() =
-    kotlin
-        .runCatching { countryReader.country(this).country.isoCode }
-        .onFailure { "UNKNOWN" }
-        .getOrNull()
+    runCatching { countryReader.country(this).country.isoCode }.getOrDefault("UNKNOWN")
 
 fun String.ipCityZh() =
-    kotlin
-        .runCatching {
+    runCatching {
             cityReader.city(this.toInetAddress()).run {
                 mostSpecificSubdivision.names["zh-CN"] ?: country.names["zh-CN"]
             }
         }
-        .onFailure { "UNKNOWN" }
-        .getOrNull()
+        .getOrDefault("未知")
 
 fun String.ipCityEn() =
-    kotlin
-        .runCatching {
+    runCatching {
             cityReader.city(this.toInetAddress()).run {
                 mostSpecificSubdivision.names["en"] ?: country.names["en"]
             }
         }
-        .onFailure { "UNKNOWN" }
-        .getOrNull()
+        .getOrDefault("未知")

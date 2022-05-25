@@ -46,12 +46,7 @@ class LocalFileSubTest {
     fun readLocal4() {
         Parser.parseFromSub(NODE_OK)
             .filterNot { it.methodUnSupported().apply { if (this) println("____$it") } }
-            .joinToString("\n") {
-                it.name
-                    .removeFlags()
-                    .replace(NodeCrawler.REG_AD, "")
-                    .replace(NodeCrawler.REG_AD_REPLACE, NodeCrawler.customInfo)
-            }
+            .joinToString("\n") { it.name }
             .also { println(it) }
     }
 
@@ -67,9 +62,8 @@ class LocalFileSubTest {
 
     @Test
     fun parseUri() {
-        val uri = "trojan://413f2e36-0038-48e4-963a-a38c0007ef24@us-sp.okzdns.com:50001/#S2%E7%BE%8E%E5%9B%BD%7CNetFlix%7C04"
-        Parser.parse(uri).also {
-            println(it)
-        }
+        val uri =
+            "trojan://413f2e36-0038-48e4-963a-a38c0007ef24@us-sp.okzdns.com:50001/#S2%E7%BE%8E%E5%9B%BD%7CNetFlix%7C04"
+        Parser.parse(uri).also { println(it) }
     }
 }
