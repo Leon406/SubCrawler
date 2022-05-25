@@ -82,6 +82,7 @@ class NodeCrawler {
                     maps[linkedHashSet.first] = linkedHashSet.second
                     acc.apply { acc.addAll(linkedHashSet.second) }
                 }
+                .also { nodeCount = it.size }
                 .filterNot { it.methodUnSupported() }
                 .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 2000) } }
                 .filter { it.second.await() > -1 }
