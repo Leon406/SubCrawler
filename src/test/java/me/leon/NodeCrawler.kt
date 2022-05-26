@@ -94,7 +94,7 @@ class NodeCrawler {
                         }
                     }
                 }
-                .sortedByDescending { it.name }
+                .sortedBy { it.name }
                 .also {
                     nodeInfo.writeLine()
                     // 2.筛选可用节点

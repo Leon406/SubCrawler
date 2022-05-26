@@ -151,9 +151,9 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
 
 fun Sub.methodUnSupported() =
     this is SSR && method in SSR_unSupportCipher ||
-        this is SS && method in SS_unSupportCipher ||
-        this is V2ray && net in VMESS_unSupportProtocol
+            this is SS && method in SS_unSupportCipher ||
+            this is V2ray && net in VMESS_unSupportProtocol
 
 val SSR_unSupportCipher = arrayOf("none", "rc4", "rc4-md5")
-val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb")
+val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb", "aes-256-cfb")
 val VMESS_unSupportProtocol = arrayOf("none")

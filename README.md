@@ -65,8 +65,9 @@
 
 - SS
   - aes-128-cfb
+  - aes-256-cfb
   - rc4-md5
-
+  
 - VMESS
   -  none
 
