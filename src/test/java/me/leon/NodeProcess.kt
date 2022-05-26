@@ -66,21 +66,6 @@ class NodeProcess {
     }
 
     @Test
-    fun removeAd() {
-        Parser.parseFromSub(NODE_OK)
-            .map {
-                it.also {
-                    it.name =
-                        it.name
-                            .removeFlags()
-                            .replace(NodeCrawler.REG_AD, "")
-                            .replace(NodeCrawler.REG_AD_REPLACE, NodeCrawler.customInfo)
-                }
-            }
-            .forEach { println(it.name) }
-    }
-
-    @Test
     fun nodeNationGroup() {
         Parser.parseFromSub(NODE_OK).groupBy { it.SERVER.ipCountryZh() }.forEach { (t, u) ->
             println("$t: ${u.size}")

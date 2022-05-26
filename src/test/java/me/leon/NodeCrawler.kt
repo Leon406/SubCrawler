@@ -11,15 +11,9 @@ class NodeCrawler {
     companion object {
         private val nodeInfo = "$ROOT/info.md"
         val nodeInfoLocal = "$ROOT/info2.md"
-        private val adConfig = "$ROOT/ad.txt"
-        private val adReplaceConfig = "$ROOT/adreplace.txt"
         const val customInfo = "防失效github SubCrawler"
         private var subCount = 0
         private var nodeCount = 0
-        val REG_AD by lazy { adConfig.toFile().readLines().joinToString("|").toRegex() }
-        val REG_AD_REPLACE by lazy {
-            adReplaceConfig.toFile().readLines().joinToString("|").toRegex().also { println(it) }
-        }
     }
 
     private val maps = linkedMapOf<String, LinkedHashSet<Sub>>()

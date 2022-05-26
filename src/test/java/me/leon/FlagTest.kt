@@ -16,8 +16,7 @@ class FlagTest {
     fun pool() {
         Parser.parseFromSub(NODE_OK).map {
             println(
-                "${it.name} ${it.name.removeFlags() .replace(NodeCrawler.REG_AD, "")
-            .replace(NodeCrawler.REG_AD_REPLACE, NodeCrawler.customInfo)}"
+                "${it.name} ${it.name.removeFlags()}"
             )
         }
     }
