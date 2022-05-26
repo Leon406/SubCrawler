@@ -126,28 +126,30 @@ class HostsTest {
 
     @Test
     fun ipAddress() {
-        ipApiResolve("githubapp.com").also { println(it) }
+        ipApiResolve("baidu.com").also { println(it) }
     }
 
     private fun dnsResolve(url: String): String =
         runCatching {
-                "https://1.1.1.1/dns-query?name=$url&type=1"
-                    .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
-                    .decodeToString()
-                    .fromJson<DnsResolve>()
-                    .Answer
-                    ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
-                    ?.data
-                    ?: ""
-            }
+            "https://1.1.1.1/dns-query?name=$url&type=1"
+                .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
+                .decodeToString()
+                .fromJson<DnsResolve>()
+                .Answer
+                ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
+                ?.data
+                ?: ""
+        }
             .getOrDefault("")
 
-    private val reg = "<strong>(\\d+.\\d+.\\d+.\\d+)</strong>".toRegex()
+    private val reg = "https://www\\.ipaddress\\.com/ipv4/(\\d+.\\d+.\\d+.\\d+)".toRegex()
     private fun ipApiResolve(url: String): String =
         runCatching {
-                "https://ipaddress.com/website/$url".readBytesFromNet().decodeToString().let {
+            "https://ipaddress.com/website/$url"
+                .readBytesFromNet(headers = mutableMapOf("referer" to "https://www.ipaddress.com/"))
+                .decodeToString().let {
                     reg.find(it)?.groupValues?.get(1) ?: ""
                 }
-            }
+        }
             .getOrDefault("")
 }
