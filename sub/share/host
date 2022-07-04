@@ -1,4 +1,4 @@
-##### 更新时间2022-07-01 12:53:18 #####
+##### 更新时间2022-07-04 12:45:05 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -9,7 +9,7 @@
 104.24.176.7	cdnjs.com
 104.17.24.14	cdnjs.cloudflare.com
 104.80.92.84	sdlc-esd.oracle.com
-104.81.240.84	download.oracle.com
+184.24.36.87	download.oracle.com
 104.16.168.131	hcaptcha.com
 104.16.168.131	www.hcaptcha.com
 104.16.168.131	assets.hcaptcha.com
@@ -28,7 +28,7 @@
 104.126.184.90	lastpass.com
 13.107.213.51	logincdn.msauth.net
 13.107.213.51	acctcdn.msauth.net
-40.126.7.35	login.live.com
+20.190.157.11	login.live.com
 157.55.109.230	storage.live.com
 13.107.43.12	public.bn.files.1drv.com
 184.24.37.232	storeedgefd.dsx.mp.microsoft.com
@@ -36,24 +36,25 @@
 104.18.42.229	client-api.arkoselabs.com
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
-52.216.171.147	github-cloud.s3.amazonaws.com
-140.82.112.4	gist.github.com
-140.82.112.5	api.github.com
+54.231.166.49	github-cloud.s3.amazonaws.com
+140.82.113.4	gist.github.com
+140.82.113.6	api.github.com
 140.82.114.25	live.github.com
-140.82.114.17	status.github.com
-52.217.139.33	github-production-release-asset-2e65be.s3.amazonaws.com
+140.82.114.18	status.github.com
+52.217.95.17	github-production-release-asset-2e65be.s3.amazonaws.com
 52.216.140.204	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.114.3	github.com
-140.82.113.3	www.github.com
-140.82.112.26	alive.github.com
-140.82.113.22	collector.githubapp.com
+140.82.113.4	github.com
+140.82.114.3	www.github.com
+140.82.113.26	alive.github.com
+140.82.113.21	collector.githubapp.com
 185.199.108.154	github.githubassets.com
-140.82.114.17	help.github.com
-140.82.113.21	central.github.com
+140.82.112.17	help.github.com
+140.82.112.21	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.114.21	collector.github.com
 64.71.144.211	github.community
 140.82.114.22	support.github.com
+185.199.108.153	assets-cdn.github.com
 185.199.108.153	pages.github.com
 185.199.108.153	training.github.com
 185.199.108.153	github.io
@@ -63,7 +64,7 @@
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
 140.82.112.10	codeload.github.com
-140.82.113.10	nodeload.github.com
+140.82.112.9	nodeload.github.com
 52.217.110.172	github-com.s3.amazonaws.com
 52.217.138.33	github-production-repository-file-5c1aeb.s3.amazonaws.com
 199.232.69.194	github.global.ssl.fastly.net
