@@ -5,9 +5,9 @@ name: crawler
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-#  schedule:
-#    # 定时任务
-#    - cron: '0 0-16/8 */7 * *'
+  schedule:
+    # 定时任务
+    - cron: '0 8 2/4 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

@@ -40,37 +40,6 @@ class NetworkSubTest {
             }
     }
 
-    /** 去除推广 */
-    @Test
-    fun subRemarkModify() {
-        //        val e = "https://zyzmzyz.netlify.app/Clash.yml"
-        //        val e = "https://www.linbaoz.com/clash/proxies"
-        Parser.debug
-        listOf(
-            //            "https://fu.stgod.com/clash/proxies",
-            //            "https://free.mengbai.cf/clash/proxies",
-            //            "https://emby.luoml.eu.org/clash/proxies",
-            "https://proxy.yugogo.xyz/vmess/sub",
-        )
-            .forEach {
-                kotlin
-                    .runCatching {
-                        Parser.parseFromSub(it)
-                            .joinToString(
-                                //                        "|",
-                                "\r\n"
-                            ) {
-                                it.apply { name = name.replace("\\([^)]+\\)".toRegex(), "") }.info()
-                            }
-                            .also {
-                                println("___________")
-                                println(it)
-                            }
-                    }
-                    .onFailure { it.printStackTrace() }
-            }
-    }
-
     @Test
     fun sub() {
         val l1 = Parser.parseFromSub("https://etproxypool.ga/clash/proxies")

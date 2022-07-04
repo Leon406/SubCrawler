@@ -36,6 +36,8 @@ class ExtTest {
             "ss://YWVzLTI1Ni1nY206bjh3NFN0bmJWRDlkbVhZbjRBanQ4N0VBQDE1NC4xMjcuNTAuMTM4OjMxNTcy#(%e5%b7%b2%e5%9d%9" +
                 "a%e6%8c%ba5%e5%a4%a9)%e5%8d%97%e9%9d%9e%e3%80%90%e5%88%86%e4%ba%ab%e6%9d%a5%e8%87%aaYoutube%e" +
                 "4%b8%8d%e8%89%af%e6%9e%97%e3%80%91"
+        println(Parser.parseSs(url)?.toUri())
+
         val url2 =
             "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpyNFRlRXQ1YkswVURAc3MuY2Euc3NobWF4Lm5ldDoxNDQz"
         println(Parser.parseSs(url2)?.toUri())
@@ -47,6 +49,8 @@ class ExtTest {
             "ssr://bnRlbXAxNi5ib29tLnBhcnR5OjIxMDAwOmF1dGhfYWVzMTI4X3NoYTE6YWVzLTI1Ni1jZmI6aHR0cF9zaW1wbGU6VldzNU1" +
                 "rTlQvP29iZnNwYXJhbT1aRzkzYm14dllXUXVkMmx1Wkc5M2MzVndaR0YwWlM1amIyMCZwcm90b3BhcmFtPU1UUXpNRGN6T" +
                 "2tONk9HRlBhUSZyZW1hcmtzPTZhYVo1cml2TFVJJmdyb3VwPU1R"
+        println(Parser.parseSsr(url)?.toUri())
+
         val url2 =
             "ssr://bjU3LmJvb20ucGFydHk6MjUwMDA6YXV0aF9hZXMxMjhfc2hhMTphZXMtMjU2LWNmYjpodHRwX3NpbXBsZTpWV3M1TWtOVC" +
                 "8_b2Jmc3BhcmFtPVpHOTNibXh2WVdRdWQybHVaRzkzYzNWd1pHRjBaUzVqYjIwJnByb3RvcGFyYW09TVRRek1EY3pPa042" +
