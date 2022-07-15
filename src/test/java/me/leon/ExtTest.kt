@@ -108,16 +108,17 @@ class ExtTest {
 
     @Test
     fun lanzouDirectLink() {
-        val url = "https://leon.lanzoub.com/iNLbcf7jzhi"
+        val url = "https://pan.lanzouo.com/iyK4o07v28od"
 
         url
             .readFromNet()
             .run { "(/fn\\?\\w{6,})\" frameborder".toRegex().find(this)!!.groupValues[1] }
             .also {
+                println(it)
                 "https://www.lanzouw.com/$it".readFromNet().also {
                     println(it)
                     val sign =
-                        "(?:'sign':|pdownload = |postdown = |ispostdowns = )'(\\w+)'"
+                        "(?:vsign = +)'(\\w+)'"
                                 .toRegex()
                                 .find(it)!!
                             .groupValues[1]
@@ -127,9 +128,7 @@ class ExtTest {
                                 "action" to "downprocess",
                                 "signs" to "?ctdf",
                                 "sign" to sign,
-                                "ves" to "1",
-                                "websign" to "",
-                                "websignkey" to "u211",
+                                "ves" to "1"
                             )
                         )
                         .fromJson<Lanzou>()
