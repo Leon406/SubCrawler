@@ -1,9 +1,10 @@
 package me.leon.domain
 
+@Suppress("ConstructorParameterNaming", "NonBooleanPropertyPrefixedWithIs")
 data class Quark(
     val area: String = "",
     val country: String = "",
-    val `data`: List<Data> = listOf(),
+    val `data`: List<Data> = emptyList(),
     val port: Port = Port(),
     val status: Int? = 0
 ) {

@@ -19,8 +19,8 @@ class NetworkSubTest {
         }
 
         listOf(
-            e,
-        )
+                e,
+            )
             .forEach {
                 kotlin
                     .runCatching {

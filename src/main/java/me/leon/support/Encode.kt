@@ -8,20 +8,21 @@ fun String.b64Decode() = String(Base64.getDecoder().decode(this))
 
 fun String.b64SafeDecode() =
     if (this.contains(":")) this
-    else
+    else {
         runCatching {
-            String(Base64.getDecoder().decode(this.trim().replace("_", "/").replace("-", "+")))
-        }
+                String(Base64.getDecoder().decode(this.trim().replace("_", "/").replace("-", "+")))
+            }
             .getOrElse {
                 println("failed:  ${it.message}")
                 ""
             }
+    }
 
-fun String.b64Encode() = Base64.getEncoder().encodeToString(this.toByteArray())
+fun String.b64Encode(): String = Base64.getEncoder().encodeToString(this.toByteArray())
 
 fun String.b64EncodeNoEqual() =
     Base64.getEncoder().encodeToString(this.toByteArray()).replace("=", "")
 
-fun String.urlEncode() = URLEncoder.encode(this) ?: ""
+fun String.urlEncode() = URLEncoder.encode(this).orEmpty()
 
-fun String.urlDecode() = URLDecoder.decode(this) ?: ""
+fun String.urlDecode() = URLDecoder.decode(this).orEmpty()

@@ -6,19 +6,18 @@ import me.leon.support.toJson
 import me.leon.support.urlEncode
 
 interface Uri {
-    fun toUri(): String
-    fun info(): String
+
     var name: String
     var nation: String
     val SERVER: String
     val serverPort: Int
+    fun toUri(): String
+    fun info(): String
 }
 
 sealed class Sub : Uri
 
 object NoSub : Sub() {
-    override fun toUri() = "nosub"
-    override fun info() = "nosub"
     override var name: String
         get() = "nosub"
         set(value) {}
@@ -27,6 +26,9 @@ object NoSub : Sub() {
         set(value) {}
     override var serverPort = 0
     override val SERVER = "nosub"
+
+    override fun toUri() = "nosub"
+    override fun info() = "nosub"
 }
 
 data class V2ray(
@@ -55,8 +57,7 @@ data class V2ray(
 
     /** 伪装类型 tcp/kcp/QUIC 默认none */
     var type: String = "none"
-    override fun toUri() = "vmess://${this.toJson().b64Encode()}"
-    override fun info() = "$nation $name vmess $add:$port"
+
     override var name: String
         get() = ps.ifEmpty { "$SERVER:$serverPort-V2-${hashCode()}" }
         set(value) {
@@ -67,6 +68,9 @@ data class V2ray(
     override val SERVER
         get() = add
     override var nation: String = ""
+
+    override fun toUri() = "vmess://${this.toJson().b64Encode()}"
+    override fun info() = "$nation $name vmess $add:$port"
 }
 
 data class SS(
@@ -77,9 +81,7 @@ data class SS(
 ) : Sub() {
     var remark: String = ""
     override var nation: String = ""
-    override fun toUri() = "ss://${"$method:${pwd}@$server:$port".b64Encode()}#${name.urlEncode()}"
 
-    override fun info() = "$nation $remark ss $server:$port"
     override var name: String
         get() = remark.ifEmpty { "$SERVER:$serverPort-SS-${hashCode()}" }
         set(value) {
@@ -89,8 +91,12 @@ data class SS(
         get() = port.toInt()
     override val SERVER
         get() = server
+    override fun toUri() = "ss://${"$method:$pwd@$server:$port".b64Encode()}#${name.urlEncode()}"
+
+    override fun info() = "$nation $remark ss $server:$port"
 }
 
+@Suppress("ConstructorParameterNaming")
 data class SSR(
     val server: String = "",
     val port: String = "",
@@ -103,6 +109,19 @@ data class SSR(
 ) : Sub() {
     var remarks: String = ""
     var group: String = ""
+
+    override var name: String
+        get() = remarks.ifEmpty { "$SERVER:$serverPort-SSR-${hashCode()}" }
+        set(value) {
+            remarks = value
+        }
+    override val serverPort
+        get() = port.toInt()
+    override val SERVER
+        get() = server
+    override var nation: String = ""
+
+    @Suppress("TrimMultilineRawString")
     override fun toUri() =
         "ssr://${
             ("$server:$port:$protocol:$method:$obfs:${password.b64Encode()}" +
@@ -114,27 +133,12 @@ data class SSR(
         }"
 
     override fun info() = "$nation $remarks ssr $server:$port"
-    override var name: String
-        get() = remarks.ifEmpty { "$SERVER:$serverPort-SSR-${hashCode()}" }
-        set(value) {
-            remarks = value
-        }
-    override val serverPort
-        get() = port.toInt()
-    override val SERVER
-        get() = server
-    override var nation: String = ""
 }
 
 data class Trojan(val password: String = "", val server: String = "", val port: String = "") :
     Sub() {
     var remark: String = ""
     var query: String = ""
-    override fun toUri() = "trojan://${"${password}@$server:$port$params"}#${name.urlEncode()}"
-    override fun info() =
-        if (query.isEmpty()) "$nation $name trojan $server:$port"
-        else "$nation $remark trojan $server:$port?$query"
-
     override var name: String
         get() = remark.ifEmpty { "$SERVER:$serverPort-TR-${hashCode()}" }
         set(value) {
@@ -147,12 +151,17 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
     override val SERVER
         get() = server
     override var nation: String = ""
+
+    override fun toUri() = "trojan://${"$password@$server:$port$params"}#${name.urlEncode()}"
+    override fun info() =
+        if (query.isEmpty()) "$nation $name trojan $server:$port"
+        else "$nation $remark trojan $server:$port?$query"
 }
 
 fun Sub.methodUnSupported() =
     this is SSR && method in SSR_unSupportCipher ||
-            this is SS && method in SS_unSupportCipher ||
-            this is V2ray && net in VMESS_unSupportProtocol
+        this is SS && method in SS_unSupportCipher ||
+        this is V2ray && net in VMESS_unSupportProtocol
 
 val SSR_unSupportCipher = arrayOf("none", "rc4", "rc4-md5")
 val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb", "aes-256-cfb")

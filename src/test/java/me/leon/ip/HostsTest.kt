@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test
 
 class HostsTest {
 
+    private val reg = "https://www\\.ipaddress\\.com/ipv4/(\\d+.\\d+.\\d+.\\d+)".toRegex()
+
     // https://raw.fastgit.org/VeleSila/yhosts/master/hosts
     // https://raw.fastgit.org/jdlingyu/ad-wars/master/hosts
     // https://raw.fastgit.org/Goooler/1024_hosts/master/hosts
@@ -31,8 +33,7 @@ class HostsTest {
             "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts"
         )
             .flatMap {
-                it
-                    .readFromNet()
+                it.readFromNet()
                     .split("\n|\r\n".toRegex())
                     .map(String::trim)
                     .filterNot fn@{ it.isEmpty() || it.startsWith("#") }
@@ -40,9 +41,9 @@ class HostsTest {
                         it.split("\\s+".toRegex()).run {
                             Host(this[1]).apply {
                                 ip =
-                                    if (this@run[0] == "127.0.0.1" && domain != "localhost")
+                                    if (this@run[0] == "127.0.0.1" && domain != "localhost") {
                                         "0.0.0.0"
-                                    else this@run[0]
+                                    } else this@run[0]
                             }
                         }
                     }
@@ -68,8 +69,7 @@ class HostsTest {
                 "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
             )
                 .flatMap {
-                    it
-                        .readFromNet()
+                    it.readFromNet()
                         .split("\n|\r\n".toRegex())
                         .map(String::trim)
                         .filterNot { it.isEmpty() || it.startsWith("#") }
@@ -100,7 +100,9 @@ class HostsTest {
     fun dns() {
 
         val unReachableDomains = mutableListOf<String>()
-        HostsTest::class.java.getResourceAsStream("/domains")!!
+        HostsTest::class
+            .java
+            .getResourceAsStream("/domains")!!
             .bufferedReader()
             .use { it.lines().toList() }
             .filterNot { it.isEmpty() || it.startsWith("#") }
@@ -138,18 +140,18 @@ class HostsTest {
                 .Answer
                 ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
                 ?.data
-                ?: ""
+                .orEmpty()
         }
             .getOrDefault("")
 
-    private val reg = "https://www\\.ipaddress\\.com/ipv4/(\\d+.\\d+.\\d+.\\d+)".toRegex()
-    private fun ipApiResolve(url: String): String =
+   private fun ipApiResolve(url: String): String =
         runCatching {
             "https://ipaddress.com/website/$url"
-                .readBytesFromNet(headers = mutableMapOf("referer" to "https://www.ipaddress.com/"))
-                .decodeToString().let {
-                    reg.find(it)?.groupValues?.get(1) ?: ""
-                }
+                .readBytesFromNet(
+                    headers = mutableMapOf("referer" to "https://www.ipaddress.com/")
+                )
+                .decodeToString()
+                .run { reg.find(this)?.groupValues?.get(1).orEmpty() }
         }
             .getOrDefault("")
 }

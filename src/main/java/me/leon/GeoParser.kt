@@ -24,31 +24,34 @@ object GeoParser {
     }
 }
 
+private const val CN = "zh-CN"
+
 fun String.ipCountryZh() =
-    runCatching { countryReader.country(this.toInetAddress()).country.names["zh-CN"] }.getOrElse {
-        println("ipCountryZh error ${it.message}")
-        "未知"
-    }
+    runCatching { countryReader.country(this.toInetAddress()).country.names[CN] }
+        .getOrElse {
+            println("ipCountryZh error ${it.message}")
+            "未知"
+        }
 
 fun InetAddress.ipCountryZh() =
-    runCatching { countryReader.country(this).country.names["zh-CN"] }.getOrDefault("未知")
+    runCatching { countryReader.country(this).country.names[CN] }.getOrDefault("未知")
 
 fun Sub.ipCountryZh(): String =
-    runCatching { countryReader.country(SERVER.toInetAddress()).country.names["zh-CN"] }
+    runCatching { countryReader.country(SERVER.toInetAddress()).country.names[CN] }
         .getOrDefault("未知")
         ?: "未知"
 
-fun String.ipCountryEn() =
+fun String.ipCountryEn(): String =
     runCatching { countryReader.country(this.toInetAddress()).country.isoCode }
         .getOrDefault("UNKNOWN")
 
-fun InetAddress.ipCountryEn() =
+fun InetAddress.ipCountryEn(): String =
     runCatching { countryReader.country(this).country.isoCode }.getOrDefault("UNKNOWN")
 
 fun String.ipCityZh() =
     runCatching {
             cityReader.city(this.toInetAddress()).run {
-                mostSpecificSubdivision.names["zh-CN"] ?: country.names["zh-CN"]
+                mostSpecificSubdivision.names[CN] ?: country.names[CN]
             }
         }
         .getOrDefault("未知")

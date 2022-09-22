@@ -14,10 +14,6 @@ class FlagTest {
 
     @Test
     fun pool() {
-        Parser.parseFromSub(NODE_OK).map {
-            println(
-                "${it.name} ${it.name.removeFlags()}"
-            )
-        }
+        Parser.parseFromSub(NODE_OK).map { println("${it.name} ${it.name.removeFlags()}") }
     }
 }

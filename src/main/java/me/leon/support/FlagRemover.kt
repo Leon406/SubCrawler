@@ -24,14 +24,18 @@ object FlagRemover {
         flagReg
             .findAll(s)
             .map {
-                it.groupValues.filterIndexed { i, item -> i != 0 && item.isNotEmpty() }.map { item
-                    ->
-                    //                    println("$item ${flagMaps[item]}")
-                    flagMaps[item]?.run {
-                        tmp =
-                            flagReg.replaceFirst(tmp, this.takeUnless { tmp.contains(this) } ?: "")
+                it.groupValues
+                    .filterIndexed { i, item -> i != 0 && item.isNotEmpty() }
+                    .map { item ->
+                        //                    println("$item ${flagMaps[item]}")
+                        flagMaps[item]?.run {
+                            tmp =
+                                flagReg.replaceFirst(
+                                    tmp,
+                                    this.takeUnless { tmp.contains(this) }.orEmpty()
+                                )
+                        }
                     }
-                }
             }
             .lastOrNull()
         return tmp.replace("美国离岛美国|美国离岛".toRegex(), "美国")

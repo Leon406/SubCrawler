@@ -1,5 +1,6 @@
 package me.leon.domain
 
+@Suppress("ConstructorParameterNaming")
 data class DnsResolve(
     val Status: Int?,
     val TC: Boolean?,
@@ -13,4 +14,5 @@ data class DnsResolve(
 
 data class Question(val name: String?, val type: Int?)
 
+@Suppress("ConstructorParameterNaming")
 data class Answer(val name: String?, val type: Int?, val TTL: Int?, val `data`: String?)

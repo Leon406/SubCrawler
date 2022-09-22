@@ -8,13 +8,6 @@ import me.leon.support.*
 import org.junit.jupiter.api.Test
 
 class NodeCrawler {
-    companion object {
-        private val nodeInfo = "$ROOT/info.md"
-        val nodeInfoLocal = "$ROOT/info2.md"
-        const val customInfo = "防失效github SubCrawler"
-        private var subCount = 0
-        private var nodeCount = 0
-    }
 
     private val maps = linkedMapOf<String, LinkedHashSet<Sub>>()
 
@@ -58,13 +51,13 @@ class NodeCrawler {
                     sub to
                         async(DISPATCHER) {
                             runCatching {
-                                val uri =
-                                    sub.takeUnless {
-                                        it.startsWith("https://raw.githubusercontent.com/")
-                                    }
-                                        ?: "https://ghproxy.com/$sub"
-                                Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
-                            }
+                                    val uri =
+                                        sub.takeUnless {
+                                            it.startsWith("https://raw.githubusercontent.com/")
+                                        }
+                                            ?: "https://ghproxy.com/$sub"
+                                    Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
+                                }
                                 .getOrElse {
                                     println("___parse failed $sub  ${it.message}")
                                     linkedSetOf()
@@ -145,11 +138,13 @@ class NodeCrawler {
         val nodes = Parser.parseFromSub(NODE_OK)
         NODE_ALL.writeLine(nodes.joinToString("\n") { it.toUri() }.b64Encode(), false)
 
-        nodes.groupBy { it.javaClass }.forEach { (clazz, subList) ->
-            subList.firstOrNull()?.run { name = customInfo + name }
-            val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
-            writeData(clazz, data, subList)
-        }
+        nodes
+            .groupBy { it.javaClass }
+            .forEach { (clazz, subList) ->
+                subList.firstOrNull()?.run { name = customInfo + name }
+                val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
+                writeData(clazz, data, subList)
+            }
     }
 
     private fun writeData(clazz: Class<Sub>, data: String, subList: List<Sub>) {
@@ -171,5 +166,12 @@ class NodeCrawler {
                     println("trojan节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
         }
+    }
+    companion object {
+        private val nodeInfo = "$ROOT/info.md"
+        val nodeInfoLocal = "$ROOT/info2.md"
+        const val customInfo = "防失效github SubCrawler"
+        private var subCount = 0
+        private var nodeCount = 0
     }
 }

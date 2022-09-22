@@ -110,18 +110,13 @@ class ExtTest {
     fun lanzouDirectLink() {
         val url = "https://pan.lanzouo.com/iyK4o07v28od"
 
-        url
-            .readFromNet()
+        url.readFromNet()
             .run { "(/fn\\?\\w{6,})\" frameborder".toRegex().find(this)!!.groupValues[1] }
             .also {
                 println(it)
                 "https://www.lanzouw.com/$it".readFromNet().also {
                     println(it)
-                    val sign =
-                        "(?:vsign = +)'(\\w+)'"
-                                .toRegex()
-                                .find(it)!!
-                            .groupValues[1]
+                    val sign = "(?:vsign = +)'(\\w+)'".toRegex().find(it)!!.groupValues[1]
                     "https://www.lanzouw.com/ajaxm.php"
                         .post(
                             mutableMapOf(
@@ -132,7 +127,7 @@ class ExtTest {
                             )
                         )
                         .fromJson<Lanzou>()
-                        .run { println("${dom}/file/${this.url}") }
+                        .run { println("$dom/file/${this.url}") }
                 }
             }
     }
@@ -149,13 +144,14 @@ class ExtTest {
     @Test
     fun dd() {
         val d1 = 2.147483647E9
-        val d = 2147483647.toDouble()
+        val d = 2_147_483_647.toDouble()
         println(d.toString())
         val instance = NumberFormat.getInstance()
         instance.isGroupingUsed = false // 设置不使用科学计数器
         instance.maximumFractionDigits = 2 // 小数点最大位数
         println(instance.format(d1))
-        "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%".replace("[【（(].+[)）%】]?".toRegex(), "")
+        "\uD83C\uDDFA\uD83C\uDDF8 美国(欢迎订阅YouTube：8度科技%"
+            .replace("[【（(].+[)）%】]?".toRegex(), "")
             .also { println(it) }
 
         "（欢迎订阅youtube：8度科技".replace("[【（(].+[)）%】]?".toRegex(), "").also { println(it) }

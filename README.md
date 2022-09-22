@@ -43,10 +43,10 @@
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch](https://github.com/bulianglin/demo)
-- 在线测速
-    - [霸气](http://fjcu.june628.ml/)
-    - [霸气2](http://fjct.june628.ml/)
-    - [666138](http://hkst.666138.xyz/)
+- 在线测速(基于上面本地测速搭建的服务)
+    - ~~[霸气](http://fjcu.june628.ml/)~~
+    - ~~[霸气2](http://fjct.june628.ml/)~~
+    - ~~[666138](http://hkst.666138.xyz/)~~
     - [zeroteam](https://speedtest.zeroteam.top/)
     - ~~[品云](http://gz.cloudtest.cc/)~~
     - ~~[品云2](http://gz2.cloudtest.cc/)~~

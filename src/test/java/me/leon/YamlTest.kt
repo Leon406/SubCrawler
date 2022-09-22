@@ -12,7 +12,8 @@ class YamlTest {
 
         with(Yaml(Constructor(Clash::class.java)).load(BIHAI.readText()) as Clash) {
             println(
-                this.proxies.map(Node::toNode)
+                this.proxies
+                    .map(Node::toNode)
                     //                    .filterIsInstance<V2ray>()
                     .joinToString("|") { sub -> sub.toUri() }
             )
@@ -26,7 +27,8 @@ class YamlTest {
         if (url.isNotEmpty()) {
             with(Yaml(Constructor(Clash::class.java)).load(url) as Clash) {
                 println(
-                    this.proxies.map(Node::toNode)
+                    this.proxies
+                        .map(Node::toNode)
                         //                    .filterIsInstance<V2ray>()
                         .joinToString("|") { sub -> sub.also { println(it.info()) }.toUri() }
                 )

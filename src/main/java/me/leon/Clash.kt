@@ -1,6 +1,7 @@
 package me.leon
 
 /** Clash完整配置 https://github.com/Dreamacro/clash/wiki/configuration */
+@Suppress("ConstructorParameterNaming")
 data class Clash(
     var port: Int = 7890,
     var `socks-port`: Int = 7891,
@@ -29,6 +30,7 @@ data class Clash(
     var rule: List<String> = mutableListOf()
 }
 
+@Suppress("ConstructorParameterNaming")
 data class DNS(
     var enable: Boolean = false,
     var ipv6: Boolean = false,
@@ -41,6 +43,7 @@ data class DNS(
     var `fallback-filter`: LinkedHashMap<String, String> = linkedMapOf()
 )
 
+@Suppress("ConstructorParameterNaming")
 data class Node(
     var name: String = "",
     var type: String = "",
@@ -104,22 +107,22 @@ data class Node(
             )
             .apply {
                 path = if (network == "ws") `ws-path` else ""
-                host = if (network == "ws") `ws-headers`["Host"] ?: "" else ""
+                host = if (network == "ws") `ws-headers`["Host"].orEmpty() else ""
                 ps = this@Node.name
                 nation = country
             }
 
     private fun toSsr() =
         SSR(
-            server,
-            port.toString(),
-            protocol,
-            cipher,
-            obfs,
-            password,
-            if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
-            `protocol-param` + `protocol_param` + protocolparam
-        )
+                server,
+                port.toString(),
+                protocol,
+                cipher,
+                obfs,
+                password,
+                if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
+                `protocol-param` + `protocol_param` + protocolparam
+            )
             .apply {
                 remarks = this@Node.name
                 nation = country

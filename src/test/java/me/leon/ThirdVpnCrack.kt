@@ -10,6 +10,9 @@ import me.leon.support.*
 import org.junit.jupiter.api.Test
 
 class ThirdVpnCrack {
+
+    private val quarkVpnDir = "$ROOT/vpn/quark"
+
     @Test
     fun parseNet() {
         val key = SimpleDateFormat("yyyyMMdd").format(Date()).repeat(4)
@@ -23,8 +26,6 @@ class ThirdVpnCrack {
             .split("\n")
             .also { println(it.joinToString("|")) }
     }
-
-    private val quarkVpnDir = "$ROOT/vpn/quark"
 
     @Test
     fun parseQuarkVpn() {

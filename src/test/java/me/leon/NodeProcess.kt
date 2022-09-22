@@ -67,9 +67,11 @@ class NodeProcess {
 
     @Test
     fun nodeNationGroup() {
-        Parser.parseFromSub(NODE_OK).groupBy { it.SERVER.ipCountryZh() }.forEach { (t, u) ->
-            println("$t: ${u.size}")
-            if (t == "UNKNOWN") println(u.map { it.SERVER })
-        }
+        Parser.parseFromSub(NODE_OK)
+            .groupBy { it.SERVER.ipCountryZh() }
+            .forEach { (t, u) ->
+                println("$t: ${u.size}")
+                if (t == "UNKNOWN") println(u.map { it.SERVER })
+            }
     }
 }

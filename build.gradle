@@ -1,8 +1,8 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.0'
-    id "com.diffplug.spotless" version "6.7.2"
-    id "io.gitlab.arturbosch.detekt" version "1.19.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id "com.diffplug.spotless" version "6.11.0"
+    id "io.gitlab.arturbosch.detekt" version "1.22.0-RC1"
 }
 
 group 'me.leon'
@@ -13,11 +13,12 @@ repositories {
 }
 
 dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0-RC1"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'com.google.code.gson:gson:2.9.0'
     //for yaml 1.1
-    implementation 'org.yaml:snakeyaml:1.30'
+    implementation 'org.yaml:snakeyaml:1.32'
     //mmdb格式
     implementation 'com.maxmind.geoip2:geoip2:3.0.1'
     //dat格式
@@ -25,8 +26,8 @@ dependencies {
 //    implementation 'com.maxmind.db:maxmind-db:1.2.0'
     //for yaml 1.2
 //    implementation "org.snakeyaml:snakeyaml-engine:2.3"
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
 test {

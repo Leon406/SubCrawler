@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
 class LocalFileSubTest {
     @Test
     fun readLocal() {
-        Parser.parseFromSub("$ROOT/V2RayN.txt").joinToString("|") { it.toUri() }.also {
-            println(it)
-        }
+        Parser.parseFromSub("$ROOT/V2RayN.txt")
+            .joinToString("|") { it.toUri() }
+            .also { println(it) }
     }
 
     @Test
@@ -20,9 +20,9 @@ class LocalFileSubTest {
 
     @Test
     fun readLocal3() {
-        Parser.parseFromSub("$ROOT/bihai.yaml").joinToString("\n") { it.info() }.also {
-            println(it)
-        }
+        Parser.parseFromSub("$ROOT/bihai.yaml")
+            .joinToString("\n") { it.info() }
+            .also { println(it) }
     }
 
     @Test

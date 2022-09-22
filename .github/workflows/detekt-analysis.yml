@@ -25,7 +25,7 @@ on:
 env:
   # Release tag associated with version of Detekt to be installed
   # SARIF support (required for this workflow) was introduced in Detekt v1.15.0
-  DETEKT_RELEASE_TAG: v1.15.0
+  DETEKT_RELEASE_TAG: v1.21.0
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
