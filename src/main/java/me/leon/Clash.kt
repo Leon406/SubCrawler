@@ -24,9 +24,12 @@ data class Clash(
     var authentication: List<String> = mutableListOf()
     var `rule-providers`: LinkedHashMap<String, Any> = linkedMapOf()
     var tun: LinkedHashMap<String, Any> = linkedMapOf()
-    var hosts: List<LinkedHashMap<String, String>> = mutableListOf()
+    var profile: LinkedHashMap<String, Any> = linkedMapOf()
+    var hosts: Any = Any()
     var ipv6: Boolean = false
     var `cfw-bypass`: List<String> = mutableListOf()
+    var `cfw-latency-timeout`: Int = 0
+    var `experimental`: Any = Any()
     var rule: List<String> = mutableListOf()
 }
 
@@ -65,18 +68,42 @@ data class Node(
     var `h2-opts`: LinkedHashMap<String, String> = linkedMapOf()
     var `plugin-opts`: LinkedHashMap<String, String> = linkedMapOf()
     var `ws-path`: String = ""
+    var `ws-opts`: VmessWsOpts = VmessWsOpts()
+
     var `obfs-param`: String = ""
     var obfs_param: String = ""
     var plugin: String = ""
     var sni: String = ""
     var udp: Boolean = false
-    var tls: Boolean = false
+    var tls: Any = Any()
     var _index: Int = 0
     var `skip-cert-verify`: Boolean = false
     var `protocol_param`: String = ""
     var protocolparam: String = ""
     var obfsparam: String = ""
     var username: String = ""
+    // hysteria
+    var auth_str: String = ""
+    var alpn: String = ""
+    var down: Int = 0
+    var up: Int = 0
+    var recv_window: Int = 0
+    var recv_window_conn: Int = 0
+    var disable_mtu_discovery: Boolean = false
+
+    data class VmessWsOpts(
+        var path: String = "",
+        var headers: LinkedHashMap<String, String> = linkedMapOf()
+    )
+
+    private fun properPath() =
+        if (network == "ws") `ws-path`.ifEmpty { `ws-opts`.path } else ""
+
+    private fun properHost() =
+        if (network == "ws") `ws-headers`["Host"] ?: `ws-headers`["host"]
+        ?: `ws-opts`.headers["Host"] ?: `ws-opts`.headers["host"].orEmpty()
+        else ""
+
 
     fun toNode(): Sub {
         // 兼容某些异常节点池
@@ -91,55 +118,50 @@ data class Node(
     }
 
     private fun toTrojan() =
-        Trojan(password, server, port.toString()).apply {
+        Trojan(password.orEmpty(), server, port.toString()).apply {
             this.remark = this@Node.name
             nation = country
         }
 
     private fun toVmess() =
         V2ray(
-                aid = alterId,
-                add = server,
-                port = port.toString(),
-                id = uuid,
-                net = network,
-                tls = if (tls) "true" else ""
-            )
+            aid = alterId,
+            add = server,
+            port = port.toString(),
+            id = uuid,
+            net = network,
+            tls = when (tls) {
+                is Boolean -> if (tls as Boolean) "true" else ""
+                is Int -> if (tls as Int == 1) "true" else ""
+                else -> ""
+            }
+        )
             .apply {
-                path = if (network == "ws") `ws-path` else ""
-                host = if (network == "ws") `ws-headers`["Host"].orEmpty() else ""
+                path = properPath()
+                host = properHost()
                 ps = this@Node.name
                 nation = country
             }
 
     private fun toSsr() =
         SSR(
-                server,
-                port.toString(),
-                protocol,
-                cipher,
-                obfs,
-                password,
-                if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
-                `protocol-param` + `protocol_param` + protocolparam
-            )
+            server,
+            port.toString(),
+            protocol,
+            cipher,
+            obfs,
+            password.orEmpty(),
+            if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
+            `protocol-param` + `protocol_param` + protocolparam
+        )
             .apply {
                 remarks = this@Node.name
                 nation = country
             }
 
     private fun toSs() =
-        SS(cipher, password, server, port.toString()).apply {
+        SS(cipher, password.orEmpty(), server, port.toString()).apply {
             remark = this@Node.name
             nation = country
         }
 }
-
-data class Group(
-    var name: String = "",
-    var type: String = "",
-    var url: String = "",
-    var interval: Int = 0,
-    var tolerance: Int = 0,
-    var proxies: List<String> = mutableListOf()
-)
