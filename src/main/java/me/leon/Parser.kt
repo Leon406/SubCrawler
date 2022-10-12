@@ -47,13 +47,13 @@ object Parser {
             )
         // Install the all-trusting trust manager
         runCatching {
-                val sc = SSLContext.getInstance("SSL")
-                sc.init(null, trustAllCerts, SecureRandom())
-                val sslsc = sc.serverSessionContext
-                sslsc.sessionTimeout = 0
-                HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
-                HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
-            }
+            val sc = SSLContext.getInstance("SSL")
+            sc.init(null, trustAllCerts, SecureRandom())
+            val sslsc = sc.serverSessionContext
+            sslsc.sessionTimeout = 0
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
+            HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
+        }
             .getOrElse {
                 // if needed
             }
@@ -72,15 +72,15 @@ object Parser {
 
     fun parseV2ray(uri: String) =
         runCatching {
-                "parseV2ray ".debug(uri)
-                REG_SCHEMA_HASH.matchEntire(uri)?.run {
-                    groupValues[2]
-                        .b64SafeDecode()
-                        .also { "parseV2ray base64 decode: ".debug(it) }
-                        .fromJson<V2ray>()
-                        .takeIf { it.id.length == UUID_LENGTH && !it.add.contains("baidu.com") }
-                }
+            "parseV2ray ".debug(uri)
+            REG_SCHEMA_HASH.matchEntire(uri)?.run {
+                groupValues[2]
+                    .b64SafeDecode()
+                    .also { "parseV2ray base64 decode: ".debug(it) }
+                    .fromJson<V2ray>()
+                    .takeIf { it.id.length == UUID_LENGTH && !it.add.contains("baidu.com") }
             }
+        }
             .getOrElse {
                 "parseV2ray err".debug(uri)
                 null
@@ -95,7 +95,7 @@ object Parser {
             val decoded =
                 groupValues[2].takeUnless { it.contains("@") }?.b64Decode()
                 // 兼容异常
-                ?: with(groupValues[2]) {
+                    ?: with(groupValues[2]) {
                         "${substringBefore('@').b64Decode()}${substring(indexOf('@'))}".also {
                             "parseSs b64 format correct".debug("___$it")
                         }
@@ -123,15 +123,15 @@ object Parser {
                     val q = it.groupValues[2].queryParamMapB64()
                     "parseSsr query maps".debug(q.toString())
                     return SSR(
-                            this[0],
-                            this[1],
-                            this[2],
-                            this[3],
-                            this[4],
-                            it.groupValues[1].b64SafeDecode(),
-                            q["obfsparam"].orEmpty(),
-                            q["protoparam"].orEmpty(),
-                        )
+                        this[0],
+                        this[1],
+                        this[2],
+                        this[3],
+                        this[4],
+                        it.groupValues[1].b64SafeDecode(),
+                        q["obfsparam"].orEmpty(),
+                        q["protoparam"].orEmpty(),
+                    )
                         .apply {
                             remarks = q["remarks"].orEmpty()
                             group = q["group"].orEmpty()
@@ -166,7 +166,7 @@ object Parser {
         "parseFromSub Local".debug(path)
         val data = path.readText().b64SafeDecode()
         return if (data.contains("proxies:")) {
-            (Yaml(Constructor(Clash::class.java)).load(data.replace("!<[^>]+>".toRegex(), ""))
+            (Yaml(Constructor(Clash::class.java)).load(data.fixYaml())
                     as Clash)
                 .proxies
                 .asSequence()
@@ -193,28 +193,28 @@ object Parser {
         val data = url.readFromNet().b64SafeDecode()
 
         return runCatching {
-                if (data.contains("proxies:"))
-                    // 移除yaml中的标签
-                {
-                    (Yaml(Constructor(Clash::class.java))
-                            .load(data.replace("!<[^>]+>".toRegex(), "").also { it.debug() })
-                            as Clash)
-                        .proxies
-                        .asSequence()
-                        .map(Node::toNode)
-                        .filterNot { it is NoSub }
-                        .fold(linkedSetOf<Sub>()) { acc, sub -> acc.also { acc.add(sub) } }
-                } else {
-                    data
-                        .also { "parseFromNetwork".debug(it) }
-                        .split("\r\n|\n".toRegex())
-                        .asSequence()
-                        .filter { it.isNotEmpty() }
-                        .mapNotNull { parse(it.replace("/#", "#")) }
-                        .filterNot { it is NoSub }
-                        .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
-                }
+            if (data.contains("proxies:"))
+            // 移除yaml中的标签
+            {
+                (Yaml(Constructor(Clash::class.java))
+                    .load(data.fixYaml().also { it.debug() })
+                        as Clash)
+                    .proxies
+                    .asSequence()
+                    .map(Node::toNode)
+                    .filterNot { it is NoSub }
+                    .fold(linkedSetOf<Sub>()) { acc, sub -> acc.also { acc.add(sub) } }
+            } else {
+                data
+                    .also { "parseFromNetwork".debug(it) }
+                    .split("\r\n|\n".toRegex())
+                    .asSequence()
+                    .filter { it.isNotEmpty() }
+                    .mapNotNull { parse(it.replace("/#", "#")) }
+                    .filterNot { it is NoSub }
+                    .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
             }
+        }
             .getOrElse {
                 println("failed______ $url ${it.message}")
                 linkedSetOf()

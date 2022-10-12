@@ -1,7 +1,6 @@
 package me.leon
 
-import me.leon.support.readFromNet
-import me.leon.support.readText
+import me.leon.support.*
 import org.junit.jupiter.api.Test
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
@@ -22,32 +21,25 @@ class YamlTest {
 
     @Test
     fun yaml() {
-
         val list = listOf(
-            "https://raw.iqiq.io/vpei/Free-Node-Merge/main/out/clash.yaml",
-            "https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/get_v2/main/pub/changfengoss10.yaml",
-            "https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/get_v2/main/pub/mattkaydiary.yaml",
+            "https://ghproxy.com/https://raw.githubusercontent.com/clashconfig/online/main/SurfShark(34687).yml",
+//             "https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml",
+            "https://ghproxy.com/https://raw.githubusercontent.com/vveg26/get_proxy/main/dist/clash.config.yaml",
         )
 
         for (url in list) {
             println(url)
             val data = url.readFromNet()
             if (data.isNotEmpty()) {
-                with(Yaml(Constructor(Clash::class.java)).load(data
-                    .replace("!<[^>]+>".toRegex(), "")
-                    .replace("  password: \n", "  password: xxxxx\n")
-                    .replace("server: $*@", "server: ")
-                    .also { println(it) }
-                ) as Clash) {
-
-                    println(this.proxies)
-//                    println(
-//                        this.proxies
-//                            .map(Node::toNode)
-//                            .filterIsInstance<V2ray>()
-////                        .filter { it.add =="in04.my1188.org" }
-//                            .joinToString("|") { sub -> sub.also { println(it) }.toUri() }
-//                    )
+                with(
+                    Yaml(Constructor(Clash::class.java)).load(data.fixYaml()) as Clash
+                ) {
+                    println(
+                        this.proxies
+                            .map(Node::toNode)
+                            .filterIsInstance<V2ray>()
+                            .joinToString("|") { sub -> sub.also { println(it) }.toUri() }
+                    )
                 }
             } else {
                 println("no content")

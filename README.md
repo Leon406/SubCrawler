@@ -18,7 +18,6 @@
 ## 优质节点池
 
 - :star: [https://proxies.bihai.cf](https://proxies.bihai.cf)
-- https://fq.lonxin.net/
 
 ## 节点池搭建
 

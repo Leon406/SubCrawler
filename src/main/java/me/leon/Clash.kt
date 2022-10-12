@@ -33,18 +33,6 @@ data class Clash(
     var rule: List<String> = mutableListOf()
 }
 
-@Suppress("ConstructorParameterNaming")
-data class DNS(
-    var enable: Boolean = false,
-    var ipv6: Boolean = false,
-    var listen: String = "",
-    var `enhanced-mode`: String = "",
-    var `fake-ip-range`: String = "",
-    var nameserver: List<String> = mutableListOf(),
-    var `default-nameserver`: List<String> = mutableListOf(),
-    var fallback: List<String> = mutableListOf(),
-    var `fallback-filter`: LinkedHashMap<String, String> = linkedMapOf()
-)
 
 @Suppress("ConstructorParameterNaming")
 data class Node(
@@ -64,7 +52,6 @@ data class Node(
     var servername: String = ""
 ) {
     var `ws-headers`: LinkedHashMap<String, String> = linkedMapOf()
-    var `http-opts`: LinkedHashMap<String, String> = linkedMapOf()
     var `h2-opts`: LinkedHashMap<String, String> = linkedMapOf()
     var `plugin-opts`: LinkedHashMap<String, String> = linkedMapOf()
     var `ws-path`: String = ""
@@ -82,6 +69,7 @@ data class Node(
     var protocolparam: String = ""
     var obfsparam: String = ""
     var username: String = ""
+
     // hysteria
     var auth_str: String = ""
     var alpn: String = ""
@@ -90,6 +78,11 @@ data class Node(
     var recv_window: Int = 0
     var recv_window_conn: Int = 0
     var disable_mtu_discovery: Boolean = false
+
+    // http协议
+    var `http-opts`: LinkedHashMap<String, Any> = linkedMapOf()
+
+    var `grpc-opts`: LinkedHashMap<String, Any> = linkedMapOf()
 
     data class VmessWsOpts(
         var path: String = "",
@@ -111,14 +104,14 @@ data class Node(
         return when (type) {
             "ss" -> toSs()
             "ssr" -> toSsr()
-            "vmess" -> toVmess()
+            "vmess" -> if (network == "grpc") NoSub else toVmess()
             "trojan" -> toTrojan()
             else -> NoSub
         }
     }
 
     private fun toTrojan() =
-        Trojan(password.orEmpty(), server, port.toString()).apply {
+        Trojan(password, server, port.toString()).apply {
             this.remark = this@Node.name
             nation = country
         }
@@ -150,7 +143,7 @@ data class Node(
             protocol,
             cipher,
             obfs,
-            password.orEmpty(),
+            password,
             if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
             `protocol-param` + `protocol_param` + protocolparam
         )
@@ -160,7 +153,7 @@ data class Node(
             }
 
     private fun toSs() =
-        SS(cipher, password.orEmpty(), server, port.toString()).apply {
+        SS(cipher, password, server, port.toString()).apply {
             remark = this@Node.name
             nation = country
         }
