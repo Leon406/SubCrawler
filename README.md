@@ -20,11 +20,9 @@
 - :star: [https://proxies.bihai.cf](https://proxies.bihai.cf)
 - https://fq.lonxin.net/
 
-## 节点池配置
+## 节点池搭建
 
-- https://github.com/shoujiyanxishe/atu
-
-> 有服务器的可自行搭建 [proxypool](https://github.com/Leon406/proxypool)  配置参考上面etproxypool
+> 有服务器的可自行搭建 [proxypool](https://github.com/Leon406/proxypool)  配置文件 [source.yaml](https://github.com/Leon406/proxypool/blob/master/config/source.yaml) 
 
 ## <span id="subCon">订阅转换</span>
 
@@ -44,13 +42,8 @@
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch](https://github.com/bulianglin/demo)
 - 在线测速(基于上面本地测速搭建的服务)
-    - ~~[霸气](http://fjcu.june628.ml/)~~
-    - ~~[霸气2](http://fjct.june628.ml/)~~
-    - ~~[666138](http://hkst.666138.xyz/)~~
     - [zeroteam](https://speedtest.zeroteam.top/)
     - ~~[品云](http://gz.cloudtest.cc/)~~
-    - ~~[品云2](http://gz2.cloudtest.cc/)~~
-    - ~~[品云3](http://gy.cloudtest.cc/)~~
 
 ## 项目生成内容
 

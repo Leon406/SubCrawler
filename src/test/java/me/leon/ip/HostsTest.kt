@@ -23,15 +23,15 @@ class HostsTest {
     @Test
     fun blacklist() {
         listOf(
-            "https://raw.fastgit.org/VeleSila/yhosts/master/hosts",
-            "https://raw.fastgit.org/jdlingyu/ad-wars/master/hosts",
-            "https://raw.fastgit.org/Goooler/1024_hosts/master/hosts",
-            "https://winhelp2002.mvps.org/hosts.txt",
-            "https://raw.fastgit.org/StevenBlack/hosts/master/hosts",
-            "https://raw.fastgit.org/E7KMbb/AD-hosts/master/system/etc/hosts",
-            "https://raw.fastgit.org/ilpl/ad-hosts/master/hosts",
-            "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts"
-        )
+                "https://raw.fastgit.org/VeleSila/yhosts/master/hosts",
+                "https://raw.fastgit.org/jdlingyu/ad-wars/master/hosts",
+                "https://raw.fastgit.org/Goooler/1024_hosts/master/hosts",
+                "https://winhelp2002.mvps.org/hosts.txt",
+                "https://raw.fastgit.org/StevenBlack/hosts/master/hosts",
+                "https://raw.fastgit.org/E7KMbb/AD-hosts/master/system/etc/hosts",
+                "https://raw.fastgit.org/ilpl/ad-hosts/master/hosts",
+                "https://raw.fastgit.org/rentianyu/Ad-set-hosts/master/hosts"
+            )
             .flatMap {
                 it.readFromNet()
                     .split("\n|\r\n".toRegex())
@@ -64,10 +64,10 @@ class HostsTest {
     fun whitelist() {
         runBlocking {
             listOf(
-                "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
-                "https://raw.fastgit.org/Leon406/pyutil/master/github/hosts",
-                "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
-            )
+                    "https://raw.fastgit.org/googlehosts/hosts/master/hosts-files/hosts",
+                    "https://raw.fastgit.org/Leon406/pyutil/master/github/hosts",
+                    "https://raw.fastgit.org/Leon406/jsdelivr/master/hosts/whitelist",
+                )
                 .flatMap {
                     it.readFromNet()
                         .split("\n|\r\n".toRegex())
@@ -133,25 +133,25 @@ class HostsTest {
 
     private fun dnsResolve(url: String): String =
         runCatching {
-            "https://1.1.1.1/dns-query?name=$url&type=1"
-                .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
-                .decodeToString()
-                .fromJson<DnsResolve>()
-                .Answer
-                ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
-                ?.data
-                .orEmpty()
-        }
+                "https://1.1.1.1/dns-query?name=$url&type=1"
+                    .readBytesFromNet(headers = mutableMapOf("accept" to "application/dns-json"))
+                    .decodeToString()
+                    .fromJson<DnsResolve>()
+                    .Answer
+                    ?.find { it.type == 1 && it.data!!.quickPing() > 0 }
+                    ?.data
+                    .orEmpty()
+            }
             .getOrDefault("")
 
-   private fun ipApiResolve(url: String): String =
+    private fun ipApiResolve(url: String): String =
         runCatching {
-            "https://ipaddress.com/website/$url"
-                .readBytesFromNet(
-                    headers = mutableMapOf("referer" to "https://www.ipaddress.com/")
-                )
-                .decodeToString()
-                .run { reg.find(this)?.groupValues?.get(1).orEmpty() }
-        }
+                "https://ipaddress.com/website/$url"
+                    .readBytesFromNet(
+                        headers = mutableMapOf("referer" to "https://www.ipaddress.com/")
+                    )
+                    .decodeToString()
+                    .run { reg.find(this)?.groupValues?.get(1).orEmpty() }
+            }
             .getOrDefault("")
 }
