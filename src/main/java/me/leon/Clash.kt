@@ -33,7 +33,6 @@ data class Clash(
     var rule: List<String> = mutableListOf()
 }
 
-
 @Suppress("ConstructorParameterNaming")
 data class Node(
     var name: String = "",
@@ -89,14 +88,14 @@ data class Node(
         var headers: LinkedHashMap<String, String> = linkedMapOf()
     )
 
-    private fun properPath() =
-        if (network == "ws") `ws-path`.ifEmpty { `ws-opts`.path } else ""
+    private fun properPath() = if (network == "ws") `ws-path`.ifEmpty { `ws-opts`.path } else ""
 
     private fun properHost() =
-        if (network == "ws") `ws-headers`["Host"] ?: `ws-headers`["host"]
-        ?: `ws-opts`.headers["Host"] ?: `ws-opts`.headers["host"].orEmpty()
+        if (network == "ws")
+            `ws-headers`["Host"]
+                ?: `ws-headers`["host"] ?: `ws-opts`.headers["Host"]
+                    ?: `ws-opts`.headers["host"].orEmpty()
         else ""
-
 
     fun toNode(): Sub {
         // 兼容某些异常节点池
@@ -118,17 +117,18 @@ data class Node(
 
     private fun toVmess() =
         V2ray(
-            aid = alterId,
-            add = server,
-            port = port.toString(),
-            id = uuid,
-            net = network,
-            tls = when (tls) {
-                is Boolean -> if (tls as Boolean) "true" else ""
-                is Int -> if (tls as Int == 1) "true" else ""
-                else -> ""
-            }
-        )
+                aid = alterId,
+                add = server,
+                port = port.toString(),
+                id = uuid,
+                net = network,
+                tls =
+                    when (tls) {
+                        is Boolean -> if (tls as Boolean) "true" else ""
+                        is Int -> if (tls as Int == 1) "true" else ""
+                        else -> ""
+                    }
+            )
             .apply {
                 path = properPath()
                 host = properHost()
@@ -138,15 +138,15 @@ data class Node(
 
     private fun toSsr() =
         SSR(
-            server,
-            port.toString(),
-            protocol,
-            cipher,
-            obfs,
-            password,
-            if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
-            `protocol-param` + `protocol_param` + protocolparam
-        )
+                server,
+                port.toString(),
+                protocol,
+                cipher,
+                obfs,
+                password,
+                if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
+                `protocol-param` + `protocol_param` + protocolparam
+            )
             .apply {
                 remarks = this@Node.name
                 nation = country

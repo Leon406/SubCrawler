@@ -21,24 +21,25 @@ class YamlTest {
 
     @Test
     fun yaml() {
-        val list = listOf(
-            "https://ghproxy.com/https://raw.githubusercontent.com/clashconfig/online/main/SurfShark(34687).yml",
-//             "https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml",
-            "https://ghproxy.com/https://raw.githubusercontent.com/vveg26/get_proxy/main/dist/clash.config.yaml",
-        )
+        val list =
+            listOf(
+                "https://ghproxy.com/https://raw.githubusercontent.com/clashconfig/online/main/SurfShark(34687).yml",
+                //
+                // "https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml",
+                "https://ghproxy.com/https://raw.githubusercontent.com/vveg26/get_proxy/main/dist/clash.config.yaml",
+            )
 
         for (url in list) {
             println(url)
             val data = url.readFromNet()
             if (data.isNotEmpty()) {
-                with(
-                    Yaml(Constructor(Clash::class.java)).load(data.fixYaml()) as Clash
-                ) {
+                with(Yaml(Constructor(Clash::class.java)).load(data.fixYaml()) as Clash) {
                     println(
-                        this.proxies
-                            .map(Node::toNode)
-                            .filterIsInstance<V2ray>()
-                            .joinToString("|") { sub -> sub.also { println(it) }.toUri() }
+                        this.proxies.map(Node::toNode).filterIsInstance<V2ray>().joinToString(
+                            "|"
+                        ) { sub ->
+                            sub.also { println(it) }.toUri()
+                        }
                     )
                 }
             } else {
@@ -49,14 +50,16 @@ class YamlTest {
 
     @Test
     fun str() {
-        val raw = """
+        val raw =
+            """
 - cipher: aes-128-cfb
   name: '[10-12]-🇦🇶-本机地址-964-${'$'}*@14.29.124.174'
   password: 
   server: ${'$'}*@14.29.124.174
   port: 11049
   type: ss
-        """.trimIndent()
+        """
+                .trimIndent()
 
         println(raw)
         raw.replace("!<[^>]+>".toRegex(), "")
@@ -64,5 +67,4 @@ class YamlTest {
             .replace("server: $*@", "server: ")
             .also { println(it) }
     }
-
 }
