@@ -23,7 +23,15 @@ jobs:
     steps:
       - run: sudo timedatectl set-timezone Asia/Shanghai
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle
+            ~/.m2
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
       # Runs a single command using the runners shell
       - run: chmod  777 ./gradlew
       - name: execute gradle test

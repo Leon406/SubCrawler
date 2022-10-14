@@ -22,7 +22,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      # Gradle 缓存配置 https://docs.github.com/cn/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+      # GitHub 将删除 7 天内未被访问的任何缓存条目。 可以存储的缓存数没有限制，但大小10 GB
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle
+            ~/.m2
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
       # Runs a single command using the runners shell
       - run: chmod  777 ./gradlew
       - name: execute gradle test
