@@ -42,18 +42,20 @@ data class V2ray(
     var scy: String = "auto",
     /** network */
     var net: String = "tcp",
-
-    /** 伪装域名 */
-    var host: String = "",
-    /** 伪装路径 */
-    var path: String = "",
-
-    /** 默认false,空串即可 */
-    var tls: String = "",
-    var sni: String = "",
 ) : Sub() {
     var v: String = "2"
     var ps: String = ""
+
+    /** 伪装域名 */
+    var host: String = ""
+
+    /** 伪装路径 */
+    var path: String = ""
+
+    /** 默认false,空串即可 */
+    var tls: String = ""
+        get() = if (field == "tls") "true" else field
+    var sni: String = ""
 
     /** 伪装类型 tcp/kcp/QUIC 默认none */
     var type: String = "none"
@@ -91,6 +93,7 @@ data class SS(
         get() = port.toInt()
     override val SERVER
         get() = server
+
     override fun toUri() = "ss://${"$method:$pwd@$server:$port".b64Encode()}#${name.urlEncode()}"
 
     override fun info() = "$nation $remark ss $server:$port"

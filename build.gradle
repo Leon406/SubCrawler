@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
     id "com.diffplug.spotless" version "6.11.0"
     id "io.gitlab.arturbosch.detekt" version "1.22.0-RC1"
 }
@@ -18,7 +18,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'com.google.code.gson:gson:2.9.0'
     //for yaml 1.1
-    implementation 'org.yaml:snakeyaml:1.32'
+    implementation 'org.yaml:snakeyaml:1.33'
     //mmdb格式
     implementation 'com.maxmind.geoip2:geoip2:3.0.1'
     //dat格式

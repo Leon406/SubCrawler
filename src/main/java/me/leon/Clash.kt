@@ -122,14 +122,14 @@ data class Node(
                 port = port.toString(),
                 id = uuid,
                 net = network,
-                tls =
-                    when (tls) {
-                        is Boolean -> if (tls as Boolean) "true" else ""
-                        is Int -> if (tls as Int == 1) "true" else ""
-                        else -> ""
-                    }
             )
             .apply {
+                tls =
+                    when (this@Node.tls) {
+                        is Boolean -> if (this@Node.tls as Boolean) "true" else ""
+                        is Int -> if (this@Node.tls as Int == 1) "true" else ""
+                        else -> ""
+                    }
                 path = properPath()
                 host = properHost()
                 ps = this@Node.name

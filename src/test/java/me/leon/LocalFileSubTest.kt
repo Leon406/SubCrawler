@@ -45,8 +45,10 @@ class LocalFileSubTest {
     @Test
     fun readLocal4() {
         Parser.parseFromSub(NODE_OK)
+            .filterIsInstance<V2ray>()
+            .filter { it.net == "h2" }
             .filterNot { it.methodUnSupported().apply { if (this) println("____$it") } }
-            .joinToString("\n") { it.name }
+            .joinToString("\n") { it.info() + "${it.tls} ${it.path}" }
             .also { println(it) }
     }
 
