@@ -162,10 +162,11 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
 }
 
 fun Sub.methodUnSupported() =
-    this is SSR && method in SSR_unSupportCipher ||
+    this is SSR && (method in SSR_unSupportMethod || protocol in SSR_unSupportProtocol) ||
         this is SS && method in SS_unSupportCipher ||
         this is V2ray && net in VMESS_unSupportProtocol
 
-val SSR_unSupportCipher = arrayOf("none", "rc4", "rc4-md5")
+val SSR_unSupportMethod = arrayOf("none", "rc4", "rc4-md5")
+val SSR_unSupportProtocol = arrayOf("auth_chain_a")
 val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb", "aes-256-cfb")
 val VMESS_unSupportProtocol = arrayOf("none")

@@ -59,7 +59,7 @@ class LocalFileSubTest {
             .filterNot { it.methodUnSupported() }
             .filterIsInstance<SSR>()
             //            .joinToString("\n") { it.name }
-            .also { println(it.map { it.method }.groupBy { it }) }
+            .also { println(it.map { it.protocol }.groupBy { it }.keys) }
     }
 
     @Test
