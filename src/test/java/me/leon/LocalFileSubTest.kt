@@ -46,7 +46,7 @@ class LocalFileSubTest {
     fun readLocal4() {
         Parser.parseFromSub(NODE_OK)
             .filterIsInstance<V2ray>()
-            .filter { it.net == "h2" }
+            .filter { it.net == "grpc" }
             .filterNot { it.methodUnSupported().apply { if (this) println("____$it") } }
             .joinToString("\n") { it.info() + "${it.tls} ${it.path}" }
             .also { println(it) }
