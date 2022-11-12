@@ -45,7 +45,7 @@ complexity:
     threshold: 10
     includeStaticDeclarations: false
     includePrivateDeclarations: false
-  ComplexMethod:
+  CyclomaticComplexMethod:
     active: true
     threshold: 16
     ignoreSingleWhenExpression: true
@@ -340,10 +340,6 @@ style:
 
   ForbiddenVoid:
     active: true
-  LibraryCodeMustSpecifyReturnType:
-    active: true
-    excludes: ['**/*.kt']
-    includes: ['**/detekt-api/src/main/**/api/*.kt']
   MagicNumber:
     excludes: ['**/test/**', '**/*Test.kt', '**/*Spec.kt']
     ignorePropertyDeclaration: true
@@ -395,7 +391,7 @@ style:
   UntilInsteadOfRangeTo:
     active: true
   UnusedImports:
-    active: false
+    active: false # formatting already have this rule enabled
   UnusedPrivateMember:
     active: true
     allowedNames: '(_|ignored|expected)'
@@ -563,3 +559,11 @@ formatting:
   StringTemplate:
     active: true
     autoCorrect: true
+  TrailingCommaOnCallSite:
+    active: false
+    autoCorrect: true
+    useTrailingCommaOnCallSite: false
+  TrailingCommaOnDeclarationSite:
+    active: false
+    autoCorrect: true
+    useTrailingCommaOnDeclarationSite: false
