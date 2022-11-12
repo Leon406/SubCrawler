@@ -114,6 +114,7 @@ data class Node(
     private fun toTrojan() =
         Trojan(password, server, port.toString()).apply {
             this.remark = this@Node.name
+            query = "allowInsecure=${if (`skip-cert-verify`) 1 else 0}&sni=$sni"
             nation = country
         }
 
