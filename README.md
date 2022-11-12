@@ -17,7 +17,7 @@
 
 ## 优质节点池
 
-- :star: [https://proxies.bihai.cf](https://proxies.bihai.cf)
+[大部分都停用,自行搜索](https://www.google.com/search?client=aff-cs-360se&ie=UTF-8&q=inurl%3A%2Fclash%2Fproxies&)
 
 ## 节点池搭建
 
@@ -26,8 +26,8 @@
 ## <span id="subCon">订阅转换</span>
 
 - [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
-- [:star:sub v1](https://sub.v1.mk/)
-- [本地搭建](https://github.com/tindy2013/subconverter/releases)
+- [sub v1](https://sub.v1.mk/)
+- [:star:本地搭建 推荐](https://github.com/tindy2013/subconverter/releases)
 - [つつの]( https://sub.tsutsu.cc/)
 - [con8](https://www.con8.tk/)
 - [品云](https://id9.cc/)
@@ -39,9 +39,9 @@
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
-    - [nodescatch](https://github.com/bulianglin/demo)
-- 在线测速(基于上面本地测速搭建的服务)
-    - [zeroteam](https://speedtest.zeroteam.top/)
+    - [nodescatch](https://github.com/bulianglin/demo)     [个人组件更新版](https://leon.lanzoub.com/ixESG0fsdcla)
+- 在线测速(基于上面本地测速搭建的服务,建议自行搭建)
+    - ~~[zeroteam](https://speedtest.zeroteam.top/)~~
     - ~~[品云](http://gz.cloudtest.cc/)~~
 
 ## 项目生成内容
