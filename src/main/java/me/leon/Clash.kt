@@ -91,11 +91,13 @@ data class Node(
     private fun properPath() = if (network == "ws") `ws-path`.ifEmpty { `ws-opts`.path } else ""
 
     private fun properHost() =
-        if (network == "ws")
+        if (network == "ws") {
             `ws-headers`["Host"]
                 ?: `ws-headers`["host"] ?: `ws-opts`.headers["Host"]
                     ?: `ws-opts`.headers["host"].orEmpty()
-        else ""
+        } else {
+            ""
+        }
 
     fun toNode(): Sub {
         // 兼容某些异常节点池

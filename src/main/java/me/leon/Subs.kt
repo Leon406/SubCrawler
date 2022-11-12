@@ -157,8 +157,11 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
 
     override fun toUri() = "trojan://${"$password@$server:$port$params"}#${name.urlEncode()}"
     override fun info() =
-        if (query.isEmpty()) "$nation $name trojan $server:$port"
-        else "$nation $remark trojan $server:$port?$query"
+        if (query.isEmpty()) {
+            "$nation $name trojan $server:$port"
+        } else {
+            "$nation $remark trojan $server:$port?$query"
+        }
 }
 
 fun Sub.methodUnSupported() =

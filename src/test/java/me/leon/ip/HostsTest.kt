@@ -43,7 +43,9 @@ class HostsTest {
                                 ip =
                                     if (this@run[0] == "127.0.0.1" && domain != "localhost") {
                                         "0.0.0.0"
-                                    } else this@run[0]
+                                    } else {
+                                        this@run[0]
+                                    }
                             }
                         }
                     }

@@ -7,8 +7,9 @@ import java.util.Base64
 fun String.b64Decode() = String(Base64.getDecoder().decode(this))
 
 fun String.b64SafeDecode() =
-    if (this.contains(":")) this
-    else {
+    if (this.contains(":")) {
+        this
+    } else {
         runCatching {
                 String(Base64.getDecoder().decode(this.trim().replace("_", "/").replace("-", "+")))
             }
