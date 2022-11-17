@@ -171,5 +171,5 @@ fun Sub.methodUnSupported() =
 
 val SSR_unSupportMethod = arrayOf("none", "rc4", "rc4-md5")
 val SSR_unSupportProtocol = arrayOf("auth_chain_a")
-val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb", "aes-256-cfb")
+val SS_unSupportCipher = arrayOf("rc4-md5", "aes-128-cfb", "aes-256-cfb", "none")
 val VMESS_unSupportProtocol = arrayOf("none", "grpc")
