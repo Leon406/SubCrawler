@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.7.21'
     id "com.diffplug.spotless" version "6.11.0"
-    id "io.gitlab.arturbosch.detekt" version "1.22.0-RC3"
+    id "io.gitlab.arturbosch.detekt" version "1.22.0"
 }
 
 group 'me.leon'
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0-RC3"
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'com.google.code.gson:gson:2.10'
