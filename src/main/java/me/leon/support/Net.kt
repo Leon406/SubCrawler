@@ -1,12 +1,11 @@
 package me.leon.support
 
+import kotlinx.coroutines.Dispatchers
+import me.leon.FAIL_IPS
 import java.io.DataOutputStream
 import java.io.File
 import java.net.*
-import java.util.concurrent.Executors
 import kotlin.system.measureTimeMillis
-import kotlinx.coroutines.asCoroutineDispatcher
-import me.leon.FAIL_IPS
 
 val failIpPorts by lazy { FAIL_IPS.readLines().toHashSet() }
 val fails = mutableSetOf<String>()
@@ -183,6 +182,4 @@ fun String.quickPing(timeout: Int = 1000) =
         FAIL_IPS.writeLine(it)
     }
 
-val DISPATCHER =
-    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2)
-        .asCoroutineDispatcher()
+val DISPATCHER = Dispatchers.IO
