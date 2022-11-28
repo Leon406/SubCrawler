@@ -17,6 +17,16 @@ www.hcaptcha.com
 assets.hcaptcha.com
 imgs.hcaptcha.com
 newassets.hcaptcha.com
+cf-assets.hcaptcha.com
+js.hcaptcha.com
+api.hcaptcha.com
+#recaptcha
+recaptcha.net
+api.recaptcha.net
+api-secure.recaptcha.net
+api-verify.recaptcha.net
+mailhide.recaptcha.net
+www.recaptcha.net
 #discord
 discord.com
 discordapp.com
@@ -30,6 +40,7 @@ images-ext-1.discordapp.net
 discordcdn.com
 #lastpass
 lastpass.com
+www.lastpass.com
 #microsoft
 logincdn.msauth.net
 acctcdn.msauth.net
