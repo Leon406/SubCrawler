@@ -1,11 +1,11 @@
 package me.leon
 
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.support.*
 import org.junit.jupiter.api.Test
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NodeCrawler {
 
@@ -42,6 +42,7 @@ class NodeCrawler {
         println(subs.size)
         val prefix = SimpleDateFormat("MMdd").format(Date())
         val countryMap = mutableMapOf<String, Int>()
+        val errorList = mutableListOf<String>()
         POOL.writeLine()
         runBlocking {
             subs
@@ -49,20 +50,25 @@ class NodeCrawler {
                 .also { println("共有订阅源：${it.size.also { subCount = it }}") }
                 .map { sub ->
                     sub to
-                        async(DISPATCHER) {
-                            runCatching {
+                            async(DISPATCHER) {
+                                runCatching {
                                     val uri =
                                         sub.takeUnless {
                                             it.startsWith("https://raw.githubusercontent.com/")
                                         }
                                             ?: "https://ghproxy.com/$sub"
-                                    Parser.parseFromSub(uri).also { println("$uri ${it.size} ") }
+                                    Parser.parseFromSub(uri).also {
+                                        println("$uri ${it.size}")
+                                        if (it.size == 0) {
+                                            errorList.add(uri)
+                                        }
+                                    }
                                 }
-                                .getOrElse {
-                                    println("___parse failed $sub  ${it.message}")
-                                    linkedSetOf()
-                                }
-                        }
+                                    .getOrElse {
+                                        println("___parse failed $sub  ${it.message}")
+                                        linkedSetOf()
+                                    }
+                            }
                 }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
@@ -97,6 +103,8 @@ class NodeCrawler {
                     NODE_OK.writeLine(it.joinToString("\n") { it.toUri() })
                 }
         }
+
+        println("_________________ $errorList")
     }
 
     /** 节点可用性测试 */
@@ -153,20 +161,24 @@ class NodeCrawler {
                 NODE_SS.writeLine(data).also {
                     println("ss节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
+
             SSR::class.java ->
                 NODE_SSR.writeLine(data).also {
                     println("ssr节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
+
             V2ray::class.java ->
                 NODE_V2.writeLine(data).also {
                     println("v2ray节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
+
             Trojan::class.java ->
                 NODE_TR.writeLine(data).also {
                     println("trojan节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
         }
     }
+
     companion object {
         private val nodeInfo = "$ROOT/info.md"
         val nodeInfoLocal = "$ROOT/info2.md"

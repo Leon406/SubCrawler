@@ -28,4 +28,4 @@ inline fun <reified D> String.fromJsonArray() = GsonUtils.jsonToList(this, Array
 
 inline fun <reified D> String.fromJsonList() = GsonUtils.jsonToArrayList(this, D::class.java)
 
-inline fun Any.toJson() = GsonUtils.toJson(this)
+fun Any.toJson() = GsonUtils.toJson(this)

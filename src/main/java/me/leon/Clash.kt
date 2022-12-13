@@ -31,6 +31,7 @@ data class Clash(
     var `cfw-latency-timeout`: Int = 0
     var `experimental`: Any = Any()
     var rule: List<String> = mutableListOf()
+    var `proxy-providers`: LinkedHashMap<String, Any> = linkedMapOf()
 }
 
 @Suppress("ConstructorParameterNaming")
@@ -61,8 +62,10 @@ data class Node(
     var plugin: String = ""
     var sni: String = ""
     var udp: Boolean = false
+    var ipv6: Boolean = false
     var tls: Any = Any()
     var _index: Int = 0
+    var index: Int = 0
     var `skip-cert-verify`: Boolean = false
     var `protocol_param`: String = ""
     var protocolparam: String = ""

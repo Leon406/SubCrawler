@@ -11,7 +11,6 @@ val SHARE2 = "$ROOT/share/private"
 val POOL = "$ROOT/pools"
 val BIHAI = "$ROOT/bihai.yaml"
 
-val SPEED_TEST_RESULT = "$ROOT/speedtest.txt"
 val NODE_OK = "$SHARE/available"
 val NODE_SS = "$SHARE/ss"
 val NODE_SS2 = "$SHARE2/ss"
