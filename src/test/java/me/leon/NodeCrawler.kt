@@ -29,7 +29,10 @@ class NodeCrawler {
         val sublist = "$ROOT/pool/sublists".readLines()
         val subs3 =
             sublist
-                .map { it.readFromNet() }
+                .map {
+                    println(it.mirrorUrl)
+                    it.mirrorUrl.readFromNet()
+                }
                 .flatMap { it.split("\r\n|\n".toRegex()) }
                 .distinct()
                 .also { println("before ${it.size}") }
@@ -52,11 +55,7 @@ class NodeCrawler {
                     sub to
                             async(DISPATCHER) {
                                 runCatching {
-                                    val uri =
-                                        sub.takeUnless {
-                                            it.startsWith("https://raw.githubusercontent.com/")
-                                        }
-                                            ?: "https://ghproxy.com/$sub"
+                                    val uri = sub.mirrorUrl
                                     Parser.parseFromSub(uri).also {
                                         println("$uri ${it.size}")
                                         if (it.size == 0) {
@@ -104,7 +103,7 @@ class NodeCrawler {
                 }
         }
 
-        println("_________________ $errorList")
+        println("_________________ \n${errorList.joinToString(System.lineSeparator())}")
     }
 
     /** 节点可用性测试 */
