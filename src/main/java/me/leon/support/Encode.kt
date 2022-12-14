@@ -11,16 +11,18 @@ fun String.b64SafeDecode() =
         this
     } else {
         runCatching {
-            if (contains("=[^=]+.+".toRegex())) {
-                split("=").filter { it.isNotEmpty() }
-                    .joinToString(System.lineSeparator()) { it.replace("_", "/").replace("-", "+").base64Decode() }
-            } else {
-                trim().replace("_", "/").replace("-", "+")
-                    .base64Decode()
+                if (contains("=[^=]+.+".toRegex())) {
+                    split("=")
+                        .filter { it.isNotEmpty() }
+                        .joinToString(System.lineSeparator()) {
+                            it.replace("_", "/").replace("-", "+").base64Decode()
+                        }
+                } else {
+                    trim().replace("_", "/").replace("-", "+").base64Decode()
+                }
             }
-        }
             .getOrElse {
-//                it.printStackTrace()
+                //                it.printStackTrace()
                 println("failed: $this  ${it.message}")
                 ""
             }

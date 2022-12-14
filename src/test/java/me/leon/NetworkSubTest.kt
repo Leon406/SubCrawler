@@ -1,23 +1,21 @@
 package me.leon
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
-import me.leon.support.DISPATCHER
-import me.leon.support.quickConnect
 import org.junit.jupiter.api.Test
 
 class NetworkSubTest {
     @Test
     fun subParse() {
         // https://ghproxy.com/https://raw.githubusercontent.com/samjoeyang/subscribe/main/fly
-        val e = "https://github.moeyy.xyz/https://raw.githubusercontent.com/visiti/clash-node/main/clash-node.yaml"
-//        runBlocking {
-//            Parser.parseFromSub(e)
-//                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 1000) } }
-//                .filter { it.second.await() > -1 }
-//                .also { println(it.size) }
-//                .forEach { println(it.first.info() + ":" + it.second) }
-//        }
+        val e =
+            "https://github.moeyy.xyz/https://raw.githubusercontent.com/visiti/clash-node/main/clash-node.yaml"
+        //        runBlocking {
+        //            Parser.parseFromSub(e)
+        //                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort,
+        // 1000) } }
+        //                .filter { it.second.await() > -1 }
+        //                .also { println(it.size) }
+        //                .forEach { println(it.first.info() + ":" + it.second) }
+        //        }
 
         listOf(
                 e,

@@ -1,13 +1,13 @@
 package me.leon
 
-import me.leon.support.*
-import org.yaml.snakeyaml.LoaderOptions
-import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.Constructor
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import javax.net.ssl.*
+import me.leon.support.*
+import org.yaml.snakeyaml.LoaderOptions
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.constructor.Constructor
 
 private const val UUID_LENGTH = 36
 
@@ -45,13 +45,13 @@ object Parser {
             )
         // Install the all-trusting trust manager
         runCatching {
-            val sc = SSLContext.getInstance("SSL")
-            sc.init(null, trustAllCerts, SecureRandom())
-            val sslsc = sc.serverSessionContext
-            sslsc.sessionTimeout = 0
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
-            HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
-        }
+                val sc = SSLContext.getInstance("SSL")
+                sc.init(null, trustAllCerts, SecureRandom())
+                val sslsc = sc.serverSessionContext
+                sslsc.sessionTimeout = 0
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
+                HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
+            }
             .getOrElse {
                 // if needed
             }
@@ -70,15 +70,16 @@ object Parser {
 
     fun parseV2ray(uri: String): Sub =
         runCatching {
-            "parseV2ray ".debug(uri)
-            REG_SCHEMA_HASH.matchEntire(uri)?.run {
-                groupValues[2]
-                    .b64SafeDecode()
-                    .also { "parseV2ray base64 decode: ".debug(it) }
-                    .fromJson<V2ray>()
-                    .takeIf { it.id.length == UUID_LENGTH && !it.add.contains("baidu.com") }
-            } ?: NoSub
-        }
+                "parseV2ray ".debug(uri)
+                REG_SCHEMA_HASH.matchEntire(uri)?.run {
+                    groupValues[2]
+                        .b64SafeDecode()
+                        .also { "parseV2ray base64 decode: ".debug(it) }
+                        .fromJson<V2ray>()
+                        .takeIf { it.id.length == UUID_LENGTH && !it.add.contains("baidu.com") }
+                }
+                    ?: NoSub
+            }
             .getOrElse {
                 "parseV2ray err".debug(uri)
                 NoSub
@@ -93,7 +94,7 @@ object Parser {
             val decoded =
                 groupValues[2].takeUnless { it.contains("@") }?.b64Decode()
                 // 兼容异常
-                    ?: with(groupValues[2]) {
+                ?: with(groupValues[2]) {
                         "${substringBefore('@').b64Decode()}${substring(indexOf('@'))}".also {
                             "parseSs b64 format correct".debug("___$it")
                         }
@@ -114,34 +115,36 @@ object Parser {
     fun parseSsr(uri: String): Sub {
         "parseSsr ".debug(uri)
         return runCatching {
-            REG_SCHEMA_HASH.matchEntire(uri)?.run {
-                groupValues[2].b64SafeDecode().split(":").run {
-                    "parseSsr query".debug(this[5])
-                    REG_SSR_PARAM.matchEntire(this[5])?.let {
-                        "parseSsr query match".debug(it.groupValues[2])
-                        val q = it.groupValues[2].queryParamMapB64()
-                        "parseSsr query maps".debug(q.toString())
-                        return SSR(
-                            this[0],
-                            this[1],
-                            this[2],
-                            this[3],
-                            this[4],
-                            it.groupValues[1].b64SafeDecode(),
-                            q["obfsparam"].orEmpty(),
-                            q["protoparam"].orEmpty(),
-                        )
-                            .apply {
-                                remarks = q["remarks"].orEmpty()
-                                group = q["group"].orEmpty()
-                            }
+                REG_SCHEMA_HASH.matchEntire(uri)?.run {
+                    groupValues[2].b64SafeDecode().split(":").run {
+                        "parseSsr query".debug(this[5])
+                        REG_SSR_PARAM.matchEntire(this[5])?.let {
+                            "parseSsr query match".debug(it.groupValues[2])
+                            val q = it.groupValues[2].queryParamMapB64()
+                            "parseSsr query maps".debug(q.toString())
+                            return SSR(
+                                    this[0],
+                                    this[1],
+                                    this[2],
+                                    this[3],
+                                    this[4],
+                                    it.groupValues[1].b64SafeDecode(),
+                                    q["obfsparam"].orEmpty(),
+                                    q["protoparam"].orEmpty(),
+                                )
+                                .apply {
+                                    remarks = q["remarks"].orEmpty()
+                                    group = q["group"].orEmpty()
+                                }
+                        }
                     }
                 }
-            } ?: NoSub
-        }.getOrElse {
-            "parseSsr err not match".debug(uri)
-            NoSub
-        }
+                    ?: NoSub
+            }
+            .getOrElse {
+                "parseSsr err not match".debug(uri)
+                NoSub
+            }
     }
 
     fun parseTrojan(uri: String): Sub {
@@ -167,11 +170,8 @@ object Parser {
         "parseFromSub Local".debug(path)
         val data = path.readText().b64SafeDecode()
         return if (data.contains("proxies:")) {
-            (Yaml(
-                Constructor(
-                    Clash::class.java,
-                    LoaderOptions().apply { codePointLimit *= 4 })
-            ).load(data.fixYaml()) as Clash)
+            (Yaml(Constructor(Clash::class.java, LoaderOptions().apply { codePointLimit *= 4 }))
+                    .load(data.fixYaml()) as Clash)
                 .proxies
                 .asSequence()
                 .map(Node::toNode)
@@ -196,28 +196,32 @@ object Parser {
         val data = url.readFromNet().b64SafeDecode()
 
         return runCatching {
-            if (data.contains("proxies:"))
-            // 移除yaml中的标签
-            {
-                (Yaml(Constructor(Clash::class.java, LoaderOptions().apply { codePointLimit *= 4 })).load(
-                    data.fixYaml().also { it.debug() })
-                        as Clash)
-                    .proxies
-                    .asSequence()
-                    .map(Node::toNode)
-                    .filterNot { it is NoSub }
-                    .fold(linkedSetOf<Sub>()) { acc, sub -> acc.also { acc.add(sub) } }
-            } else {
-                data
-                    .also { "parseFromNetwork".debug(it) }
-                    .split("\r\n|\n".toRegex())
-                    .asSequence()
-                    .filter { it.isNotEmpty() }
-                    .mapNotNull { parse(it.replace("/#", "#")) }
-                    .filterNot { it is NoSub }
-                    .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
+                if (data.contains("proxies:"))
+                    // 移除yaml中的标签
+                {
+                    (Yaml(
+                                Constructor(
+                                    Clash::class.java,
+                                    LoaderOptions().apply { codePointLimit *= 4 }
+                                )
+                            )
+                            .load(data.fixYaml().also { it.debug() }) as Clash)
+                        .proxies
+                        .asSequence()
+                        .map(Node::toNode)
+                        .filterNot { it is NoSub }
+                        .fold(linkedSetOf<Sub>()) { acc, sub -> acc.also { acc.add(sub) } }
+                } else {
+                    data
+                        .also { "parseFromNetwork".debug(it) }
+                        .split("\r\n|\n".toRegex())
+                        .asSequence()
+                        .filter { it.isNotEmpty() }
+                        .mapNotNull { parse(it.replace("/#", "#")) }
+                        .filterNot { it is NoSub }
+                        .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
+                }
             }
-        }
             .getOrElse {
                 println("failed______ $url ${it.message}")
                 linkedSetOf()

@@ -1,12 +1,13 @@
 package me.leon
 
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.support.*
 import org.junit.jupiter.api.Test
-import java.text.SimpleDateFormat
-import java.util.*
 
+@Suppress("LongMethod")
 class NodeCrawler {
 
     private val maps = linkedMapOf<String, LinkedHashSet<Sub>>()
@@ -53,8 +54,8 @@ class NodeCrawler {
                 .also { println("共有订阅源：${it.size.also { subCount = it }}") }
                 .map { sub ->
                     sub to
-                            async(DISPATCHER) {
-                                runCatching {
+                        async(DISPATCHER) {
+                            runCatching {
                                     val uri = sub.mirrorUrl
                                     Parser.parseFromSub(uri).also {
                                         println("$uri ${it.size}")
@@ -63,11 +64,11 @@ class NodeCrawler {
                                         }
                                     }
                                 }
-                                    .getOrElse {
-                                        println("___parse failed $sub  ${it.message}")
-                                        linkedSetOf()
-                                    }
-                            }
+                                .getOrElse {
+                                    println("___parse failed $sub  ${it.message}")
+                                    linkedSetOf()
+                                }
+                        }
                 }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
@@ -160,17 +161,14 @@ class NodeCrawler {
                 NODE_SS.writeLine(data).also {
                     println("ss节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
-
             SSR::class.java ->
                 NODE_SSR.writeLine(data).also {
                     println("ssr节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
-
             V2ray::class.java ->
                 NODE_V2.writeLine(data).also {
                     println("v2ray节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
-
             Trojan::class.java ->
                 NODE_TR.writeLine(data).also {
                     println("trojan节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
