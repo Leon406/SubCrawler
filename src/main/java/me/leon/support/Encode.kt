@@ -11,13 +11,22 @@ fun String.b64SafeDecode() =
         this
     } else {
         runCatching {
-                String(Base64.getDecoder().decode(this.trim().replace("_", "/").replace("-", "+")))
+            if (contains("=[^=]+.+".toRegex())) {
+                split("=").filter { it.isNotEmpty() }
+                    .joinToString(System.lineSeparator()) { it.replace("_", "/").replace("-", "+").base64Decode() }
+            } else {
+                trim().replace("_", "/").replace("-", "+")
+                    .base64Decode()
             }
+        }
             .getOrElse {
-                println("failed:  ${it.message}")
+//                it.printStackTrace()
+                println("failed: $this  ${it.message}")
                 ""
             }
     }
+
+fun String.base64Decode() = String(Base64.getDecoder().decode(this))
 
 fun String.b64Encode(): String = Base64.getEncoder().encodeToString(this.toByteArray())
 
