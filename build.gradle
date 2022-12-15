@@ -17,8 +17,8 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'com.google.code.gson:gson:2.10'
-    //for yaml 1.1
-    implementation 'org.yaml:snakeyaml:1.33'
+    //for yaml 1.1, 1.32 limit maxsize 3M
+    implementation 'org.yaml:snakeyaml:1.31'
     //mmdb格式
     implementation 'com.maxmind.geoip2:geoip2:3.0.2'
     //dat格式

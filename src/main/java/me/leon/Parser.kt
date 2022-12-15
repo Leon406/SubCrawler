@@ -5,9 +5,6 @@ import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import javax.net.ssl.*
 import me.leon.support.*
-import org.yaml.snakeyaml.LoaderOptions
-import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.Constructor
 
 private const val UUID_LENGTH = 36
 
@@ -170,12 +167,11 @@ object Parser {
         "parseFromSub Local".debug(path)
         val data = path.readText().b64SafeDecode()
         return if (data.contains("proxies:")) {
-            (Yaml(Constructor(Clash::class.java, LoaderOptions().apply { codePointLimit *= 4 }))
-                    .load(data.fixYaml()) as Clash)
-                .proxies
-                .asSequence()
-                .map(Node::toNode)
-                .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
+            data.parseYaml<Clash>().proxies.asSequence().map(Node::toNode).fold(linkedSetOf()) {
+                acc,
+                sub ->
+                acc.also { acc.add(sub) }
+            }
         } else {
             data
                 //                .also { println(it) }
@@ -193,19 +189,14 @@ object Parser {
 
     private fun parseFromNetwork(url: String): LinkedHashSet<Sub> {
         "parseFromNetwork".debug(url)
+        println(url)
         val data = url.readFromNet().b64SafeDecode()
-
         return runCatching {
                 if (data.contains("proxies:"))
                     // 移除yaml中的标签
                 {
-                    (Yaml(
-                                Constructor(
-                                    Clash::class.java,
-                                    LoaderOptions().apply { codePointLimit *= 4 }
-                                )
-                            )
-                            .load(data.fixYaml().also { it.debug() }) as Clash)
+                    data
+                        .parseYaml<Clash>()
                         .proxies
                         .asSequence()
                         .map(Node::toNode)
@@ -217,12 +208,13 @@ object Parser {
                         .split("\r\n|\n".toRegex())
                         .asSequence()
                         .filter { it.isNotEmpty() }
-                        .mapNotNull { parse(it.replace("/#", "#")) }
+                        .map { parse(it.replace("/#", "#")) }
                         .filterNot { it is NoSub }
                         .fold(linkedSetOf()) { acc, sub -> acc.also { acc.add(sub) } }
                 }
             }
             .getOrElse {
+                it.printStackTrace()
                 println("failed______ $url ${it.message}")
                 linkedSetOf()
             }

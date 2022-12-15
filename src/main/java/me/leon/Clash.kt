@@ -64,21 +64,16 @@ data class Node(
     var udp: Boolean = false
     var ipv6: Boolean = false
     var tls: Any = Any()
-    var _index: Int = 0
-    var index: Int = 0
     var `skip-cert-verify`: Boolean = false
     var `protocol_param`: String = ""
     var protocolparam: String = ""
+    var protoparam: String = ""
     var obfsparam: String = ""
     var username: String = ""
 
     // hysteria
     var auth_str: String = ""
     var alpn: String = ""
-    var down: Int = 0
-    var up: Int = 0
-    var recv_window: Int = 0
-    var recv_window_conn: Int = 0
     var disable_mtu_discovery: Boolean = false
 
     // http协议
@@ -86,6 +81,7 @@ data class Node(
 
     var `grpc-opts`: LinkedHashMap<String, Any> = linkedMapOf()
 
+    var group: String = ""
     data class VmessWsOpts(
         var path: String = "",
         var headers: LinkedHashMap<String, String> = linkedMapOf()
@@ -151,7 +147,7 @@ data class Node(
                 obfs,
                 password,
                 if (obfs == "plain") "" else `obfs-param` + obfs_param + obfsparam,
-                `protocol-param` + `protocol_param` + protocolparam
+                `protocol-param` + `protocol_param` + protocolparam + protoparam
             )
             .apply {
                 remarks = this@Node.name

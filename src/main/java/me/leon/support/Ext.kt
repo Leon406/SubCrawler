@@ -71,16 +71,6 @@ fun timeStamp(timeZone: String = "Asia/Shanghai"): String {
     return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(instance.time)
 }
 
-fun String.fixYaml() =
-    replace("!<[^>]+>".toRegex(), "")
-        .replace("  password: \n", "  password: xxxxx\n")
-        .replace("server: $*@", "server: ")
-        .replace(
-            "(?:UpdateDay|PFirstFoundDay|minimum|maximum|average|Rank|success_rate):\\s[-\\dT:.]+".toRegex(),
-            ""
-        )
-        .replace("udp:true", "udp: true")
-
 val mirrors = listOf("https://ghproxy.net/", "https://ghproxy.com/", "https://github.moeyy.xyz/")
 val String.mirrorUrl
     get() =

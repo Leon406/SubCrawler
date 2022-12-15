@@ -7,7 +7,7 @@ class NetworkSubTest {
     fun subParse() {
         // https://ghproxy.com/https://raw.githubusercontent.com/samjoeyang/subscribe/main/fly
         val e =
-            "https://github.moeyy.xyz/https://raw.githubusercontent.com/visiti/clash-node/main/clash-node.yaml"
+            "https://ghproxy.net/https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml"
         //        runBlocking {
         //            Parser.parseFromSub(e)
         //                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort,
