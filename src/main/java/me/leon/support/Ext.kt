@@ -71,7 +71,7 @@ fun timeStamp(timeZone: String = "Asia/Shanghai"): String {
     return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(instance.time)
 }
 
-val mirrors = listOf("https://ghproxy.net/", "https://ghproxy.com/", "https://github.moeyy.xyz/")
+val mirrors = listOf("https://ghproxy.net/", "https://ghproxy.com/")
 val String.mirrorUrl
     get() =
         takeUnless { it.startsWith("https://raw.githubusercontent.com/") }

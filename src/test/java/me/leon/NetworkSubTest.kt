@@ -5,9 +5,21 @@ import org.junit.jupiter.api.Test
 class NetworkSubTest {
     @Test
     fun subParse() {
+        /**
+         * https://qiaomenzhuanfx.netlify.app/
+         * https://ghproxy.net/https://raw.githubusercontent.com/learnhard-cn/free_proxy_ss/main/clash/providers/provider_home_netflix.yaml
+         * https://ghproxy.com/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg
+         * https://ghproxy.net/https://raw.githubusercontent.com/git-yusteven/openit/main/long
+         * https://ghproxy.net/https://raw.githubusercontent.com/webdao/v2ray/master/nodes.txt
+         * https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/get_v2/main/pub/changfengoss13.yaml
+         * https://ghproxy.com/https://raw.githubusercontent.com/mahdibland/get_v2/main/pub/changfengoss1.yaml
+         * https://ghproxy.com/https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub
+         * https://ghproxy.net/https://raw.githubusercontent.com/alanbobs999/TopFreeProxies/master/sub/sub_merge_base64.txt
+         * https://ghproxy.net/https://raw.githubusercontent.com/JasonZhao2k08/fly/main/index.html
+         */
         // https://ghproxy.com/https://raw.githubusercontent.com/samjoeyang/subscribe/main/fly
         val e =
-            "https://ghproxy.net/https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml"
+            "https://ghproxy.net/https://raw.githubusercontent.com/alanbobs999/TopFreeProxies/master/sub/sub_merge_base64.txt"
         //        runBlocking {
         //            Parser.parseFromSub(e)
         //                .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort,
