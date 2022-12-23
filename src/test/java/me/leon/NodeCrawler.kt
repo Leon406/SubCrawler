@@ -107,44 +107,17 @@ class NodeCrawler {
         println("_________________ \n${errorList.joinToString(System.lineSeparator())}")
     }
 
-    /** 节点可用性测试 */
-    @Test
-    fun checkNodes() {
-        nodeInfo.writeLine()
-        // 2.筛选可用节点
-        NODE_OK.writeLine()
-        val ok: HashSet<Sub>
-        runBlocking {
-            ok =
-                Parser.parseFromSub(POOL)
-                    .map { it to async(DISPATCHER) { it.SERVER.quickConnect(it.serverPort, 2000) } }
-                    .filter { it.second.await() > -1 }
-                    .also {
-                        println(
-                            "有效节点: ${it.size}".also {
-                                nodeInfo.writeLine("更新时间${timeStamp()}\r\n")
-                                nodeInfo.writeLine("**总订阅: $subCount**")
-                                nodeInfo.writeLine("**总节点: $nodeCount**")
-                                nodeInfo.writeLine("**$it**")
-                            }
-                        )
-                    }
-                    .map { it.first }
-                    .toHashSet()
-                    .also { NODE_OK.writeLine(it.joinToString("\n") { it.toUri() }) }
-        }
-
-        println("节点分布: ")
-        maps.forEach { (t, u) -> (ok - (ok - u)).also { println("$t ${it.size}/${u.size}") } }
-    }
-
     private fun nodeGroup() {
         NODE_SS.writeLine()
         NODE_SSR.writeLine()
         NODE_V2.writeLine()
         NODE_TR.writeLine()
+        NODE_VLESS.writeLine()
         val nodes = Parser.parseFromSub(NODE_OK)
-        NODE_ALL.writeLine(nodes.joinToString("\n") { it.toUri() }.b64Encode(), false)
+        NODE_ALL.writeLine(
+            nodes.filterNot { it is Vless }.joinToString("\n") { it.toUri() }.b64Encode(),
+            false
+        )
 
         nodes
             .groupBy { it.javaClass }
@@ -172,6 +145,10 @@ class NodeCrawler {
             Trojan::class.java ->
                 NODE_TR.writeLine(data).also {
                     println("trojan节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
+                }
+            Vless::class.java ->
+                NODE_VLESS.writeLine(data).also {
+                    println("vless节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
                 }
         }
     }

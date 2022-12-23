@@ -1,5 +1,6 @@
 package me.leon
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 class NetworkSubTest {
@@ -62,5 +63,15 @@ class NetworkSubTest {
         println("共享 ${share.size}")
         println("l1 ${l1.size} 独有 ${l1Only.size}")
         println("l2 ${l2.size} 独有 ${l2Only.size}")
+    }
+
+    @Test
+    fun parseVless() {
+        val uri =
+            "vless://21f181f3-2f66-47a8-b4d5-7aef046cc087@104.19.146.137:443?encryption=none&security=tls&sni=ap.utopub.com&type=ws&host=ap.utopub.com&path=%2futopub-vless#NY%40vless"
+        Parser.parseVless(uri).also {
+            Assertions.assertEquals(uri, it.toUri())
+            println(it.info())
+        }
     }
 }

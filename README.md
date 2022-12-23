@@ -74,7 +74,8 @@
   - [ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/ssr)
   - [v2ray](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/v2)
   - [trojan](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/tr)
-  - [四合一转换](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all)
+  - [vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/vless)
+  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all)
 
 
 - 
@@ -84,7 +85,8 @@
   - [本地ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ssr)
   - [本地v2ray](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/v2)
   - [本地trojan](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/tr)
-  - [四合一转换](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/private/all)
+  - [本地vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/vless)
+  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/private/all)
 
 > 默认生成的为base64编码(v2rayN/ss/ssr等客户端可直接使用),其他请自行使用[订阅转换](#subCon)进行转换
 

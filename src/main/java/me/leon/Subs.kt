@@ -164,6 +164,33 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
         }
 }
 
+/** refer https://github.com/XTLS/Xray-core/issues/91 */
+data class Vless(val uuid: String = "", val server: String = "", val port: String = "") : Sub() {
+    var remark: String = ""
+    var query: String = ""
+    override var name: String
+        get() = remark.ifEmpty { "$SERVER:$serverPort-VL-${hashCode()}" }
+        set(value) {
+            remark = value
+        }
+    private val params
+        get() = if (query.isEmpty()) "" else "?$query"
+    override val serverPort
+        get() = port.toInt()
+    override val SERVER
+        get() = server
+    override var nation: String = ""
+
+    override fun toUri() =
+        "vless://${"${uuid.urlEncode()}@$server:$port$params"}#${name.urlEncode()}"
+    override fun info() =
+        if (query.isEmpty()) {
+            "$nation $name vless $server:$port"
+        } else {
+            "$nation $remark vless $server:$port?$query"
+        }
+}
+
 fun Sub.methodUnSupported() =
     this is SSR && (method in SSR_unSupportMethod || protocol in SSR_unSupportProtocol) ||
         this is SS && method in SS_unSupportCipher ||

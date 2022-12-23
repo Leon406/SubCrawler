@@ -14,7 +14,7 @@ class NodeProcess {
             NODE_OK.writeLine()
             NodeCrawler.nodeInfoLocal.writeLine()
             NodeCrawler.nodeInfoLocal.writeLine("更新时间${timeStamp()}\r\n")
-            listOf(NODE_SS, NODE_SSR, NODE_TR, NODE_V2)
+            listOf(NODE_SS, NODE_SSR, NODE_TR, NODE_V2, NODE_VLESS)
                 .fold(linkedSetOf<Sub>()) { acc, s ->
                     acc.apply { acc.addAll(Parser.parseFromSub(s)) }
                 }
@@ -30,10 +30,14 @@ class NodeProcess {
             NODE_SSR2.writeLine()
             NODE_V22.writeLine()
             NODE_TR2.writeLine()
+            NODE_VLESS2.writeLine()
 
             Parser.parseFromSub(NODE_OK)
                 .also {
-                    NODE_ALL2.writeLine(it.joinToString("\n") { it.toUri() }.b64Encode(), false)
+                    NODE_ALL2.writeLine(
+                        it.filterNot { it is Vless }.joinToString("\n") { it.toUri() }.b64Encode(),
+                        false
+                    )
                 }
                 .groupBy { it.javaClass }
                 .forEach { (clazz, subList) ->
@@ -61,6 +65,10 @@ class NodeProcess {
             Trojan::class.java ->
                 NODE_TR2.writeLine(data).also {
                     NodeCrawler.nodeInfoLocal.writeLine("- trojan节点: ${u.size}")
+                }
+            Vless::class.java ->
+                NODE_VLESS2.writeLine(data).also {
+                    NodeCrawler.nodeInfoLocal.writeLine("- vless节点: ${u.size}")
                 }
         }
     }
