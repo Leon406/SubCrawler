@@ -108,7 +108,7 @@ class ExtTest {
 
     @Test
     fun lanzouDirectLink() {
-        val url = "https://pan.lanzouo.com/iyK4o07v28od"
+        val url = "https://leon.lanzoub.com/icjqqmk38xg"
 
         url.readFromNet()
             .run { "(/fn\\?\\w{6,})\" frameborder".toRegex().find(this)!!.groupValues[1] }
@@ -116,7 +116,7 @@ class ExtTest {
                 println(it)
                 "https://www.lanzouw.com/$it".readFromNet().also {
                     println(it)
-                    val sign = "(?:vsign = +)'(\\w+)'".toRegex().find(it)!!.groupValues[1]
+                    val sign = "(?:vsign = +|'sign':)'(\\w+)'".toRegex().find(it)!!.groupValues[1]
                     "https://www.lanzouw.com/ajaxm.php"
                         .post(
                             mutableMapOf(
