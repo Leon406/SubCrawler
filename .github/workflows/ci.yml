@@ -36,7 +36,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       # Runs a single command using the runners shell
-      - run: chmod  777 ./gradlew
+      - run: chmod  777 ./gradlew  && chmod +x ./litespeed/lite
       - name: execute gradle test
         run: ./gradlew  :test --tests "me.leon.NodeCrawler.crawl"
       - run: git config --global user.email "actions@github.com" &&git config --global user.name "GitHub Actions"

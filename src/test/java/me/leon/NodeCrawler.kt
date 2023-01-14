@@ -19,6 +19,8 @@ class NodeCrawler {
         crawlNodes()
         //        checkNodes()
         nodeGroup()
+
+        SpeedTest().exec()
     }
 
     /** 爬取配置文件数据，并去重写入文件 */
