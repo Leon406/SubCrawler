@@ -1,1 +1,1 @@
-gradlew  :test --tests "me.leon.NodeProcess.localUse"
+gradlew  :test --tests "me.leon.NodeCrawler.crawl"

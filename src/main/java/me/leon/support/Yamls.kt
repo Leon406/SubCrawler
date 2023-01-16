@@ -10,7 +10,7 @@ fun String.fixYaml() =
         .replace("  password: \n", "  password: xxxxx\n")
         .replace("server: $*@", "server: ")
         .replace(
-            "(?:UpdateDay|up|down|recv_window|recv_window_conn|PFirstFoundDay|minimum|maximum|_?index|average|Rank|success_rate):\\s[-\\dT:.]+".toRegex(),
+            "\"?(?:UpdateDay|up|down|recv_window|recv_window_conn|PFirstFoundDay|minimum|maximum|_?index|average|Rank|success_rate)\"?:\\s*[-\\dT:.]+,?".toRegex(),
             ""
         )
         .replace("udp:true", "udp: true")

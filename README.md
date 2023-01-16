@@ -78,15 +78,19 @@
   - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all)
 
 
-- 
-  本地构建 (  [节点详情](./sub/info2.md) )
+- 本地构建 (github action 节点测试为国外服务器,国内不保证能用)
 
-  - [本地ss](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ss)
-  - [本地ssr](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/ssr)
-  - [本地v2ray](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/v2)
-  - [本地trojan](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/tr)
-  - [本地vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/private/vless)
-  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/private/all)
+```
+## windows系统执行
+localFilter.bat
+## Linux /Mac OS系统执行
+bash localFilter  
+## 或者
+chmod +x localFilter && ./localFilter
+```
+
+
+
 
 > 默认生成的为base64编码(v2rayN/ss/ssr等客户端可直接使用),其他请自行使用[订阅转换](#subCon)进行转换
 

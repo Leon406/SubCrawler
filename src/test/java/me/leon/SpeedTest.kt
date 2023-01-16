@@ -15,7 +15,7 @@ class SpeedTest {
 
         val config = "litespeed/config.json".toFile()
 
-        config.outputStream().use { it.write(LiteSpeedConfig(NODE_ALL).toJson().toByteArray()) }
+        config.outputStream().use { it.write(LiteSpeedConfig(NODE_OK).toJson().toByteArray()) }
         val nodes = mutableMapOf<Int, String>()
         val oks = mutableListOf<Int>()
 
@@ -36,7 +36,7 @@ class SpeedTest {
         }
 
         println("${oks.size} $oks ")
-        NODE_LITE.writeLine(nodes.filter { oks.contains(it.key) }.values.joinToString("\n"),false)
+        NODE_OK.writeLine(nodes.filter { oks.contains(it.key) }.values.joinToString("\n"), false)
     }
 }
 

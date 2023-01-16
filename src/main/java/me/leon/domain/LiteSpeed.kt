@@ -1,6 +1,5 @@
 package me.leon.domain
 
-
 data class LiteSpeed(val id: Int, val info: String) {
 
     var servers: List<Server>? = null

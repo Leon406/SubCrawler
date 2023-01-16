@@ -17,10 +17,8 @@ class NodeCrawler {
     fun crawl() {
         // 1.爬取配置文件的订阅
         crawlNodes()
-        //        checkNodes()
-        nodeGroup()
-
         SpeedTest().exec()
+        nodeGroup()
     }
 
     /** 爬取配置文件数据，并去重写入文件 */
@@ -91,18 +89,21 @@ class NodeCrawler {
                 }
                 .sortedBy { it.name }
                 .also {
-                    nodeInfo.writeLine()
                     // 2.筛选可用节点
-                    NODE_OK.writeLine()
-                    println(
-                        "有效节点: ${it.size}".also {
-                            nodeInfo.writeLine("更新时间${timeStamp()}\r\n")
-                            nodeInfo.writeLine("**总订阅: $subCount**")
-                            nodeInfo.writeLine("**总节点: $nodeCount**")
-                            nodeInfo.writeLine("**$it**")
+                    println("有效节点: ${it.size}")
+
+                    nodeInfo.writeLine("更新时间${timeStamp()}\r\n", false)
+                    nodeInfo.writeLine("**总订阅: $subCount**")
+                    nodeInfo.writeLine("**总节点: $nodeCount**")
+
+                    it.filterIsInstance<Vless>()
+                        .groupBy { it.javaClass }
+                        .forEach { (clazz, subList) ->
+                            subList.firstOrNull()?.run { name = customInfo + name }
+                            val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
+                            writeData(clazz, data, subList)
                         }
-                    )
-                    NODE_OK.writeLine(it.joinToString("\n") { it.toUri() })
+                    NODE_OK.writeLine(it.joinToString("\n") { it.toUri() }, false)
                 }
         }
 
@@ -116,6 +117,7 @@ class NodeCrawler {
         NODE_TR.writeLine()
         NODE_VLESS.writeLine()
         val nodes = Parser.parseFromSub(NODE_OK)
+        nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
             nodes.filterNot { it is Vless }.joinToString("\n") { it.toUri() }.b64Encode(),
             false
@@ -130,7 +132,7 @@ class NodeCrawler {
             }
     }
 
-    private fun writeData(clazz: Class<Sub>, data: String, subList: List<Sub>) {
+    private fun writeData(clazz: Class<out Sub>, data: String, subList: List<Sub>) {
         when (clazz) {
             SS::class.java ->
                 NODE_SS.writeLine(data).also {
