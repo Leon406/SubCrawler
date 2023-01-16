@@ -36,7 +36,7 @@ class SpeedTest {
         }
 
         println("${oks.size} $oks ")
-        NODE_LITE.writeLine(nodes.filter { oks.contains(it.key) }.values.joinToString("\n"))
+        NODE_LITE.writeLine(nodes.filter { oks.contains(it.key) }.values.joinToString("\n"),false)
     }
 }
 
