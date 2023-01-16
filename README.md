@@ -64,6 +64,7 @@
   -  none
   -  grpc
   -  h2
+  -  auto
 
 
 
