@@ -5,6 +5,7 @@ import java.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.support.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 @Suppress("LongMethod")
@@ -23,6 +24,7 @@ class NodeCrawler {
 
     /** 爬取配置文件数据，并去重写入文件 */
     @Test
+    @Disabled
     fun crawlNodes() {
         val subs1 = "$ROOT/pool/subpool".readLines()
         val subs2 = "$ROOT/pool/subs".readLines()
@@ -89,11 +91,11 @@ class NodeCrawler {
                 }
                 .sortedBy { it.name }
                 .also {
+                    NODE_OK.writeLine(it.joinToString("\n") { it.toUri() }, false)
                     // 2.筛选可用节点
                     println("有效节点: ${it.size}")
-
                     nodeInfo.writeLine("更新时间${timeStamp()}\r\n", false)
-                    nodeInfo.writeLine("**总订阅: $subCount**")
+                    nodeInfo.writeLine("${System.lineSeparator()}**总订阅: $subCount**")
                     nodeInfo.writeLine("**总节点: $nodeCount**")
 
                     it.filterIsInstance<Vless>()
@@ -101,9 +103,9 @@ class NodeCrawler {
                         .forEach { (clazz, subList) ->
                             subList.firstOrNull()?.run { name = customInfo + name }
                             val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
+                            NODE_VLESS.writeLine()
                             writeData(clazz, data, subList)
                         }
-                    NODE_OK.writeLine(it.joinToString("\n") { it.toUri() }, false)
                 }
         }
 
@@ -115,7 +117,6 @@ class NodeCrawler {
         NODE_SSR.writeLine()
         NODE_V2.writeLine()
         NODE_TR.writeLine()
-        NODE_VLESS.writeLine()
         val nodes = Parser.parseFromSub(NODE_OK)
         nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
@@ -159,7 +160,6 @@ class NodeCrawler {
 
     companion object {
         private val nodeInfo = "$ROOT/info.md"
-        val nodeInfoLocal = "$ROOT/info2.md"
         const val customInfo = "防失效github SubCrawler"
         private var subCount = 0
         private var nodeCount = 0
