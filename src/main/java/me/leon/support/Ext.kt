@@ -70,9 +70,3 @@ fun timeStamp(timeZone: String = "Asia/Shanghai"): String {
     TimeZone.setDefault(TimeZone.getTimeZone(timeZone))
     return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(instance.time)
 }
-
-val mirrors = listOf("https://ghproxy.net/", "https://ghproxy.com/")
-val String.mirrorUrl
-    get() =
-        takeUnless { it.startsWith("https://raw.githubusercontent.com/") }
-            ?: "${mirrors.random()}$this"

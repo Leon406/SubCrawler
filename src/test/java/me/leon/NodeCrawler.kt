@@ -32,10 +32,7 @@ class NodeCrawler {
         val sublist = "$ROOT/pool/sublists".readLines()
         val subs3 =
             sublist
-                .map {
-                    println(it.mirrorUrl)
-                    it.mirrorUrl.readFromNet()
-                }
+                .map { it.readFromNet() }
                 .flatMap { it.split("\r\n|\n".toRegex()) }
                 .distinct()
                 .also { println("before ${it.size}") }
@@ -58,7 +55,7 @@ class NodeCrawler {
                     sub to
                         async(DISPATCHER) {
                             runCatching {
-                                    val uri = sub.mirrorUrl
+                                    val uri = sub
                                     Parser.parseFromSub(uri).also {
                                         println("$uri ${it.size}")
                                         if (it.size == 0) {
