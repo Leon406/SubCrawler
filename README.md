@@ -70,7 +70,7 @@
   - [v2ray](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/v2)
   - [trojan](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/tr)
   - [vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/vless) 未测速,litespeed不支持测速
-  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all)
+  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all2)
 
 
 - 本地构建 (github action 节点测试为国外服务器,国内不保证能用)
