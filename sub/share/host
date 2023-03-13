@@ -1,15 +1,15 @@
-##### 更新时间2023-03-11 12:26:17 #####
+##### 更新时间2023-03-13 12:26:13 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
 151.101.1.69	cdn.sstatic.net
-104.16.85.20	cdn.jsdelivr.net
+151.101.1.229	cdn.jsdelivr.net
 104.16.122.175	unpkg.com
 69.16.175.10	code.jquery.com
 104.24.176.7	cdnjs.com
 104.17.24.14	cdnjs.cloudflare.com
 104.80.92.84	sdlc-esd.oracle.com
-23.219.8.83	download.oracle.com
+23.49.100.106	download.oracle.com
 104.16.168.131	hcaptcha.com
 104.16.168.131	www.hcaptcha.com
 104.16.168.131	assets.hcaptcha.com
@@ -35,26 +35,26 @@
 162.159.128.234	discordcdn.com
 23.206.32.168	lastpass.com
 104.112.30.74	www.lastpass.com
-13.107.237.51	logincdn.msauth.net
-13.107.237.40	acctcdn.msauth.net
+192.229.211.199	logincdn.msauth.net
+13.107.237.41	acctcdn.msauth.net
 40.126.7.35	login.live.com
-20.135.2.0	storage.live.com
+40.79.207.82	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
-23.62.165.205	storeedgefd.dsx.mp.microsoft.com
+23.200.226.62	storeedgefd.dsx.mp.microsoft.com
 104.72.157.147	store-images.s-microsoft.com
 104.18.42.229	client-api.arkoselabs.com
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
 52.216.58.193	github-cloud.s3.amazonaws.com
 140.82.112.3	gist.github.com
-140.82.114.5	api.github.com
-140.82.112.25	live.github.com
+140.82.114.6	api.github.com
+140.82.113.25	live.github.com
 140.82.113.18	status.github.com
 52.216.51.113	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.9.161	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.114.4	github.com
+140.82.113.4	github.com
 140.82.113.4	www.github.com
-140.82.114.26	alive.github.com
+140.82.113.25	alive.github.com
 140.82.114.21	collector.githubapp.com
 185.199.108.154	github.githubassets.com
 140.82.112.18	help.github.com
@@ -72,7 +72,7 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.114.10	codeload.github.com
+140.82.113.9	codeload.github.com
 140.82.112.9	nodeload.github.com
 3.5.11.192	github-com.s3.amazonaws.com
 3.5.0.128	github-production-repository-file-5c1aeb.s3.amazonaws.com
@@ -91,5 +91,5 @@
 185.199.108.133	github.map.fastly.net
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
-172.253.115.95	translate.googleapis.com
+173.194.209.95	translate.googleapis.com
 173.194.209.100	translate.google.com
