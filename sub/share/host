@@ -1,4 +1,4 @@
-##### 更新时间2023-03-21 12:24:17 #####
+##### 更新时间2023-03-23 12:24:20 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -9,7 +9,7 @@
 104.24.176.7	cdnjs.com
 104.17.24.14	cdnjs.cloudflare.com
 104.80.92.84	sdlc-esd.oracle.com
-69.192.208.84	download.oracle.com
+184.27.220.79	download.oracle.com
 104.16.168.131	hcaptcha.com
 104.16.168.131	www.hcaptcha.com
 104.16.168.131	assets.hcaptcha.com
@@ -18,7 +18,7 @@
 104.18.22.122	cf-assets.hcaptcha.com
 104.16.168.131	js.hcaptcha.com
 104.16.168.131	api.hcaptcha.com
-142.250.10.94	recaptcha.net
+172.253.63.94	recaptcha.net
 172.217.8.164	api.recaptcha.net
 172.217.1.36	api-verify.recaptcha.net
 172.217.5.4	mailhide.recaptcha.net
@@ -33,31 +33,31 @@
 162.159.128.232	images-ext-2.discordapp.net
 162.159.128.232	images-ext-1.discordapp.net
 162.159.128.234	discordcdn.com
-104.112.30.74	lastpass.com
-184.31.196.178	www.lastpass.com
-13.107.237.51	logincdn.msauth.net
-13.107.226.40	acctcdn.msauth.net
+104.127.82.59	lastpass.com
+104.112.30.74	www.lastpass.com
+13.107.237.41	logincdn.msauth.net
+13.107.237.41	acctcdn.msauth.net
 40.126.7.35	login.live.com
-20.135.6.0	storage.live.com
-13.107.42.12	public.bn.files.1drv.com
+20.135.1.4	storage.live.com
+13.107.43.12	public.bn.files.1drv.com
 23.203.41.248	storeedgefd.dsx.mp.microsoft.com
-104.117.185.245	store-images.s-microsoft.com
+23.203.41.190	store-images.s-microsoft.com
 104.18.42.229	client-api.arkoselabs.com
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
-3.5.10.109	github-cloud.s3.amazonaws.com
+3.5.9.11	github-cloud.s3.amazonaws.com
 140.82.112.4	gist.github.com
 140.82.113.5	api.github.com
 140.82.112.25	live.github.com
-140.82.112.17	status.github.com
+140.82.112.18	status.github.com
 52.216.160.179	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.11.199	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.113.4	github.com
-140.82.112.4	www.github.com
+140.82.114.3	github.com
+140.82.112.3	www.github.com
 140.82.112.25	alive.github.com
 140.82.114.21	collector.githubapp.com
 185.199.108.154	github.githubassets.com
-140.82.114.17	help.github.com
+140.82.112.17	help.github.com
 140.82.114.22	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.113.21	collector.github.com
@@ -72,10 +72,10 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.112.9	codeload.github.com
+140.82.112.10	codeload.github.com
 140.82.112.9	nodeload.github.com
-3.5.9.180	github-com.s3.amazonaws.com
-3.5.27.111	github-production-repository-file-5c1aeb.s3.amazonaws.com
+52.216.43.201	github-com.s3.amazonaws.com
+3.5.11.154	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
 192.0.66.2	github.blog
 185.199.108.133	avatars.githubusercontent.com
@@ -92,4 +92,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 142.251.32.10	translate.googleapis.com
-172.253.63.100	translate.google.com
+142.251.163.100	translate.google.com
