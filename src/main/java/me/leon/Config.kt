@@ -8,7 +8,6 @@ val HOST = "$SHARE/host"
 
 //        本地节点池
 val POOL = "$ROOT/pools"
-val BIHAI = "$ROOT/bihai.yaml"
 
 val NODE_OK = "$SHARE/available"
 val NODE_SS = "$SHARE/ss"

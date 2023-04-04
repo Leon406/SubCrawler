@@ -7,18 +7,6 @@ import org.yaml.snakeyaml.constructor.Constructor
 
 class YamlTest {
 
-    fun yamlLocalTest() {
-
-        with(Yaml(Constructor(Clash::class.java)).load(BIHAI.readText()) as Clash) {
-            println(
-                this.proxies
-                    .map(Node::toNode)
-                    //                    .filterIsInstance<V2ray>()
-                    .joinToString("|") { sub -> sub.toUri() }
-            )
-        }
-    }
-
     @Test
     fun yaml() {
         val list =

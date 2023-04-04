@@ -19,13 +19,6 @@ class LocalFileSubTest {
     }
 
     @Test
-    fun readLocal3() {
-        Parser.parseFromSub("$ROOT/bihai.yaml")
-            .joinToString("\n") { it.info() }
-            .also { println(it) }
-    }
-
-    @Test
     fun readLocalDir() {
         runBlocking {
             "C:\\Users\\Leon\\Downloads\\Telegram Desktop"
