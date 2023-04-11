@@ -1,9 +1,9 @@
-##### 更新时间2023-04-09 12:22:25 #####
+##### 更新时间2023-04-11 12:23:18 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
 151.101.1.69	cdn.sstatic.net
-104.16.85.20	cdn.jsdelivr.net
+151.101.1.229	cdn.jsdelivr.net
 104.16.122.175	unpkg.com
 69.16.175.10	code.jquery.com
 104.24.176.7	cdnjs.com
@@ -38,7 +38,7 @@
 13.107.237.51	logincdn.msauth.net
 13.107.237.40	acctcdn.msauth.net
 20.190.151.6	login.live.com
-20.135.1.4	storage.live.com
+13.105.28.1	storage.live.com
 13.107.43.12	public.bn.files.1drv.com
 23.45.146.28	storeedgefd.dsx.mp.microsoft.com
 23.203.41.190	store-images.s-microsoft.com
@@ -46,7 +46,7 @@
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
 52.216.57.1	github-cloud.s3.amazonaws.com
-140.82.112.3	gist.github.com
+140.82.113.4	gist.github.com
 140.82.112.5	api.github.com
 140.82.113.25	live.github.com
 140.82.114.18	status.github.com
