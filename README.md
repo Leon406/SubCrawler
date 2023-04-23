@@ -37,7 +37,7 @@
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [:star:LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
-    - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版](https://leon.lanzoub.com/ixESG0fsdcla)
+    - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://leon.lanzoub.com/b0db6sooh#8c0d)
 - 在线测速(基于上面本地测速搭建的服务,建议自行搭建,目前大部分都挂了)
 
 
