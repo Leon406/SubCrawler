@@ -1,4 +1,4 @@
-##### 更新时间2023-05-15 12:22:27 #####
+##### 更新时间2023-05-17 12:22:48 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -35,7 +35,7 @@
 162.159.128.234	discordcdn.com
 104.127.82.59	lastpass.com
 104.112.30.74	www.lastpass.com
-13.107.226.51	logincdn.msauth.net
+13.107.237.40	logincdn.msauth.net
 13.107.237.41	acctcdn.msauth.net
 20.190.151.6	login.live.com
 40.79.207.82	storage.live.com
@@ -49,7 +49,7 @@
 140.82.114.3	gist.github.com
 140.82.114.5	api.github.com
 140.82.113.26	live.github.com
-140.82.114.18	status.github.com
+140.82.113.17	status.github.com
 3.5.20.219	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.29.182	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.112.4	github.com
@@ -57,11 +57,11 @@
 140.82.113.26	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
-140.82.114.17	help.github.com
+140.82.112.18	help.github.com
 140.82.113.21	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.113.22	collector.github.com
-140.82.113.17	github.community
+140.82.114.18	github.community
 185.199.108.133	support.github.com
 185.199.108.153	assets-cdn.github.com
 185.199.108.153	pages.github.com
