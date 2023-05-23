@@ -1,4 +1,4 @@
-##### 更新时间2023-05-21 12:21:40 #####
+##### 更新时间2023-05-23 12:22:19 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -18,7 +18,7 @@
 104.18.22.122	cf-assets.hcaptcha.com
 104.16.168.131	js.hcaptcha.com
 104.16.168.131	api.hcaptcha.com
-172.253.63.94	recaptcha.net
+172.253.122.94	recaptcha.net
 172.217.8.164	api.recaptcha.net
 172.217.1.36	api-verify.recaptcha.net
 172.217.5.4	mailhide.recaptcha.net
@@ -58,7 +58,7 @@
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
 140.82.112.18	help.github.com
-140.82.113.21	central.github.com
+140.82.113.22	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.112.21	collector.github.com
 140.82.114.18	github.community
