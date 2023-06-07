@@ -136,7 +136,7 @@ chmod +x localFilter && ./localFilter
 | Android | [SSRAY](https://github.com/xxf098/shadowsocksr-v2ray-trojan-android/releases) | SSR、V2ray、Trojan                                           |
 | Android | [SagerNet](https://github.com/SagerNet/SagerNet/releases)    | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
 | Android | [Matsuri (茉莉)](https://github.com/MatsuriDayo/Matsuri) sager分支 | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
-| Android | [NekoBoxForAndroid**(推荐)**](https://github.com/MatsuriDayo/NekoBoxForAndroid) | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
+| Android | [NekoBoxForAndroid **(推荐)**](https://github.com/MatsuriDayo/NekoBoxForAndroid) | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
 | IOS     | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
 | IOS     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
 | IOS     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
