@@ -1,4 +1,4 @@
-##### 更新时间2023-06-05 12:22:30 #####
+##### 更新时间2023-06-07 12:22:25 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -29,8 +29,8 @@
 162.159.129.233	status.discordapp.com
 162.159.129.233	cdn.discordapp.com
 162.159.128.232	media.discordapp.net
-10.0.0.6	images-ext-2.discordapp.net
-10.0.0.6	images-ext-1.discordapp.net
+162.159.128.232	images-ext-2.discordapp.net
+162.159.128.232	images-ext-1.discordapp.net
 162.159.128.234	discordcdn.com
 104.127.82.59	lastpass.com
 104.112.30.74	www.lastpass.com
@@ -52,7 +52,7 @@
 3.5.25.221	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.6.204	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.113.3	github.com
-140.82.113.4	www.github.com
+140.82.114.4	www.github.com
 140.82.114.26	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
