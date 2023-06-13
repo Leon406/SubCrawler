@@ -1,4 +1,4 @@
-##### 更新时间2023-06-11 12:21:36 #####
+##### 更新时间2023-06-13 12:23:16 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -24,7 +24,7 @@
 142.250.191.163	www.recaptcha.net
 162.159.128.233	discord.com
 162.159.129.233	discordapp.com
-162.159.128.232	dl.discordapp.net
+104.18.48.115	dl.discordapp.net
 162.159.130.234	gateway.discord.gg
 162.159.129.233	status.discordapp.com
 162.159.129.233	cdn.discordapp.com
@@ -48,11 +48,11 @@
 140.82.112.3	gist.github.com
 140.82.112.6	api.github.com
 140.82.112.25	live.github.com
-140.82.113.18	status.github.com
-3.5.25.221	github-production-release-asset-2e65be.s3.amazonaws.com
+140.82.113.17	status.github.com
+3.5.29.171	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.6.204	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.114.3	github.com
-140.82.113.3	www.github.com
+140.82.112.3	github.com
+140.82.113.4	www.github.com
 140.82.114.26	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
@@ -90,5 +90,5 @@
 185.199.108.133	github.map.fastly.net
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
-142.251.16.95	translate.googleapis.com
-172.217.2.46	translate.google.com
+172.217.4.202	translate.googleapis.com
+142.251.167.100	translate.google.com
