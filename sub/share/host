@@ -1,4 +1,4 @@
-##### 更新时间2023-06-13 12:23:16 #####
+##### 更新时间2023-06-15 12:22:27 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -34,7 +34,7 @@
 162.159.128.234	discordcdn.com
 104.70.60.162	lastpass.com
 104.112.30.74	www.lastpass.com
-13.107.237.40	logincdn.msauth.net
+13.107.226.40	logincdn.msauth.net
 13.107.226.40	acctcdn.msauth.net
 20.190.190.129	login.live.com
 40.79.207.82	storage.live.com
@@ -51,16 +51,16 @@
 140.82.113.17	status.github.com
 3.5.29.171	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.6.204	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.112.3	github.com
-140.82.113.4	www.github.com
+140.82.113.3	github.com
+140.82.112.3	www.github.com
 140.82.114.26	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
 140.82.112.17	help.github.com
 140.82.114.21	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
-140.82.114.22	collector.github.com
-140.82.113.18	github.community
+140.82.112.21	collector.github.com
+140.82.112.18	github.community
 185.199.108.133	support.github.com
 185.199.108.153	assets-cdn.github.com
 185.199.108.153	pages.github.com
@@ -73,7 +73,7 @@
 140.82.112.29	githubapp.com
 140.82.112.10	codeload.github.com
 140.82.113.10	nodeload.github.com
-3.5.20.19	github-com.s3.amazonaws.com
+52.216.146.203	github-com.s3.amazonaws.com
 3.5.0.227	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
 192.0.66.2	github.blog
