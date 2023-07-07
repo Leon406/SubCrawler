@@ -1,4 +1,4 @@
-##### 更新时间2023-07-05 12:26:50 #####
+##### 更新时间2023-07-07 12:25:21 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -44,8 +44,8 @@
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
 3.5.11.15	github-cloud.s3.amazonaws.com
-140.82.112.4	gist.github.com
-140.82.113.6	api.github.com
+140.82.112.3	gist.github.com
+140.82.112.6	api.github.com
 140.82.114.25	live.github.com
 140.82.113.17	status.github.com
 3.5.25.123	github-production-release-asset-2e65be.s3.amazonaws.com
@@ -70,7 +70,7 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.114.10	codeload.github.com
+140.82.112.9	codeload.github.com
 140.82.112.9	nodeload.github.com
 3.5.10.109	github-com.s3.amazonaws.com
 52.216.44.129	github-production-repository-file-5c1aeb.s3.amazonaws.com
@@ -88,6 +88,6 @@
 185.199.108.133	media.githubusercontent.com
 185.199.108.133	github.map.fastly.net
 185.199.108.133	desktop.githubusercontent.com
-20.99.227.183	github.dev
+52.224.38.193	github.dev
 172.253.63.95	translate.googleapis.com
 142.251.163.100	translate.google.com
