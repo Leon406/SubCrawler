@@ -1,27 +1,17 @@
 plugins {
     id 'java'
-    id "org.jetbrains.kotlin.jvm" version "1.8.20"
-    id "com.diffplug.spotless" version "6.18.0"
-    id "io.gitlab.arturbosch.detekt" version "1.22.0"
+    id "org.jetbrains.kotlin.jvm" version "1.9.0"
+    id "com.diffplug.spotless" version "6.19.0"
+    id "io.gitlab.arturbosch.detekt" version "1.23.0"
 }
 
 group 'me.leon'
 version '1.2.0'
 
-repositories {
-    mavenLocal()
-    maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public' }
-    maven { url 'https://mirrors.huaweicloud.com/repository/maven' }
-    maven { url 'https://maven.aliyun.com/repository/public' }
-    maven { url 'https://maven.aliyun.com/repository/google' }
-    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-    mavenCentral()
-}
-
 dependencies {
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0"
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
     implementation 'com.google.code.gson:gson:2.10.1'
     //for yaml 1.1, 1.32 limit maxsize 3M
     implementation 'org.yaml:snakeyaml:1.31'
@@ -41,6 +31,7 @@ test {
 }
 apply from: "$rootProject.projectDir/config/codeQuality.gradle"
 def hook = new File("$rootProject.projectDir/.git/hooks/pre-commit")
+hook.parentFile.mkdirs()
 hook.text = """#!/bin/bash
 echo "run code format"
 ./gradlew spotlessCheck
