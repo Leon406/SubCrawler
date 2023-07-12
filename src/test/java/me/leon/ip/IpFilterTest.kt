@@ -29,7 +29,7 @@ class IpFilterTest {
                         .sorted()
                         .also {
                             total.addAll(it)
-                            println("after duplicate and sort ${total.size}")
+                            println("after deduplicate and sort ${total.size}")
                             FAIL_IPS.writeLine()
                             FAIL_IPS.writeLine(total.joinToString("\n"))
                         }
@@ -79,7 +79,7 @@ class IpFilterTest {
                     total.addAll(it)
                     println("before ${total.size}")
                 }
-                .filter { it.contains(":") }
+                .filter { it.contains(":") && !it.contains("/") &&!it.contains(" ") }
                 .map {
                     it to
                         async(DISPATCHER) {
