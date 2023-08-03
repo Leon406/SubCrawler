@@ -1,4 +1,4 @@
-##### 更新时间2023-08-01 12:22:07 #####
+##### 更新时间2023-08-03 12:21:42 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -18,7 +18,7 @@
 104.18.22.122	cf-assets.hcaptcha.com
 104.16.168.131	js.hcaptcha.com
 104.16.168.131	api.hcaptcha.com
-142.250.191.99	recaptcha.net
+172.253.112.94	recaptcha.net
 172.253.63.94	www.recaptcha.net
 162.159.128.233	discord.com
 162.159.129.233	discordapp.com
@@ -58,7 +58,7 @@
 140.82.112.22	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.113.22	collector.github.com
-140.82.113.18	github.community
+140.82.114.17	github.community
 185.199.108.133	support.github.com
 185.199.108.153	assets-cdn.github.com
 185.199.108.153	pages.github.com
@@ -88,5 +88,5 @@
 185.199.108.133	github.map.fastly.net
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
-172.253.62.95	translate.googleapis.com
-172.253.63.100	translate.google.com
+142.251.167.95	translate.googleapis.com
+142.251.117.100	translate.google.com
