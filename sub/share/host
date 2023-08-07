@@ -1,4 +1,4 @@
-##### 更新时间2023-08-05 12:21:45 #####
+##### 更新时间2023-08-07 12:22:06 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -33,7 +33,7 @@
 104.112.26.32	lastpass.com
 104.112.26.32	www.lastpass.com
 13.107.226.40	logincdn.msauth.net
-13.107.213.40	acctcdn.msauth.net
+13.107.226.40	acctcdn.msauth.net
 20.190.151.6	login.live.com
 40.90.130.194	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
@@ -44,8 +44,8 @@
 54.76.84.156	prod-ireland.arkoselabs.com
 3.5.6.196	github-cloud.s3.amazonaws.com
 140.82.112.3	gist.github.com
-140.82.113.5	api.github.com
-140.82.112.25	live.github.com
+140.82.113.6	api.github.com
+140.82.113.25	live.github.com
 140.82.113.18	status.github.com
 3.5.25.180	github-production-release-asset-2e65be.s3.amazonaws.com
 52.216.39.121	github-production-user-asset-6210df.s3.amazonaws.com
@@ -69,7 +69,7 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.114.9	codeload.github.com
+140.82.112.9	codeload.github.com
 140.82.114.10	nodeload.github.com
 16.182.73.153	github-com.s3.amazonaws.com
 3.5.11.146	github-production-repository-file-5c1aeb.s3.amazonaws.com
