@@ -1,4 +1,4 @@
-##### 更新时间2023-08-07 12:22:06 #####
+##### 更新时间2023-08-09 12:22:08 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -34,7 +34,7 @@
 104.112.26.32	www.lastpass.com
 13.107.226.40	logincdn.msauth.net
 13.107.226.40	acctcdn.msauth.net
-20.190.151.6	login.live.com
+20.190.190.129	login.live.com
 40.90.130.194	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
 23.62.173.205	storeedgefd.dsx.mp.microsoft.com
@@ -46,16 +46,16 @@
 140.82.112.3	gist.github.com
 140.82.113.6	api.github.com
 140.82.113.25	live.github.com
-140.82.113.18	status.github.com
-3.5.25.180	github-production-release-asset-2e65be.s3.amazonaws.com
-52.216.39.121	github-production-user-asset-6210df.s3.amazonaws.com
+140.82.114.18	status.github.com
+3.5.0.155	github-production-release-asset-2e65be.s3.amazonaws.com
+16.182.73.137	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.114.4	github.com
 140.82.112.3	www.github.com
 140.82.114.26	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
-140.82.112.18	help.github.com
-140.82.112.22	central.github.com
+140.82.114.17	help.github.com
+140.82.114.22	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.113.22	collector.github.com
 140.82.114.17	github.community
@@ -70,9 +70,9 @@
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
 140.82.112.9	codeload.github.com
-140.82.114.10	nodeload.github.com
-16.182.73.153	github-com.s3.amazonaws.com
-3.5.11.146	github-production-repository-file-5c1aeb.s3.amazonaws.com
+140.82.113.9	nodeload.github.com
+3.5.11.209	github-com.s3.amazonaws.com
+3.5.25.205	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
 192.0.66.2	github.blog
 185.199.108.133	avatars.githubusercontent.com
@@ -89,4 +89,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 142.251.167.95	translate.googleapis.com
-142.251.117.100	translate.google.com
+142.250.10.100	translate.google.com
