@@ -1,4 +1,4 @@
-##### 更新时间2023-08-27 12:21:05 #####
+##### 更新时间2023-08-29 12:21:59 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -43,10 +43,10 @@
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
 3.5.10.180	github-cloud.s3.amazonaws.com
-140.82.113.4	gist.github.com
-140.82.114.5	api.github.com
+140.82.113.3	gist.github.com
+140.82.114.6	api.github.com
 140.82.114.26	live.github.com
-140.82.113.17	status.github.com
+140.82.114.18	status.github.com
 52.216.62.1	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.27.219	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.112.3	github.com
@@ -55,7 +55,7 @@
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
 140.82.114.18	help.github.com
-140.82.113.21	central.github.com
+140.82.114.22	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
 140.82.113.22	collector.github.com
 140.82.113.18	github.community
@@ -69,7 +69,7 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.112.9	codeload.github.com
+140.82.114.9	codeload.github.com
 140.82.112.10	nodeload.github.com
 3.5.29.206	github-com.s3.amazonaws.com
 3.5.20.102	github-production-repository-file-5c1aeb.s3.amazonaws.com
