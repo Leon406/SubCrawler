@@ -1,4 +1,4 @@
-##### 更新时间2023-08-29 12:21:59 #####
+##### 更新时间2023-08-31 12:22:13 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -45,7 +45,7 @@
 3.5.10.180	github-cloud.s3.amazonaws.com
 140.82.113.3	gist.github.com
 140.82.114.6	api.github.com
-140.82.114.26	live.github.com
+140.82.112.26	live.github.com
 140.82.114.18	status.github.com
 52.216.62.1	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.27.219	github-production-user-asset-6210df.s3.amazonaws.com
@@ -89,4 +89,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 142.251.16.95	translate.googleapis.com
-172.253.63.100	translate.google.com
+142.251.16.100	translate.google.com
