@@ -1,4 +1,4 @@
-##### 更新时间2023-09-03 12:20:56 #####
+##### 更新时间2023-09-07 12:22:48 #####
 
 151.101.1.69	stackoverflow.com
 151.101.1.69	stackexchange.com
@@ -18,7 +18,7 @@
 104.18.22.122	cf-assets.hcaptcha.com
 104.16.168.131	js.hcaptcha.com
 104.16.168.131	api.hcaptcha.com
-172.253.115.94	recaptcha.net
+142.250.10.94	recaptcha.net
 172.253.112.94	www.recaptcha.net
 162.159.128.233	discord.com
 162.159.129.233	discordapp.com
@@ -34,8 +34,8 @@
 104.112.26.32	www.lastpass.com
 13.107.213.51	logincdn.msauth.net
 13.107.226.40	acctcdn.msauth.net
-20.190.151.9	login.live.com
-40.90.130.194	storage.live.com
+20.190.190.129	login.live.com
+20.135.17.53	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
 23.62.173.205	storeedgefd.dsx.mp.microsoft.com
 23.219.53.97	store-images.s-microsoft.com
@@ -43,8 +43,8 @@
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
 3.5.25.218	github-cloud.s3.amazonaws.com
-140.82.113.3	gist.github.com
-140.82.114.6	api.github.com
+140.82.114.3	gist.github.com
+140.82.112.6	api.github.com
 140.82.112.26	live.github.com
 140.82.114.18	status.github.com
 3.5.25.82	github-production-release-asset-2e65be.s3.amazonaws.com
@@ -89,4 +89,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 142.251.111.95	translate.googleapis.com
-142.251.16.100	translate.google.com
+142.250.31.100	translate.google.com
