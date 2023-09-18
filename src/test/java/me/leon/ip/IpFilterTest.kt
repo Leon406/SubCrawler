@@ -79,7 +79,7 @@ class IpFilterTest {
                     total.addAll(it)
                     println("before ${total.size}")
                 }
-                .filter { it.contains(":") && !it.contains("/") &&!it.contains(" ") }
+                .filter { it.contains(":") && !it.contains("/") && !it.contains(" ") }
                 .map {
                     it to
                         async(DISPATCHER) {

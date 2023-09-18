@@ -1,17 +1,17 @@
 plugins {
     id 'java'
     id "org.jetbrains.kotlin.jvm" version "1.9.0"
-    id "com.diffplug.spotless" version "6.19.0"
-    id "io.gitlab.arturbosch.detekt" version "1.23.0"
+    id "com.diffplug.spotless" version "6.20.0"
+    id "io.gitlab.arturbosch.detekt" version "1.23.1"
 }
 
 group 'me.leon'
 version '1.2.0'
 
 dependencies {
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0"
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1"
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
     implementation 'com.google.code.gson:gson:2.10.1'
     //for yaml 1.1, 1.32 limit maxsize 3M
     implementation 'org.yaml:snakeyaml:1.31'

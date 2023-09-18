@@ -78,9 +78,9 @@ class NetworkSubTest {
     @Test
     fun parseText() {
 
-        Parser.parseFromSub("https://raw.iqiq.io/caijh/FreeProxiesScraper/2951ca40e0b93dc37be07a46ecc528bf245b6be8/README.md")
-            .also {
-                println(it.size)
-            }
+        Parser.parseFromSub(
+                "https://raw.iqiq.io/caijh/FreeProxiesScraper/2951ca40e0b93dc37be07a46ecc528bf245b6be8/README.md"
+            )
+            .also { println(it.size) }
     }
 }
