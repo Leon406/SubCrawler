@@ -1,9 +1,9 @@
-##### 更新时间2023-09-21 12:22:26 #####
+##### 更新时间2023-09-23 12:21:14 #####
 
 151.101.1.69	stackoverflow.com
 104.18.10.86	stackexchange.com
 151.101.1.69	cdn.sstatic.net
-10.0.0.138	cdn.jsdelivr.net
+151.101.1.229	cdn.jsdelivr.net
 104.16.122.175	unpkg.com
 69.16.175.10	code.jquery.com
 104.24.176.7	cdnjs.com
@@ -49,9 +49,9 @@
 140.82.112.17	status.github.com
 3.5.25.82	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.27.219	github-production-user-asset-6210df.s3.amazonaws.com
-140.82.114.3	github.com
+140.82.113.3	github.com
 140.82.113.3	www.github.com
-140.82.112.26	alive.github.com
+140.82.114.25	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
 140.82.114.17	help.github.com
@@ -71,10 +71,10 @@
 140.82.112.29	githubapp.com
 140.82.112.10	codeload.github.com
 140.82.113.10	nodeload.github.com
-10.0.0.138	github-com.s3.amazonaws.com
+3.5.29.206	github-com.s3.amazonaws.com
 3.5.20.102	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
-10.0.0.138	github.blog
+192.0.66.2	github.blog
 185.199.108.133	avatars.githubusercontent.com
 185.199.108.133	favicons.githubusercontent.com
 185.199.108.133	camo.githubusercontent.com
@@ -89,4 +89,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 142.251.16.95	translate.googleapis.com
-142.250.11.100	translate.google.com
+142.251.167.100	translate.google.com
