@@ -10,8 +10,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   schedule:
     # 定时任务
-    - cron: '0 3 2/2 * *'
-    - cron: '0 1 1/2 * *'
+    - cron: '0 3,14 2/2 * *'
+    - cron: '0 1,12 1/2 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
