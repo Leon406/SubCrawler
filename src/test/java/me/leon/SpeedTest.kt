@@ -1,21 +1,16 @@
 package me.leon
 
-import java.nio.charset.Charset
 import me.leon.domain.LiteSpeed
 import me.leon.domain.LiteSpeedConfig
-import me.leon.support.fromJson
-import me.leon.support.toFile
-import me.leon.support.toJson
-import me.leon.support.writeLine
+import me.leon.support.*
 import org.junit.jupiter.api.Test
+import java.nio.charset.Charset
 
 class SpeedTest {
     @Test
     fun exec() {
-
         val config = "litespeed/config.json".toFile()
-
-        config.outputStream().use { it.write(LiteSpeedConfig(NODE_OK).toJson().toByteArray()) }
+        config.writeBytes(LiteSpeedConfig(NODE_OK).toJson().toByteArray())
         val nodes = mutableMapOf<Int, String>()
         val oks = mutableListOf<Int>()
 
@@ -28,10 +23,13 @@ class SpeedTest {
                 if (message.contains("json options: ")) {
                     return@forEachLine
                 }
-                val liteSpeed = message.fromJson<LiteSpeed>()
-                liteSpeed.servers?.forEach { nodes[it.id] = it.link }
-
-                liteSpeed.ping()?.run { oks.add(liteSpeed.id) }
+                runCatching {
+                    val liteSpeed = message.fromJson<LiteSpeed>()
+                    liteSpeed.servers?.forEach { nodes[it.id] = it.link }
+                    liteSpeed.ping()?.run { oks.add(liteSpeed.id) }
+                }.getOrElse {
+                    println("$message ${it.stackTraceToString()}")
+                }
             }
         }
 
