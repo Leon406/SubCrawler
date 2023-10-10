@@ -83,7 +83,9 @@ class IpFilterTest {
                 .map {
                     it to
                         async(DISPATCHER) {
-                            it.substringBeforeLast(":").connect(it.substringAfterLast(":").toInt())
+                            runCatching {
+                                it.substringBeforeLast(":").connect(it.substringAfterLast(":").toInt())
+                            }.getOrElse { -1 }
                         }
                 }
                 .filter { it.second.await() > -1 }
