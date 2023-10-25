@@ -43,7 +43,7 @@ class NodeCrawler {
                 }
         val subs = (subs1 + subs2 + subs3).toHashSet()
         println(subs.size)
-        val prefix = SimpleDateFormat("MMdd").format(Date())
+        val prefix = SimpleDateFormat("MMddHH").format(Date())
         val countryMap = mutableMapOf<String, Int>()
         val errorList = mutableListOf<String>()
         POOL.writeLine()
