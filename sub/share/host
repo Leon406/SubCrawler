@@ -1,7 +1,7 @@
-##### 更新时间2023-10-29 12:21:36 #####
+##### 更新时间2023-10-31 12:22:39 #####
 
 104.18.22.201	stackoverflow.com
-104.18.10.86	stackexchange.com
+104.18.43.226	stackexchange.com
 151.101.1.69	cdn.sstatic.net
 151.101.1.229	cdn.jsdelivr.net
 104.16.122.175	unpkg.com
@@ -32,12 +32,12 @@
 162.159.128.234	discordcdn.com
 104.127.82.59	lastpass.com
 104.112.26.32	www.lastpass.com
-13.107.226.41	logincdn.msauth.net
-13.107.226.40	acctcdn.msauth.net
-40.126.7.32	login.live.com
+13.107.213.40	logincdn.msauth.net
+13.107.213.40	acctcdn.msauth.net
+40.126.29.8	login.live.com
 40.90.130.207	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
-23.62.173.205	storeedgefd.dsx.mp.microsoft.com
+23.202.54.5	storeedgefd.dsx.mp.microsoft.com
 23.219.53.97	store-images.s-microsoft.com
 104.18.42.229	client-api.arkoselabs.com
 104.18.24.64	cdn.arkoselabs.com
@@ -56,7 +56,7 @@
 185.199.108.154	github.githubassets.com
 140.82.114.17	help.github.com
 140.82.114.22	central.github.com
-13.107.42.16	pipelines.actions.githubusercontent.com
+13.107.43.16	pipelines.actions.githubusercontent.com
 140.82.112.21	collector.github.com
 140.82.114.17	github.community
 185.199.108.133	support.github.com
@@ -70,7 +70,7 @@
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
 140.82.113.10	codeload.github.com
-140.82.113.10	nodeload.github.com
+140.82.112.10	nodeload.github.com
 3.5.16.103	github-com.s3.amazonaws.com
 3.5.9.216	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
