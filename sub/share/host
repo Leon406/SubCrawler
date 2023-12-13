@@ -1,4 +1,4 @@
-##### 更新时间2023-12-11 12:13:41 #####
+##### 更新时间2023-12-13 12:12:57 #####
 
 104.18.32.7	stackoverflow.com
 104.18.43.226	stackexchange.com
@@ -45,7 +45,7 @@
 3.5.29.96	github-cloud.s3.amazonaws.com
 140.82.114.3	gist.github.com
 140.82.112.5	api.github.com
-140.82.114.26	live.github.com
+140.82.113.25	live.github.com
 140.82.113.18	status.github.com
 3.5.3.117	github-production-release-asset-2e65be.s3.amazonaws.com
 16.182.66.249	github-production-user-asset-6210df.s3.amazonaws.com
@@ -57,7 +57,7 @@
 140.82.114.17	help.github.com
 140.82.112.21	central.github.com
 13.107.42.16	pipelines.actions.githubusercontent.com
-140.82.113.21	collector.github.com
+140.82.114.22	collector.github.com
 140.82.112.17	github.community
 185.199.108.133	support.github.com
 185.199.108.153	assets-cdn.github.com
@@ -69,8 +69,8 @@
 185.199.108.153	customer-stories-feed.github.com
 185.199.108.154	docs.github.com
 140.82.112.29	githubapp.com
-140.82.114.9	codeload.github.com
-140.82.114.10	nodeload.github.com
+140.82.114.10	codeload.github.com
+140.82.112.10	nodeload.github.com
 3.5.7.105	github-com.s3.amazonaws.com
 3.5.11.202	github-production-repository-file-5c1aeb.s3.amazonaws.com
 151.101.1.194	github.global.ssl.fastly.net
