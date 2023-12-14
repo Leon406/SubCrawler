@@ -1,17 +1,28 @@
 package me.leon
 
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import me.leon.support.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @Suppress("LongMethod")
 class NodeCrawler {
 
+    private val onlyGenerateAll = true
+
     private val maps = linkedMapOf<String, LinkedHashSet<Sub>>()
+
+    private val typeMapper = mapOf(
+        SS::class.java to (NODE_SS to "ss节点: "),
+        SSR::class.java to (NODE_SSR to "ssr节点: "),
+        V2ray::class.java to (NODE_V2 to "v2ray节点: "),
+        Trojan::class.java to (NODE_TR to "trojan节点: "),
+        Vless::class.java to (NODE_VLESS to "vless节点: "),
+    )
+
 
     /** 1.爬取配置文件对应链接的节点,并去重 2.同时进行可用性测试 tcping */
     @Test
@@ -53,8 +64,8 @@ class NodeCrawler {
                 .also { println("共有订阅源：${it.size.also { subCount = it }}") }
                 .map { sub ->
                     sub to
-                        async(DISPATCHER) {
-                            runCatching {
+                            async(DISPATCHER) {
+                                runCatching {
                                     val uri = sub
                                     Parser.parseFromSub(uri).also {
                                         println("$uri ${it.size}")
@@ -63,11 +74,11 @@ class NodeCrawler {
                                         }
                                     }
                                 }
-                                .getOrElse {
-                                    println("___parse failed $sub  ${it.message}")
-                                    linkedSetOf()
-                                }
-                        }
+                                    .getOrElse {
+                                        println("___parse failed $sub  ${it.message}")
+                                        linkedSetOf()
+                                    }
+                            }
                 }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
@@ -98,7 +109,7 @@ class NodeCrawler {
                     it.filterIsInstance<Vless>()
                         .groupBy { it.javaClass }
                         .forEach { (clazz, subList) ->
-                            subList.firstOrNull()?.run { name = customInfo + name }
+                            subList.firstOrNull()?.run { name = CUSTOM_INFO + name }
                             val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
                             NODE_VLESS.writeLine()
                             writeData(clazz, data, subList)
@@ -110,10 +121,6 @@ class NodeCrawler {
     }
 
     private fun nodeGroup() {
-        NODE_SS.writeLine()
-        NODE_SSR.writeLine()
-        NODE_V2.writeLine()
-        NODE_TR.writeLine()
         val nodes = Parser.parseFromSub(NODE_OK)
         nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
@@ -124,40 +131,26 @@ class NodeCrawler {
         nodes
             .groupBy { it.javaClass }
             .forEach { (clazz, subList) ->
-                subList.firstOrNull()?.run { name = customInfo + name }
+                subList.firstOrNull()?.run { name = CUSTOM_INFO + name }
                 val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
                 writeData(clazz, data, subList)
             }
     }
 
     private fun writeData(clazz: Class<out Sub>, data: String, subList: List<Sub>) {
-        when (clazz) {
-            SS::class.java ->
-                NODE_SS.writeLine(data).also {
-                    println("ss节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
-                }
-            SSR::class.java ->
-                NODE_SSR.writeLine(data).also {
-                    println("ssr节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
-                }
-            V2ray::class.java ->
-                NODE_V2.writeLine(data).also {
-                    println("v2ray节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
-                }
-            Trojan::class.java ->
-                NODE_TR.writeLine(data).also {
-                    println("trojan节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
-                }
-            Vless::class.java ->
-                NODE_VLESS.writeLine(data).also {
-                    println("vless节点: ${subList.size}".also { nodeInfo.writeLine("- $it") })
-                }
+        if (onlyGenerateAll && clazz != Vless::class.java) {
+            return
+        }
+        typeMapper[clazz]?.run {
+            first.writeLine(data,false).also {
+                println("$second${subList.size}".also { nodeInfo.writeLine("- $it") })
+            }
         }
     }
 
     companion object {
         private val nodeInfo = "$ROOT/info.md"
-        const val customInfo = "防失效github SubCrawler"
+        const val CUSTOM_INFO = "防失效github SubCrawler"
         private var subCount = 0
         private var nodeCount = 0
     }
