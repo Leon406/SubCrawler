@@ -1,4 +1,4 @@
-##### 更新时间2024-01-07 12:13:10 #####
+##### 更新时间2024-01-09 12:13:39 #####
 
 104.18.32.7	stackoverflow.com
 104.18.43.226	stackexchange.com
@@ -42,7 +42,7 @@
 104.18.42.229	client-api.arkoselabs.com
 104.18.24.64	cdn.arkoselabs.com
 54.76.84.156	prod-ireland.arkoselabs.com
-3.5.25.194	github-cloud.s3.amazonaws.com
+3.5.8.146	github-cloud.s3.amazonaws.com
 140.82.112.3	gist.github.com
 140.82.112.5	api.github.com
 140.82.114.25	live.github.com
@@ -50,7 +50,7 @@
 3.5.25.214	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.25.53	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.113.4	github.com
-140.82.113.4	www.github.com
+140.82.114.3	www.github.com
 140.82.112.25	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
