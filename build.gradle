@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id "org.jetbrains.kotlin.jvm" version "1.9.21"
-    id "com.diffplug.spotless" version "6.23.3"
+    id "com.diffplug.spotless" version "6.24.0"
     id "io.gitlab.arturbosch.detekt" version "1.23.4"
 }
 
