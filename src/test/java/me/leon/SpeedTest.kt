@@ -23,6 +23,9 @@ class SpeedTest {
 
         process.errorStream.bufferedReader(Charset.defaultCharset()).use {
             it.forEachLine {
+                if (it.length <=19) {
+                    return@forEachLine
+                }
                 val message = it.substring(19)
                 if (message.contains("json options: ")) {
                     return@forEachLine
