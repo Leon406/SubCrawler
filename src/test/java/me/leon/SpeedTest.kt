@@ -9,7 +9,11 @@ import java.nio.charset.Charset
 class SpeedTest {
     @Test
     fun exec() {
-        val config = "litespeed/config.json".toFile()
+        val config = "litespeed/config.json".toFile().absoluteFile
+        if (!NODE_OK.toFile().exists()) {
+            println("---------------------- error")
+            return
+        }
         config.writeBytes(LiteSpeedConfig(NODE_OK).toJson().toByteArray())
         val nodes = mutableMapOf<Int, String>()
         val oks = mutableListOf<Int>()
