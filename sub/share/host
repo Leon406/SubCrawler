@@ -1,4 +1,4 @@
-##### 更新时间2024-03-11 12:14:19 #####
+##### 更新时间2024-03-13 12:12:24 #####
 
 104.18.32.7	stackoverflow.com
 104.18.43.226	stackexchange.com
@@ -32,9 +32,9 @@
 162.159.128.234	discordcdn.com
 104.112.26.32	lastpass.com
 104.112.26.32	www.lastpass.com
-13.107.213.38	logincdn.msauth.net
+13.107.213.51	logincdn.msauth.net
 13.107.213.40	acctcdn.msauth.net
-40.126.7.35	login.live.com
+20.190.151.6	login.live.com
 13.105.28.1	storage.live.com
 13.107.42.12	public.bn.files.1drv.com
 23.220.189.219	storeedgefd.dsx.mp.microsoft.com
@@ -50,7 +50,7 @@
 3.5.28.113	github-production-release-asset-2e65be.s3.amazonaws.com
 3.5.8.150	github-production-user-asset-6210df.s3.amazonaws.com
 140.82.114.4	github.com
-140.82.113.3	www.github.com
+140.82.114.4	www.github.com
 140.82.112.25	alive.github.com
 140.82.114.22	collector.githubapp.com
 185.199.108.154	github.githubassets.com
@@ -89,4 +89,4 @@
 185.199.108.133	desktop.githubusercontent.com
 52.224.38.193	github.dev
 172.253.122.95	translate.googleapis.com
-142.251.163.100	translate.google.com
+142.250.190.110	translate.google.com
