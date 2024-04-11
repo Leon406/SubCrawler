@@ -45,7 +45,7 @@ data class LiteSpeedConfig(
     val speedtestMode: String = "pingonly",
     val pingMethod: String = "googleping",
     val sortMethod: String = "pingonly",
-    val concurrency: Int = 1024,
+    val concurrency: Int = 128,
     val testMode: Int = 2,
     val timeout: Int = 5,
     val fontSize: Int = 24,
