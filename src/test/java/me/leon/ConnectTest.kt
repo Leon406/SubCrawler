@@ -1,7 +1,6 @@
 package me.leon
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import me.leon.support.*
 import org.junit.jupiter.api.Test
 
@@ -37,5 +36,25 @@ class ConnectTest {
                 .also { println(it.size) }
                 .forEach { println(it.first.info() + ":" + it.second) }
         }
+    }
+
+    @Test
+    fun url404() {
+        runBlocking {
+            ("$ROOT/pool/sublists".readLines() + "$ROOT/pool/subs")
+                .filterNot { it.startsWith("#") }
+                .map {
+                    async(DISPATCHER) {
+                        it to runCatching { it.httpRequest(10000).responseCode == 404 }.getOrDefault(false)
+                    }
+                }
+                .awaitAll()
+                .filter { it.second }
+                .forEach {
+                    println(it)
+                }
+        }
+
+
     }
 }
