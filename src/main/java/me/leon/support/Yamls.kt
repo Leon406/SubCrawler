@@ -1,9 +1,10 @@
 package me.leon.support
 
+import org.yaml.snakeyaml.LoaderOptions
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
 
-inline fun <reified T> String.parseYaml() = (Yaml(Constructor(T::class.java)).load(fixYaml()) as T)
+inline fun <reified T> String.parseYaml() = (Yaml(Constructor(T::class.java, LoaderOptions())).load(fixYaml()) as T)
 
 fun String.fixYaml() =
     replace("!<[^>]+>".toRegex(), "")
