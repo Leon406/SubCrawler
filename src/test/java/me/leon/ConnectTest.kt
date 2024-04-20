@@ -41,7 +41,7 @@ class ConnectTest {
     @Test
     fun url404() {
         runBlocking {
-            ("$ROOT/pool/sublists".readLines() + "$ROOT/pool/subs")
+            ("$ROOT/pool/sublists".readLines() + "$ROOT/pool/subs".readLines())
                 .filterNot { it.startsWith("#") }
                 .map {
                     async(DISPATCHER) {
@@ -54,7 +54,5 @@ class ConnectTest {
                     println(it)
                 }
         }
-
-
     }
 }

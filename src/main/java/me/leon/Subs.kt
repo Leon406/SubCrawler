@@ -66,7 +66,7 @@ data class V2ray(
             ps = value
         }
     override var serverPort: Int = 0
-        get() = port.toInt()
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
     override val SERVER
         get() = add
     override var nation: String = ""
@@ -90,7 +90,7 @@ data class SS(
             remark = value
         }
     override val serverPort
-        get() = port.toInt()
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
     override val SERVER
         get() = server
 
@@ -119,7 +119,7 @@ data class SSR(
             remarks = value
         }
     override val serverPort
-        get() = port.toInt()
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
     override val SERVER
         get() = server
     override var nation: String = ""
@@ -150,7 +150,7 @@ data class Trojan(val password: String = "", val server: String = "", val port: 
     private val params
         get() = if (query.isEmpty()) "" else "?$query"
     override val serverPort
-        get() = port.toInt()
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
     override val SERVER
         get() = server
     override var nation: String = ""
@@ -176,13 +176,14 @@ data class Vless(val uuid: String = "", val server: String = "", val port: Strin
     private val params
         get() = if (query.isEmpty()) "" else "?$query"
     override val serverPort
-        get() = port.toInt()
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
     override val SERVER
         get() = server
     override var nation: String = ""
 
     override fun toUri() =
         "vless://${"${uuid.urlEncode()}@$server:$port$params"}#${name.urlEncode()}"
+
     override fun info() =
         if (query.isEmpty()) {
             "$nation $name vless $server:$port"
@@ -193,8 +194,8 @@ data class Vless(val uuid: String = "", val server: String = "", val port: Strin
 
 fun Sub.methodUnSupported() =
     this is SSR && (method in SSR_unSupportMethod || protocol in SSR_unSupportProtocol) ||
-        this is SS && method in SS_unSupportCipher ||
-        this is V2ray && net in VMESS_unSupportProtocol
+            this is SS && method in SS_unSupportCipher ||
+            this is V2ray && net in VMESS_unSupportProtocol
 
 val SSR_unSupportMethod = arrayOf("none", "rc4", "rc4-md5")
 val SSR_unSupportProtocol = arrayOf("auth_chain_a")

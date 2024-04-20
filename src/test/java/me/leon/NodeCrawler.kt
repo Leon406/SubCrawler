@@ -6,7 +6,7 @@ import me.leon.support.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 @Suppress("LongMethod")
 class NodeCrawler {
@@ -33,53 +33,35 @@ class NodeCrawler {
         nodeGroup()
     }
 
-    /** 爬取配置文件数据，并去重写入文件 */
+   /** 爬取配置文件数据，并去重写入文件 */
     @Test
     @Disabled
     fun crawlNodes() {
-        val subs1 = "$ROOT/pool/subpool".readLines()
-        val subs2 = "$ROOT/pool/subs".readLines()
-        //        val subs3 = "$SHARE2/tmp".readLines()
-        val sublist = "$ROOT/pool/sublists".readLines()
-        val subs3 =
-            sublist
-                .map { it.readFromNet() }
-                .flatMap { it.split("\r\n|\n".toRegex()) }
-                .distinct()
-                .also { println("before ${it.size}") }
-                .filterNot { it.startsWith("#") || it.trim().isEmpty() }
-                .also {
-                    println(it)
-                    println("after ${it.size}")
-                }
-        val subs = (subs1 + subs2 + subs3).toHashSet()
-        println(subs.size)
+        val mergeSubs = mergeAllNodesUrl()
+        println(mergeSubs.size)
         val prefix = SimpleDateFormat("MMddHH").format(Date())
         val countryMap = mutableMapOf<String, Int>()
         val errorList = mutableListOf<String>()
         POOL.writeLine()
         runBlocking {
-            subs
-                .filterNot { it.trim().startsWith("#") || it.trim().isEmpty() }
-                .also { println("共有订阅源：${it.size.also { subCount = it }}") }
-                .map { sub ->
-                    sub to
-                            async(DISPATCHER) {
-                                runCatching {
-                                    val uri = sub
-                                    Parser.parseFromSub(uri).also {
-                                        println("$uri ${it.size}")
-                                        if (it.size == 0) {
-                                            errorList.add(uri)
-                                        }
+            mergeSubs.map { sub ->
+                sub to
+                        async(DISPATCHER) {
+                            runCatching {
+                                val uri = sub
+                                Parser.parseFromSub(uri).also {
+                                    println("$uri ${it.size}")
+                                    if (it.size == 0) {
+                                        errorList.add(uri)
                                     }
                                 }
-                                    .getOrElse {
-                                        println("___parse failed $sub  ${it.message}")
-                                        linkedSetOf()
-                                    }
                             }
-                }
+                                .getOrElse {
+                                    println("___parse failed $sub  ${it.message}")
+                                    linkedSetOf()
+                                }
+                        }
+            }
                 .map { it.first to it.second.await() }
                 .fold(linkedSetOf<Sub>()) { acc, linkedHashSet ->
                     maps[linkedHashSet.first] = linkedHashSet.second
@@ -142,10 +124,31 @@ class NodeCrawler {
             return
         }
         typeMapper[clazz]?.run {
-            first.writeLine(data,false).also {
+            first.writeLine(data, false).also {
                 println("$second${subList.size}".also { nodeInfo.writeLine("- $it") })
             }
         }
+    }
+
+    private fun mergeAllNodesUrl(): HashSet<String> {
+        val sub1 = "$ROOT/pool/subs".readLines()
+        val sublist = "$ROOT/pool/sublists".readLines()
+        val sub2 =
+            sublist
+                .map { it.readFromNet() }
+                .flatMap { it.split("\r\n|\n".toRegex()) }
+                .distinct()
+                .filterNot { it.startsWith("#") || it.trim().isEmpty() }
+                .also {
+                    println(it)
+                    println("after ${it.size}")
+                }
+        val mergeSubs = (sub1 + sub2)
+            .filterNot { it.trim().startsWith("#") || it.trim().isEmpty() }
+            .toHashSet()
+            .also { println("共有订阅源：${it.size.also { subCount = it }}") }
+
+        return mergeSubs
     }
 
     companion object {

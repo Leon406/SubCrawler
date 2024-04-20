@@ -220,6 +220,7 @@ object Parser {
                     // 移除yaml中的标签
                 {
                     data
+                        .replace("\\[[^\"]+?]".toRegex(),"")
                         .parseYaml<Clash>()
                         .proxies
                         .asSequence()

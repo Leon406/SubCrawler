@@ -29,7 +29,10 @@ data class Clash(
     var ipv6: Boolean = false
     var `cfw-bypass`: List<String> = mutableListOf()
     var `cfw-latency-timeout`: Int = 0
-    var `experimental`: Any = Any()
+    var experimental: Any = Any()
+    var `find-process-mode`: Any = Any()
+    var `global-client-fingerprint`: Any = Any()
+    var sniffer: Any = Any()
     var rule: List<String> = mutableListOf()
     var `proxy-providers`: LinkedHashMap<String, Any> = linkedMapOf()
 }
@@ -73,7 +76,9 @@ data class Node(
 
     // hysteria
     var auth_str: String = ""
+    var `auth-str`: String = ""
     var alpn: String = ""
+    var up: String = ""
     var disable_mtu_discovery: Boolean = false
 
     // http协议
@@ -82,6 +87,8 @@ data class Node(
     var `grpc-opts`: LinkedHashMap<String, Any> = linkedMapOf()
 
     var group: String = ""
+    // vmess
+    var `client-fingerprint` :String = ""
     data class VmessWsOpts(
         var path: String = "",
         var headers: LinkedHashMap<String, String> = linkedMapOf()
