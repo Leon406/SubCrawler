@@ -10,17 +10,7 @@
 ## [Telegram群组](https://t.me/freenodeshare)
 
 
-## <span id="top">订阅链接</span>
-
-- https://github.com/JACKUSR2089/v2ray-subscribed
-- https://github.com/clashconfig/online
-- https://github.com/colatiger/v2ray-nodes
-- :star:https://github.com/freefq/free
-- https://github.com/skywolf627/VmessActions
-- [pojiezhiyuanjun/freev2](https://github.com/pojiezhiyuanjun/freev2)
-- https://github.com/adiwzx/freenode
-
-## 优质节点池
+## <span id="top">优质节点池</span>
 
 [大部分都停用,自行搜索](https://www.google.com/search?client=aff-cs-360se&ie=UTF-8&q=inurl%3A%2Fclash%2Fproxies&)
 
@@ -43,7 +33,42 @@
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [:star:LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://leon.lanzoub.com/b0db6sooh#8c0d)
+    
 - 在线测速(基于上面本地测速搭建的服务,建议自行搭建,目前大部分都挂了)
+
+- 国内自有服务器Linux测速，使用litespeed
+
+    ```
+    # litespeed测速，建议关闭网速测试
+    ./lite --config config.json --test 生成链接
+    # 复制到静态nginx资源路径
+    cp output.txt  /usr/share/nginx/res/nodes.txt
+    # base64编码，生成v2ray订阅
+    base64  /usr/share/nginx/res/nodes.txt > /usr/share/nginx/res/node.txt
+    
+    ```
+
+    参考config.json 配置
+
+    ```
+    
+    {
+      "group": "Default",
+      "speedtestMode": "pingonly",
+      "pingMethod": "googleping",
+      "sortMethod": "rspeed",
+      "concurrency": 1024,
+      "testMode": 2,
+      "timeout": 5,
+      "fontSize": 24,
+      "outputMode": 4,
+      "unique": true,
+      "language": "en",
+      "theme": "rainbow"
+    }
+    ```
+
+    
 
 
 
@@ -71,7 +96,7 @@
 
 - github action (  [节点详情](./sub/info.md) )
   - [vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/vless) 未测速 (litespeed不支持)
-  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all4)
+  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all5)
 
 
 - 本地构建 (github action 节点测试为国外服务器,国内不保证能用,**建议使用本地二次测速筛选后使用**)
