@@ -11,8 +11,10 @@ class IpFilterTest {
 
     @Test
     fun reTestFailIps() {
-        failIp()
-        removeOkPorts()
+        repeat(5){
+            failIp()
+            removeOkPorts()
+        }
     }
 
     @Test
