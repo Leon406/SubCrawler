@@ -28,8 +28,8 @@ fun String.ipCountryZh() =
     runCatching { countryReader.country(this.toInetAddress()).country.names[CN] }
         .getOrElse {
             println("ipCountryZh error ${it.message}")
-           ipInfo()
-        }?:ipInfo()
+            ipInfo()
+        } ?: ipInfo()
 
 fun InetAddress.ipCountryZh() =
     runCatching { countryReader.country(this).country.names[CN] }.getOrDefault("未知")
@@ -39,7 +39,7 @@ fun Sub.ipCountryZh(): String =
         .getOrDefault(SERVER.ipInfo())
         ?: SERVER.ipInfo()
 
-private fun String.ipInfo() = "CF中转".takeIf { ipCloudFlare() }?:"未知"
+private fun String.ipInfo() = runCatching { "CF中转".takeIf { ipCloudFlare() } ?: "未知" }.getOrElse { "未知" }
 
 fun String.ipCountryEn(): String =
     runCatching { countryReader.country(this.toInetAddress()).country.isoCode }
@@ -50,16 +50,16 @@ fun InetAddress.ipCountryEn(): String =
 
 fun String.ipCityZh() =
     runCatching {
-            cityReader.city(this.toInetAddress()).run {
-                mostSpecificSubdivision.names[CN] ?: country.names[CN]
-            }
+        cityReader.city(this.toInetAddress()).run {
+            mostSpecificSubdivision.names[CN] ?: country.names[CN]
         }
+    }
         .getOrDefault("未知")
 
 fun String.ipCityEn() =
     runCatching {
-            cityReader.city(this.toInetAddress()).run {
-                mostSpecificSubdivision.names["en"] ?: country.names["en"]
-            }
+        cityReader.city(this.toInetAddress()).run {
+            mostSpecificSubdivision.names["en"] ?: country.names["en"]
         }
+    }
         .getOrDefault("未知")
