@@ -192,6 +192,33 @@ data class Vless(val uuid: String = "", val server: String = "", val port: Strin
         }
 }
 
+data class Hysteria2(val uuid: String = "", val server: String = "", val port: String = "") : Sub() {
+    var remark: String = ""
+    var query: String = ""
+    override var name: String
+        get() = remark.ifEmpty { "$SERVER:$serverPort-hys2-${hashCode()}" }
+        set(value) {
+            remark = value
+        }
+    private val params
+        get() = if (query.isEmpty()) "" else "?$query"
+    override val serverPort
+        get() = runCatching { port.toInt() }.getOrDefault(-1)
+    override val SERVER
+        get() = server
+    override var nation: String = ""
+
+    override fun toUri() =
+        "hysteria2://${"${uuid.urlEncode()}@$server:$port$params"}#${name.urlEncode()}"
+
+    override fun info() =
+        if (query.isEmpty()) {
+            "$nation $name vless $server:$port"
+        } else {
+            "$nation $remark vless $server:$port?$query"
+        }
+}
+
 fun Sub.methodUnSupported() =
     this is SSR && (method in SSR_unSupportMethod || protocol in SSR_unSupportProtocol) ||
             this is SS && method in SS_unSupportCipher ||

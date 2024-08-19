@@ -1,5 +1,6 @@
 package me.leon
 
+import me.leon.support.urlDecode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -8,7 +9,7 @@ class NetworkSubTest {
     fun subParse() {
 
         val e =
-            "https://gitlab.com/univstar1/v2ray/-/raw/main/data/clash/general.yaml"
+            "https://raw.githubusercontent.com/itsyebekhe/HiN-VPN/main/subscription/normal/mix"
 
         listOf(
                 e,
@@ -51,6 +52,17 @@ class NetworkSubTest {
             "vless://21f181f3-2f66-47a8-b4d5-7aef046cc087@104.19.146.137:443?encryption=none&security=tls&sni=ap.utopub.com&type=ws&host=ap.utopub.com&path=%2futopub-vless#NY%40vless"
         Parser.parseVless(uri).also {
             Assertions.assertEquals(uri, it.toUri())
+            println(it.info())
+        }
+    }
+   @Test
+    fun parseHysteria2() {
+        val uri =
+            "hysteria2://HowdyHysteria2023w0W@hysteria.udpgw.com:8443?insecure=1&sni=sni-here.com&obfs=salamander&obfs-password=HysteriaHowdy#\uD83C\uDD94oneclickvpnkeys%20\uD83D\uDD12%20HY2-UDP-N/A%20\uD83C\uDDA5\uD83C\uDDA5%20%20117ms"
+       println(Parser.parse(uri))
+       Parser.parseHysteria2(uri).also {
+            println(it.toUri().urlDecode())
+            Assertions.assertEquals(uri.substringBefore("#"), it.toUri().substringBefore("#"))
             println(it.info())
         }
     }

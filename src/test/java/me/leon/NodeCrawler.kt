@@ -21,6 +21,7 @@ class NodeCrawler {
         V2ray::class.java to (NODE_V2 to "v2ray节点: "),
         Trojan::class.java to (NODE_TR to "trojan节点: "),
         Vless::class.java to (NODE_VLESS to "vless节点: "),
+        Hysteria2::class.java to (NODE_HYS2 to "vless节点: "),
     )
 
 
@@ -33,7 +34,7 @@ class NodeCrawler {
         nodeGroup()
     }
 
-   /** 爬取配置文件数据，并去重写入文件 */
+    /** 爬取配置文件数据，并去重写入文件 */
     @Test
     @Disabled
     fun crawlNodes() {
@@ -96,6 +97,14 @@ class NodeCrawler {
                             NODE_VLESS.writeLine()
                             writeData(clazz, data, subList)
                         }
+                    it.filterIsInstance<Hysteria2>()
+                        .groupBy { it.javaClass }
+                        .forEach { (clazz, subList) ->
+                            subList.firstOrNull()?.run { name = CUSTOM_INFO + name }
+                            val data = subList.joinToString("\n") { it.toUri() }.b64Encode()
+                            NODE_HYS2.writeLine()
+                            writeData(clazz, data, subList)
+                        }
                 }
         }
 
@@ -106,7 +115,7 @@ class NodeCrawler {
         val nodes = Parser.parseFromSub(NODE_OK)
         nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
-            nodes.filterNot { it is Vless }.joinToString("\n") { it.toUri() }.b64Encode(),
+            nodes.filterNot { it is Vless || it is Hysteria2 }.joinToString("\n") { it.toUri() }.b64Encode(),
             false
         )
 
@@ -120,7 +129,7 @@ class NodeCrawler {
     }
 
     private fun writeData(clazz: Class<out Sub>, data: String, subList: List<Sub>) {
-        if (onlyGenerateAll && clazz != Vless::class.java) {
+        if (onlyGenerateAll && clazz != Vless::class.java && clazz != Hysteria2::class.java) {
             return
         }
         typeMapper[clazz]?.run {
