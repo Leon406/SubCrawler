@@ -15,22 +15,12 @@ class GeoTest {
     fun geoParse() {
 
         val ipAddress = "128.101.101.101"
-
-        val response = cityReader.city(ipAddress.toInetAddress())
-        println(response)
-
-        response.country.run {
-            println("country isoCode: $isoCode name: $name name-zh: ${names["zh-CN"]}")
-        }
-        response.mostSpecificSubdivision.run {
-            println("subdivision isoCode: $isoCode name: $name name-zh: ${names["zh-CN"]}")
-        }
-        response.run { println("city: $city , postal: $postal  location: $location") }
+//        val ipAddress = "104.19.45.161"
 
         println(ipAddress.ipCountryZh())
-        println(ipAddress.ipCountryEn())
-        println(ipAddress.ipCityZh())
-        println(ipAddress.ipCountryEn())
+//        println(ipAddress.ipCountryEn())
+//        println(ipAddress.ipCityZh())
+//        println(ipAddress.ipCountryEn())
     }
 
     @Test
