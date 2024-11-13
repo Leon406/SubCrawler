@@ -9,11 +9,6 @@
 
 ## [Telegram群组](https://t.me/freenodeshare)
 
-
-## <span id="top">优质节点池</span>
-
-[大部分都停用,自行搜索](https://www.google.com/search?client=aff-cs-360se&ie=UTF-8&q=inurl%3A%2Fclash%2Fproxies&)
-
 ## 节点池搭建
 
 > 有服务器的可自行搭建 [proxypool](https://github.com/Leon406/proxypool)  配置文件 [source.yaml](https://github.com/Leon406/proxypool/blob/master/config/source.yaml) 
@@ -97,7 +92,7 @@
 - github action (  [节点详情](./sub/info.md) )
   - [vless](https://raw.githubusercontent.com/Leon406/SubCrawler/master/sub/share/vless) 未测速 (litespeed不支持)
   - [hysteria2](https://raw.githubusercontent.com/Leon406/SubCrawler/master/sub/share/hysteria2) 未测速 (litespeed不支持)
-  - [四合一转换(不含vless,hysteria2)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all5)
+  - [其他合并](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/a11)
 
 
 - 本地构建 (github action 节点测试为国外服务器,国内不保证能用,**建议使用本地二次测速筛选后使用**)
@@ -154,7 +149,7 @@ chmod +x localFilter && ./localFilter
 | Win/Mac/Linux | [GUI.for.SingBox](https://github.com/GUI-for-Cores/GUI.for.SingBox) | sing-box支持全协议                                           |
 | Win/Mac/Linux | [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev) | clash meta 支持协议                                          |
 | Windows       | [V2rayN **(推荐)**](https://github.com/2dust/v2rayN/releases) | SS、Trojan、Vmess、VLESS                                     |
-| Windows       | [<del>Clash CFW  </del>](https://github.com/Fndroid/clash_for_windows_pkg/releases) 已G自行搜索安装包 | SS、SSR、Trojan、Vmess、VLESS                                |
+| Windows       | [<del>Clash CFW  </del>](https://github.com/Fndroid/clash_for_windows_pkg/releases) <br>[Clash-for-Windows_Chinese (汉化修改版)](https://github.com/Z-Siqi/Clash-for-Windows_Chinese) | SS、SSR、Trojan、Vmess、VLESS                                |
 | macOS         | [V2rayU](https://github.com/yanue/V2rayU/releases)           | SS、SSR、Trojan、V2ray                                       |
 | Android       | [V2rayNG](https://github.com/2dust/v2rayNG/releases)         | SS、Trojan、V2ray（Vmess、VLESS）、Xray                      |
 | Android       | [<del>ClashForAndroid</del>  ](https://github.com/Kr328/ClashForAndroid/releases) 已G自行搜索安装包<br>[ClashMetaForAndroid **(推荐)**](https://github.com/MetaCubeX/ClashMetaForAndroid) | SS、SSR、Trojan、Vmess、VLESS                                |

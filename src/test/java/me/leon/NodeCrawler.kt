@@ -21,7 +21,7 @@ class NodeCrawler {
         V2ray::class.java to (NODE_V2 to "v2ray节点: "),
         Trojan::class.java to (NODE_TR to "trojan节点: "),
         Vless::class.java to (NODE_VLESS to "vless节点: "),
-        Hysteria2::class.java to (NODE_HYS2 to "vless节点: "),
+        Hysteria2::class.java to (NODE_HYS2 to "hysteria2节点: "),
     )
 
 
