@@ -95,8 +95,9 @@
 ### 节点
 
 - github action (  [节点详情](./sub/info.md) )
-  - [vless](https://raw.fastgit.org/Leon406/SubCrawler/master/sub/share/vless) 未测速 (litespeed不支持)
-  - [四合一转换(不含vless)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all5)
+  - [vless](https://raw.githubusercontent.com/Leon406/SubCrawler/master/sub/share/vless) 未测速 (litespeed不支持)
+  - [hysteria2](https://raw.githubusercontent.com/Leon406/SubCrawler/master/sub/share/hysteria2) 未测速 (litespeed不支持)
+  - [四合一转换(不含vless,hysteria2)](https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all5)
 
 
 - 本地构建 (github action 节点测试为国外服务器,国内不保证能用,**建议使用本地二次测速筛选后使用**)
@@ -148,18 +149,20 @@ chmod +x localFilter && ./localFilter
 
 ## 使用软件
 
-| 平台    | 软件                                                         | 支持协议                                                     |
-| ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Windows | [V2rayN](https://github.com/2dust/v2rayN/releases)           | SS、Trojan、Vmess、VLESS                                     |
-| Windows | [Clash CFW  **(推荐)**](https://github.com/Fndroid/clash_for_windows_pkg/releases) 已G自行搜索安装包 | SS、SSR、Trojan、Vmess、VLESS                                |
-| macOS   | [ClashX](https://github.com/yichengchen/clashX/releases) 已G自行搜索安装包 | SS、SSR、Trojan、V2ray                                       |
-| macOS   | [V2rayU](https://github.com/yanue/V2rayU/releases)           | SS、SSR、Trojan、V2ray                                       |
-| Android | [V2rayNG](https://github.com/2dust/v2rayNG/releases)         | SS、Trojan、V2ray（Vmess、VLESS）、Xray                      |
-| Android | [ClashForAndroid  **(推荐)**](https://github.com/Kr328/ClashForAndroid/releases) 已G自行搜索安装包 | SS、SSR、Trojan、Vmess、VLESS                                |
-| Android | [NekoBoxForAndroid **(推荐)**](https://github.com/MatsuriDayo/NekoBoxForAndroid) | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
-| IOS     | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
-| IOS     | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
-| IOS     | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
+| 平台          | 软件                                                         | 支持协议                                                     |
+| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Win/Mac/Linux | [GUI.for.SingBox](https://github.com/GUI-for-Cores/GUI.for.SingBox) | sing-box支持全协议                                           |
+| Win/Mac/Linux | [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev) | clash meta 支持协议                                          |
+| Windows       | [V2rayN **(推荐)**](https://github.com/2dust/v2rayN/releases) | SS、Trojan、Vmess、VLESS                                     |
+| Windows       | [<del>Clash CFW  </del>](https://github.com/Fndroid/clash_for_windows_pkg/releases) 已G自行搜索安装包 | SS、SSR、Trojan、Vmess、VLESS                                |
+| macOS         | [V2rayU](https://github.com/yanue/V2rayU/releases)           | SS、SSR、Trojan、V2ray                                       |
+| Android       | [V2rayNG](https://github.com/2dust/v2rayNG/releases)         | SS、Trojan、V2ray（Vmess、VLESS）、Xray                      |
+| Android       | [<del>ClashForAndroid</del>  ](https://github.com/Kr328/ClashForAndroid/releases) 已G自行搜索安装包<br>[ClashMetaForAndroid **(推荐)**](https://github.com/MetaCubeX/ClashMetaForAndroid) | SS、SSR、Trojan、Vmess、VLESS                                |
+| Android       | [NekoBoxForAndroid **(推荐)**](https://github.com/MatsuriDayo/NekoBoxForAndroid) | VMess / VLESS / SSR / Trojan / Trojan-Go/ NaiveProxy / HTTP(S) / SOCKS5/etc. |
+| Android       | [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid) | clash meta 支持协议                                          |
+| IOS           | Shadowrocket 小火箭 IOS非国区购买                            | SS、SSR、Trojan、V2ray、VLESS                                |
+| IOS           | Quantumult  IOS非国区购买                                    | SS、SSR、Trojan、V2ray                                       |
+| IOS           | QuantumultX  IOS非国区购买                                   | SS、SSR、Trojan、V2ray                                       |
 
 
 
