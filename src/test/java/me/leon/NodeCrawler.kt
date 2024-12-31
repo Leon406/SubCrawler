@@ -113,6 +113,15 @@ class NodeCrawler {
 
     private fun nodeGroup() {
         val nodes = Parser.parseFromSub(NODE_OK)
+        val regex = "[a-zA-Z]".toRegex()
+        nodes.filterNot { it.SERVER.contains(regex) }
+            .forEach {
+                kotlin.runCatching {
+                    it.name += " "+it.SERVER.ipScore().lvl
+                }.onFailure {
+                    println("${it.message}")
+                }
+        }
         nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
             nodes.filterNot { it is Vless || it is Hysteria2 }.joinToString("\n") { it.toUri() }.b64Encode(),

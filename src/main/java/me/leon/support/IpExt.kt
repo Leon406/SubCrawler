@@ -1,10 +1,12 @@
 package me.leon.support
 
+import me.leon.IP_SCORE
+import org.jsoup.Jsoup
 import java.net.InetAddress
-import kotlin.jvm.Throws
 import kotlin.math.pow
 
-@Throws fun String.toInetAddress(): InetAddress = InetAddress.getByName(this)
+@Throws
+fun String.toInetAddress(): InetAddress = InetAddress.getByName(this)
 
 
 val cfCidrs =
@@ -56,3 +58,25 @@ fun String.cidrRange(): UIntRange {
 fun String.ipCloudFlare() = cfCidrs.any { it.contains(ip2Uint()) }
 
 fun String.stripAllSpace() = replace("\\s+".toRegex(), "")
+
+val map = IP_SCORE.readLines().filter { it.isNotEmpty() }.associate { with(it.split("\t")) { first() to last().toInt() } }.toMutableMap()
+        .also { println("ip score size ${it.size}")  }
+
+fun String.ipScore() =
+    map[this] ?: (Jsoup.connect("https://scamalytics.com/ip/$this")
+        .get()
+        .selectFirst(".score")
+        ?.text()?.substringAfter("Fraud Score: ")?.toIntOrNull() ?: 0)
+        .also {
+            map[this] = it
+            IP_SCORE.writeLine("$this\t$it")
+        }
+
+val Int.lvl
+    get() =
+        when {
+            this < 40 -> "L$this"
+            this < 70 -> "M$this"
+            this < 100 -> "H$this"
+            else -> "H"
+        }

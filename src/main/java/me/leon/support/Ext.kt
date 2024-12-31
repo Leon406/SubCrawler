@@ -33,8 +33,8 @@ fun String.readFromNet() =
                 setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8")
                 setRequestProperty(
                     "user-agent",
-                    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                            "Chrome/86.0.4240.198 Safari/537.36 Clash"
+                    "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
+                            "Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"
                 )
             } as HttpURLConnection)
                 .takeIf {
