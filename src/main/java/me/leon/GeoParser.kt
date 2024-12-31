@@ -9,6 +9,7 @@ import me.leon.support.*
 
 object GeoParser {
     // register at https://www.maxmind.com/, and download your file
+    // https://download.maxmind.com/geoip/databases/GeoLite2-Country/download?suffix=tar.gz
     // todo change it to your own file
     private const val geoDir = "C:/Users/Leon/Desktop/geo"
     private val dbFile = "$geoDir/GeoLite2-City.mmdb".toFile()
