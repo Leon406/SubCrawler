@@ -11,7 +11,9 @@ import me.leon.FAIL_IPS
 val failIpPorts by lazy { FAIL_IPS.readLines().toHashSet() }
 val fails = mutableSetOf<String>()
 val passes = mutableSetOf<String>()
-
+const val UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
+        "Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0"
+const val ACCEPT_LANGUAGE = "en-US"
 /** ip + port 测试 */
 val Nop = { _: String, _: Int -> false }
 
@@ -89,13 +91,9 @@ fun String.post(params: MutableMap<String, String>) =
                         requestMethod = "POST"
                         setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
                         setRequestProperty("Referer", "https://pc.woozooo.com/mydisk.php")
-                        setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9")
+                        setRequestProperty("Accept-Language","en-US")
                         setRequestProperty("Content-Length", "${p.toByteArray().size}")
-                        setRequestProperty(
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                                "Chrome/86.0.4240.198 Safari/537.36"
-                        )
+                        setRequestProperty("user-agent",UA)
                         useCaches = false
                         doInput = true
                         doOutput = true
@@ -127,13 +125,9 @@ fun String.readBytesFromNet(
                 .apply {
                     connectTimeout = timeout
                     readTimeout = timeout
-                    setRequestProperty("Content-Type", "zh-CN,zh;q=0.9,en;q=0.8")
-                    setRequestProperty("Accept-Language", "application/json; charset=utf-8")
-                    setRequestProperty(
-                        "user-agent",
-                        "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                            "Chrome/86.0.4240.198 Safari/537.36"
-                    )
+                    setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                    setRequestProperty("Accept-Language", ACCEPT_LANGUAGE)
+                    setRequestProperty("user-agent", UA)
                     for ((k, v) in headers) setRequestProperty(k, v.toString())
 
                     requestMethod = method

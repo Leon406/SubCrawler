@@ -14,12 +14,8 @@ fun String.httpRequest(timeout:Int = DEFAULT_READ_TIME_OUT) = (URL(this).openCon
     // "https://pc.woozooo.com/mydisk.php")
     connectTimeout = DEFAULT_CONNECT_TIME_OUT
     readTimeout = timeout
-    setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8")
-    setRequestProperty(
-        "user-agent",
-        "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                "Chrome/86.0.4240.198 Safari/537.36 Clash"
-    )
+    setRequestProperty("Accept-Language", ACCEPT_LANGUAGE)
+    setRequestProperty("user-agent", UA)
 } as HttpURLConnection)
 
 fun String.readFromNet() =
@@ -30,12 +26,8 @@ fun String.readFromNet() =
                 // "https://pc.woozooo.com/mydisk.php")
                 connectTimeout = DEFAULT_CONNECT_TIME_OUT
                 readTimeout = DEFAULT_READ_TIME_OUT
-                setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8")
-                setRequestProperty(
-                    "user-agent",
-                    "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-                            "Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"
-                )
+                setRequestProperty("Accept-Language", ACCEPT_LANGUAGE)
+                setRequestProperty("User-Agent", UA)
             } as HttpURLConnection)
                 .takeIf {
                     //            println("$this __ ${it.responseCode}")
