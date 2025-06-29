@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.text.replace
 
 @Suppress("LongMethod")
 class NodeCrawler {
@@ -38,9 +39,18 @@ class NodeCrawler {
     @Test
     @Disabled
     fun crawlNodes() {
+        val format = SimpleDateFormat("YYYYMMddHH").apply {
+            timeZone = TimeZone.getTimeZone("Asia/Shanghai")
+        }.format(Date())
+        val prefix = format.substring(4)
+        val yyyy =format.substring(0,4)
+        val mm = prefix.substring(0, 2)
+        val m = mm.trimStart('0')
+        val dd = prefix.substring(2, 4)
+        val d = dd.trimStart('0')
+
         val mergeSubs = mergeAllNodesUrl()
         println(mergeSubs.size)
-        val prefix = SimpleDateFormat("MMddHH").format(Date())
         val countryMap = mutableMapOf<String, Int>()
         val errorList = mutableListOf<String>()
         POOL.writeLine()
@@ -49,10 +59,14 @@ class NodeCrawler {
                 sub to
                         async(DISPATCHER) {
                             runCatching {
-                                val uri = sub
+                                val uri = sub.replace(MONTH, mm)
+                                    .replace(MONTH1, m)
+                                    .replace(DAY, dd)
+                                    .replace(DAY1, d)
+                                    .replace(YEAR, yyyy)
                                 Parser.parseFromSub(uri).also {
                                     println("$uri ${it.size}")
-                                    if (it.size == 0) {
+                                    if (it.isEmpty()) {
                                         errorList.add(uri)
                                     }
                                 }
@@ -117,11 +131,11 @@ class NodeCrawler {
         nodes.filterNot { it.SERVER.contains(regex) }
             .forEach {
                 kotlin.runCatching {
-                    it.name += " "+it.SERVER.ipScore().lvl
+                    it.name += " " + it.SERVER.ipScore().lvl
                 }.onFailure {
                     println("${it.message}")
                 }
-        }
+            }
         nodeInfo.writeLine("\n**google ping有效节点: ${nodes.size}**")
         NODE_ALL.writeLine(
             nodes.filterNot { it is Vless || it is Hysteria2 }.joinToString("\n") { it.toUri() }.b64Encode(),
@@ -174,5 +188,10 @@ class NodeCrawler {
         const val CUSTOM_INFO = "防失效github SubCrawler"
         private var subCount = 0
         private var nodeCount = 0
+        private const val YEAR = "{YYYY}"
+        private const val MONTH = "{MM}"
+        private const val DAY = "{DD}"
+        private const val MONTH1 = "{M}"
+        private const val DAY1 = "{D}"
     }
 }
