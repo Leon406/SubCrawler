@@ -15,7 +15,8 @@
 
 ## <span id="subCon">订阅转换</span>
 
-- [:star:本地搭建 推荐](https://github.com/tindy2013/subconverter/releases)
+- [:star:本地搭建](https://github.com/tindy2013/subconverter/releases)
+- [:star: Clash/ClashMeta内核本地搭建](https://github.com/bestnite/sub2clash)
 - [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
 - [sub v1](https://sub.v1.mk/)
 - [品云](https://id9.cc/)
@@ -27,7 +28,7 @@
 - 本地测速
     - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [:star:LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
-    - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://leon.lanzoub.com/b0db6sooh#8c0d)
+    - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://www.lanzoue.com/b0db6sooh#8c0d)
     
 - 在线测速(基于上面本地测速搭建的服务,建议自行搭建,目前大部分都挂了)
 
