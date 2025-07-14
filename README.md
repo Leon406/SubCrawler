@@ -1,8 +1,8 @@
 <h4 align="center">访客数 :eyes:</h4>
 
 <p align="center">
-<img  src="https://profile-counter.glitch.me/Leon406_SubCrawler/count.svg" alt="Sub :: Visitor's Count" />
- <img width=0 height=0 src="https://profile-counter.glitch.me/Leon406/count.svg" alt="Leon406:: Visitor's Count" />
+<img  src="https://api.visitorbadge.io/api/visitors?path=leon406%2Fsubcrawler&countColor=%232ccce4" alt="Sub :: Visitor's Count" />
+ <img width=0 height=0 src="https://api.visitorbadge.io/api/visitors?path=leon406%2Fleon406&countColor=%232ccce4" alt="Leon406:: Visitor's Count" />
 </p>
 
 ![Repo size](https://img.shields.io/github/repo-size/leon406/subcrawler)
