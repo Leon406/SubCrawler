@@ -15,7 +15,7 @@
 
 ## <span id="subCon">订阅转换</span>
 
-- [:star:本地搭建](https://github.com/tindy2013/subconverter/releases)
+- [:star:本地搭建 subconverter ](https://github.com/asdlokj1qpi233/subconverter/releases)  较原版支持vless/hy2/anytls等
 - [:star: Clash/ClashMeta内核本地搭建](https://github.com/bestnite/sub2clash)
 - [github acl4ssr-sub](https://acl4ssr-sub.github.io/)
 - [sub v1](https://sub.v1.mk/)
@@ -26,7 +26,8 @@
 ## 节点测速
 
 - 本地测速
-    - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
+    -  [:star:subs-check 支持vless,hy2] (https://github.com/beck-8/subs-check)
+    -  [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [:star:LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://www.lanzoue.com/b0db6sooh#8c0d)
     
