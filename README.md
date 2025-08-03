@@ -26,8 +26,8 @@
 ## 节点测速
 
 - 本地测速
-    -  [:star:subs-check 支持vless,hy2] (https://github.com/beck-8/subs-check)
-    -  [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
+    - [:star:subs-check 支持vless,hy2](https://github.com/beck-8/subs-check)
+    - [stairspeedtest-reborn](https://github.com/tindy2013/stairspeedtest-reborn)
     - [:star:LiteSpeedTest](https://github.com/xxf098/LiteSpeedTest)
     - [nodescatch ](https://github.com/bulianglin/demo)     [个人组件更新版 提取码 8c0d](https://www.lanzoue.com/b0db6sooh#8c0d)
     
